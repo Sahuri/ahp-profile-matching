@@ -1,0 +1,384 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+
+@keyframes ignielGradient {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+.ignielPelangi {
+    background: linear-gradient(45deg, #111010, #221401, #638772, #6a6d8d, #5f3844, #786001, #1b000a) transparent;
+    background-size: 500% 500%;
+    -webkit-animation: ignielGradient 12s ease infinite;
+    -moz-animation: ignielGradient 12s ease infinite;
+    animation: ignielGradient 12s ease infinite;
+}
+
+@-webkit-keyframes ignielGradient {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes ignielGradient {
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-webkit-keyframes ignielRing {
+    0% {
+        -webkit-transform: rotateZ(0);
+    }
+
+    1% {
+        -webkit-transform: rotateZ(30deg);
+    }
+
+    3% {
+        -webkit-transform: rotateZ(-28deg);
+    }
+
+    5% {
+        -webkit-transform: rotateZ(34deg);
+    }
+
+    7% {
+        -webkit-transform: rotateZ(-32deg);
+    }
+
+    9% {
+        -webkit-transform: rotateZ(30deg);
+    }
+
+    11% {
+        -webkit-transform: rotateZ(-28deg);
+    }
+
+    13% {
+        -webkit-transform: rotateZ(26deg);
+    }
+
+    15% {
+        -webkit-transform: rotateZ(-24deg);
+    }
+
+    17% {
+        -webkit-transform: rotateZ(22deg);
+    }
+
+    19% {
+        -webkit-transform: rotateZ(-20deg);
+    }
+
+    21% {
+        -webkit-transform: rotateZ(18deg);
+    }
+
+    23% {
+        -webkit-transform: rotateZ(-16deg);
+    }
+
+    25% {
+        -webkit-transform: rotateZ(14deg);
+    }
+
+    27% {
+        -webkit-transform: rotateZ(-12deg);
+    }
+
+    29% {
+        -webkit-transform: rotateZ(10deg);
+    }
+
+    31% {
+        -webkit-transform: rotateZ(-8deg);
+    }
+
+    33% {
+        -webkit-transform: rotateZ(6deg);
+    }
+
+    35% {
+        -webkit-transform: rotateZ(-4deg);
+    }
+
+    37% {
+        -webkit-transform: rotateZ(2deg);
+    }
+
+    39% {
+        -webkit-transform: rotateZ(-1deg);
+    }
+
+    41% {
+        -webkit-transform: rotateZ(1deg);
+    }
+
+    43% {
+        -webkit-transform: rotateZ(0);
+    }
+
+    100% {
+        -webkit-transform: rotateZ(0);
+    }
+}
+
+@-moz-keyframes ignielRing {
+    0% {
+        -moz-transform: rotate(0);
+    }
+
+    1% {
+        -moz-transform: rotate(30deg);
+    }
+
+    3% {
+        -moz-transform: rotate(-28deg);
+    }
+
+    5% {
+        -moz-transform: rotate(34deg);
+    }
+
+    7% {
+        -moz-transform: rotate(-32deg);
+    }
+
+    9% {
+        -moz-transform: rotate(30deg);
+    }
+
+    11% {
+        -moz-transform: rotate(-28deg);
+    }
+
+    13% {
+        -moz-transform: rotate(26deg);
+    }
+
+    15% {
+        -moz-transform: rotate(-24deg);
+    }
+
+    17% {
+        -moz-transform: rotate(22deg);
+    }
+
+    19% {
+        -moz-transform: rotate(-20deg);
+    }
+
+    21% {
+        -moz-transform: rotate(18deg);
+    }
+
+    23% {
+        -moz-transform: rotate(-16deg);
+    }
+
+    25% {
+        -moz-transform: rotate(14deg);
+    }
+
+    27% {
+        -moz-transform: rotate(-12deg);
+    }
+
+    29% {
+        -moz-transform: rotate(10deg);
+    }
+
+    31% {
+        -moz-transform: rotate(-8deg);
+    }
+
+    33% {
+        -moz-transform: rotate(6deg);
+    }
+
+    35% {
+        -moz-transform: rotate(-4deg);
+    }
+
+    37% {
+        -moz-transform: rotate(2deg);
+    }
+
+    39% {
+        -moz-transform: rotate(-1deg);
+    }
+
+    41% {
+        -moz-transform: rotate(1deg);
+    }
+
+    43% {
+        -moz-transform: rotate(0);
+    }
+
+    100% {
+        -moz-transform: rotate(0);
+    }
+}
+
+@keyframes ignielRing {
+    0% {
+        transform: rotate(0);
+    }
+
+    1% {
+        transform: rotate(30deg);
+    }
+
+    3% {
+        transform: rotate(-28deg);
+    }
+
+    5% {
+        transform: rotate(34deg);
+    }
+
+    7% {
+        transform: rotate(-32deg);
+    }
+
+    9% {
+        transform: rotate(30deg);
+    }
+
+    11% {
+        transform: rotate(-28deg);
+    }
+
+    13% {
+        transform: rotate(26deg);
+    }
+
+    15% {
+        transform: rotate(-24deg);
+    }
+
+    17% {
+        transform: rotate(22deg);
+    }
+
+    19% {
+        transform: rotate(-20deg);
+    }
+
+    21% {
+        transform: rotate(18deg);
+    }
+
+    23% {
+        transform: rotate(-16deg);
+    }
+
+    25% {
+        transform: rotate(14deg);
+    }
+
+    27% {
+        transform: rotate(-12deg);
+    }
+
+    29% {
+        transform: rotate(10deg);
+    }
+
+    31% {
+        transform: rotate(-8deg);
+    }
+
+    33% {
+        transform: rotate(6deg);
+    }
+
+    35% {
+        transform: rotate(-4deg);
+    }
+
+    37% {
+        transform: rotate(2deg);
+    }
+
+    39% {
+        transform: rotate(-1deg);
+    }
+
+    41% {
+        transform: rotate(1deg);
+    }
+
+    43% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(0);
+    }
+}
+
+#ignielNotif .email {
+    margin: auto;
+}
+
+#ignielNotif .email:before {
+    content: '';
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    border-radius: 100px;
+    transition: all .3s ease;
+    -webkit-animation: ignielRing 5s 0s ease-in-out infinite;
+    -webkit-transform-origin: 50% 4px;
+    -moz-animation: ignielRing 5s 0s ease-in-out infinite;
+    -moz-transform-origin: 50% 4px;
+    animation: ignielRing 5s 0s ease-in-out infinite;
+    transform-origin: 50% 4px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21M19.75,3.19L18.33,4.61C20.04,6.3 21,8.6 21,11H23C23,8.07 21.84,5.25 19.75,3.19M1,11H3C3,8.6 3.96,6.3 5.67,4.61L4.25,3.19C2.16,5.25 1,8.07 1,11Z' fill='%23008c5f'/%3E%3C/svg%3E") center center / 50px no-repeat;
+}

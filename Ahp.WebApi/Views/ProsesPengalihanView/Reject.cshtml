@@ -1,0 +1,100 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>BUDGET TRANSFER ONLINE - BUTTON | @ViewBag.RejectBy</title>
+    <link href="/Content/bootstrap.css" rel="stylesheet" />
+    <link href="/Content/site.css" rel="stylesheet" />
+
+    <script src="/Scripts/modernizr-2.6.2.js"></script>
+    <script src="/Scripts/jquery-1.10.2.js"></script>
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/respond.js"></script>
+</head>
+<body class="ignielPelangi">
+    <div class="body-content">
+        <div id="ignielNotif" class="jumbotron text-center" style="background-color:#fff;padding-top: 10px; padding-bottom: 10px;">
+            <h4 class="email text-primary">@ViewBag.RejectBy</h4>
+            <br />
+            <p id="message" class="lead text-danger"></p>
+            <div class="row">
+                <div class="col-md-12 column">
+                    <div class="col-md-6 col-md-offset-3 column">
+                        <form id="frmReject" name="frmReject" class="col-sm-12 col-md-12 col-lg-12 col-xs-12">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Number</label>
+                                <div class="col-md-9">
+                                    <input class="form-control" value="@ViewBag.NomorPengalihan" disabled="disabled">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label">Reason</label>
+                                <div class="col-md-9">
+                                    <textarea class="form-control" rows="5" id="txtReason" required></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-6 col-md-offset-3 column">
+                                    <button class="btn btn-primary" id="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <hr style="border-color:rgba(0,0,0,.1);">
+                <div class="text-center">
+                    <h4 class="text-primary"><b>BUDGET TRANSFER ONLINE - BUTTON</b></h4>
+                    <h5 style="color:rgba(0,0,0,.7);">(Pengalihan Anggaran Biaya Operasi)</h5>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <p class="text-center text-muted" style="color:#fff;">Copyright &copy; PT Pertamina Geothermal Energy</p>
+        </footer>
+    </div>
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+        $(function () {
+            $('#submit').on('click', function (evt) {
+                evt.preventDefault();
+                $('#submit').prop('disabled', true);
+                $('#txtReason').prop('disabled', true);
+
+                var Reason = $('#txtReason').val();
+                if (Reason == "") {
+                    alert("Please input Reason.");
+                    $('#txtReason').focus();
+                }
+                else {
+                    var url = '@(ViewBag.Url)';
+                    var postUrl = url + '&Reasons=' + Reason;
+                    $.get(postUrl, function (response) {
+                        if (!response.Success) {
+                            $('#submit').prop('disabled', false);
+                            $('#txtReason').prop('disabled', false);
+                            $('#message').removeClass('lead text-success');
+                            $('#message').addClass('lead text-danger');
+                        }
+                        else {
+                            $('#message').removeClass('lead text-danger');
+                            $('#message').addClass('lead text-success');
+                        }
+                        $('#message').html(response.Message);
+                    });
+                }
+            });
+        });
+</script>

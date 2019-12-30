@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHPModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AdministrasiHakAkses">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesMenu">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeMenu" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="KodeMenu" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesRole">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeRole" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="KodeRole" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesTombol">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeTombol" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="KodeTombol" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiMenu">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="30" />
+    <Property Name="Class" Type="varchar" MaxLength="30" />
+    <Property Name="Parent" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="15" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="AdministrasiRole">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiRoleDtl">
+    <Key>
+      <PropertyRef Name="KodeRole" />
+      <PropertyRef Name="KodeWilayahKerja" />
+    </Key>
+    <Property Name="KodeRole" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="KodeWilayahKerja" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiRoleUser">
+    <Key>
+      <PropertyRef Name="KodeRole" />
+      <PropertyRef Name="KodeUser" />
+    </Key>
+    <Property Name="KodeRole" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="KodeUser" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiTombol">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Icon" Type="varchar" MaxLength="30" />
+    <Property Name="Class" Type="varchar" MaxLength="30" />
+    <Property Name="KodeMenu" Type="varchar" MaxLength="15" />
+    <Property Name="Parameter" Type="varchar" MaxLength="255" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="AdministrasiUser">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Alamat" Type="varchar" MaxLength="255" />
+    <Property Name="Telepon" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Avatar" Type="varchar" MaxLength="100" />
+    <Property Name="IsAdministrator" Type="bit" />
+    <Property Name="Aktif" Type="bit" Nullable="false" />
+    <Property Name="KodePlant" Type="varchar" MaxLength="10" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CalonKaryawan">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="50" />
+    <Property Name="Alamat" Type="varchar" MaxLength="50" />
+    <Property Name="Telepon" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Kelamin" Type="varchar" MaxLength="20" />
+    <Property Name="Tgllahir" Type="date" />
+    <Property Name="Pendidikan" Type="varchar" MaxLength="10" />
+    <Property Name="NilaiAkhir" Type="float" />
+    <Property Name="Keterangan" Type="varchar" MaxLength="500" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Kriteria">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="50" />
+    <Property Name="Faktor" Type="int" />
+    <Property Name="NilaiTarget" Type="int" />
+    <Property Name="JumlahBaris" Type="int" />
+    <Property Name="EigenvectorScore" Type="float" />
+    <Property Name="NilaiKali" Type="float" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Lowongan">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
+    <Property Name="Nama" Type="varchar" MaxLength="20" />
+    <Property Name="Jumlah" Type="int" />
+    <Property Name="TglMulai" Type="date" />
+    <Property Name="TglAkhir" Type="date" />
+    <Property Name="Periode" Type="varchar" MaxLength="50" />
+    <Property Name="NoSurat" Type="varchar" MaxLength="50" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PerbandinganKriteria">
+    <Key>
+      <PropertyRef Name="Kode" />
+      <PropertyRef Name="Kode2" />
+    </Key>
+    <Property Name="Kode" Type="int" Nullable="false" />
+    <Property Name="Kode2" Type="int" Nullable="false" />
+    <Property Name="Nilai" Type="float" Nullable="false" />
+    <Property Name="Nilai2" Type="float" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Function Name="SpPerbandinganKriteria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="AHPModelStoreContainer">
+    <EntitySet Name="AdministrasiHakAkses" EntityType="Self.AdministrasiHakAkses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiHakAksesMenu" EntityType="Self.AdministrasiHakAksesMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiHakAksesRole" EntityType="Self.AdministrasiHakAksesRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiHakAksesTombol" EntityType="Self.AdministrasiHakAksesTombol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiMenu" EntityType="Self.AdministrasiMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiRole" EntityType="Self.AdministrasiRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiRoleDtl" EntityType="Self.AdministrasiRoleDtl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiRoleUser" EntityType="Self.AdministrasiRoleUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiTombol" EntityType="Self.AdministrasiTombol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AdministrasiUser" EntityType="Self.AdministrasiUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CalonKaryawan" EntityType="Self.CalonKaryawan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kriteria" EntityType="Self.Kriteria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lowongan" EntityType="Self.Lowongan" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PerbandinganKriteria" EntityType="Self.PerbandinganKriteria" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

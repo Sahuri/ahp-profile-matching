@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74C5259A-9E75-4FCE-970E-2C1D52F68B79}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ahp.Core</RootNamespace>
+    <AssemblyName>Ahp.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataTablesParser, Version=2.0.5937.42944, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\pge.net\SVN\trunk\packages\DataTablesParser.3.0.2\lib\net45\DataTablesParser.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.3.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1358.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\BaseConstants.cs" />
+    <Compile Include="Common\BaseEnums.cs" />
+    <Compile Include="Common\BaseModelMapping.cs" />
+    <Compile Include="Common\Dropdown.cs" />
+    <Compile Include="Common\DynamicExtensions.cs" />
+    <Compile Include="Common\DynamicTypeBuilder.cs" />
+    <Compile Include="Common\ParamData.cs" />
+    <Compile Include="GenericRepositories\Abstractions\IGenericContext.cs" />
+    <Compile Include="GenericRepositories\Abstractions\IGenericDataRepository.cs" />
+    <Compile Include="GenericRepositories\Abstractions\IGenericWebApiController.cs" />
+    <Compile Include="GenericRepositories\Abstractions\IGenericWebApiResult.cs" />
+    <Compile Include="GenericRepositories\Concretes\GenericContext.cs" />
+    <Compile Include="GenericRepositories\Concretes\GenericDataRepository.cs" />
+    <Compile Include="GenericRepositories\Concretes\GenericWebApiResult.cs" />
+    <Compile Include="Models\AdministrasiHakAks.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiHakAksesMenu.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiHakAksesRole.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiHakAksesTombol.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiMenu.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiRole.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiRoleDtl.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiRoleUser.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiTombol.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdministrasiUser.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CalonKaryawan.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kriteria.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Lowongan.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Matrix.cs" />
+    <Compile Include="Models\MenuItem.cs" />
+    <Compile Include="Models\ModelAhp.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAhp.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAhp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ModelAhp.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAhp.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ParamAdministrasiHakAkses.cs" />
+    <Compile Include="Models\PerbandinganKriteria.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SpPerbandinganKriteria_Result.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesMenuRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesRoleRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesTombolRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiMenuRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiRoleDtlRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiRoleRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiRoleUserRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiUserRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Master\ICalonKaryawanRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Master\ILowonganRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Master\IKriteriaRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Proses\IPerbandinganKriteriaRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesMenuRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesRoleRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesTombolRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiMenuRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiRoleDtlRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiRoleRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiRoleUserRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiTombolRepository.cs" />
+    <Compile Include="Repositories\Concretes\Administrasi\AdministrasiUserRepository.cs" />
+    <Compile Include="Repositories\Concretes\DataRepository.cs" />
+    <Compile Include="Repositories\Concretes\Master\CalonKaryawanRepository.cs" />
+    <Compile Include="Repositories\Concretes\Master\LowonganRepository.cs" />
+    <Compile Include="Repositories\Concretes\Master\KriteriaRepository.cs" />
+    <Compile Include="Repositories\Concretes\Proses\PerbandinganKriteriaRepository.cs" />
+    <Compile Include="Security\Cryptography.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Models\ModelAhp.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelAhp.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ModelAhp.edmx.diagram">
+      <DependentUpon>ModelAhp.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\ModelAhp.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAhp.edmx</DependentUpon>
+      <LastGenOutput>ModelAhp.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ModelAhp.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelAhp.edmx</DependentUpon>
+      <LastGenOutput>ModelAhp.cs</LastGenOutput>
+    </Content>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

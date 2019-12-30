@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AHPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdministrasiMenu">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Class" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Parent" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiRole">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiRoleDtl">
+    <Key>
+      <PropertyRef Name="KodeRole" />
+      <PropertyRef Name="KodeWilayahKerja" />
+    </Key>
+    <Property Name="KodeRole" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KodeWilayahKerja" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiRoleUser">
+    <Key>
+      <PropertyRef Name="KodeRole" />
+      <PropertyRef Name="KodeUser" />
+    </Key>
+    <Property Name="KodeRole" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KodeUser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiTombol">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Icon" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Class" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="KodeMenu" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Parameter" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiUser">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nama" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Alamat" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Telepon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IsAdministrator" Type="Boolean" />
+    <Property Name="Aktif" Type="Boolean" Nullable="false" />
+    <Property Name="KodePlant" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="AhpEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdministrasiMenus" EntityType="Self.AdministrasiMenu" />
+    <EntitySet Name="AdministrasiRoles" EntityType="Self.AdministrasiRole" />
+    <EntitySet Name="AdministrasiRoleDtls" EntityType="Self.AdministrasiRoleDtl" />
+    <EntitySet Name="AdministrasiRoleUsers" EntityType="Self.AdministrasiRoleUser" />
+    <EntitySet Name="AdministrasiTombols" EntityType="Self.AdministrasiTombol" />
+    <EntitySet Name="AdministrasiUsers" EntityType="Self.AdministrasiUser" />
+    <EntitySet Name="AdministrasiHakAkses" EntityType="AHPModel.AdministrasiHakAks" />
+    <EntitySet Name="AdministrasiHakAksesMenus" EntityType="AHPModel.AdministrasiHakAksesMenu" />
+    <EntitySet Name="AdministrasiHakAksesRoles" EntityType="AHPModel.AdministrasiHakAksesRole" />
+    <EntitySet Name="AdministrasiHakAksesTombols" EntityType="AHPModel.AdministrasiHakAksesTombol" />
+    <EntitySet Name="CalonKaryawans" EntityType="AHPModel.CalonKaryawan" />
+    <EntitySet Name="Lowongans" EntityType="AHPModel.Lowongan" />
+    <EntitySet Name="Kriterias" EntityType="AHPModel.Kriteria" />
+    <EntitySet Name="PerbandinganKriterias" EntityType="AHPModel.PerbandinganKriteria" />
+    <FunctionImport Name="SpPerbandinganKriteria" ReturnType="Collection(AHPModel.SpPerbandinganKriteria_Result)" />
+  </EntityContainer>
+  <EntityType Name="AdministrasiHakAks">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesMenu">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeMenu" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="KodeMenu" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesRole">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeRole" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="KodeRole" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AdministrasiHakAksesTombol">
+    <Key>
+      <PropertyRef Name="KodeHakAkses" />
+      <PropertyRef Name="KodeTombol" />
+    </Key>
+    <Property Name="KodeHakAkses" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="KodeTombol" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CalonKaryawan">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telepon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kelamin" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Tgllahir" Type="DateTime" Precision="0" />
+    <Property Name="Pendidikan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NilaiAkhir" Type="Double" />
+    <Property Name="Keterangan" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Lowongan">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Nama" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Jumlah" Type="Int32" />
+    <Property Name="TglMulai" Type="DateTime" Precision="0" />
+    <Property Name="TglAkhir" Type="DateTime" Precision="0" />
+    <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoSurat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Kriteria">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Faktor" Type="Int32" />
+    <Property Name="NilaiTarget" Type="Int32" />
+    <Property Name="JumlahBaris" Type="Int32" />
+    <Property Name="EigenvectorScore" Type="Double" />
+    <Property Name="NilaiKali" Type="Double" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PerbandinganKriteria">
+    <Key>
+      <PropertyRef Name="Kode" />
+      <PropertyRef Name="Kode2" />
+    </Key>
+    <Property Name="Kode" Type="Int32" Nullable="false" />
+    <Property Name="Kode2" Type="Int32" Nullable="false" />
+    <Property Name="Nilai" Type="Double" Nullable="false" />
+    <Property Name="Nilai2" Type="Double" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SpPerbandinganKriteria_Result">
+    <Property Type="Int32" Name="Kode1" Nullable="true" />
+    <Property Type="String" Name="Kriteria1" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Kode2" Nullable="true" />
+    <Property Type="String" Name="Kriteria2" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="Nilai1" Nullable="false" />
+    <Property Type="Double" Name="nilai2" Nullable="false" />
+  </ComplexType>
+</Schema>

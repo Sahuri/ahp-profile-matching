@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AHPModelStoreContainer" CdmEntityContainer="AhpEntities">
+    <EntitySetMapping Name="AdministrasiMenus">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiMenu">
+        <MappingFragment StoreEntitySet="AdministrasiMenu">
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Parent" ColumnName="Parent" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiRoles">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiRole">
+        <MappingFragment StoreEntitySet="AdministrasiRole">
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiRoleDtls">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiRoleDtl">
+        <MappingFragment StoreEntitySet="AdministrasiRoleDtl">
+          <ScalarProperty Name="KodeRole" ColumnName="KodeRole" />
+          <ScalarProperty Name="KodeWilayahKerja" ColumnName="KodeWilayahKerja" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiRoleUsers">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiRoleUser">
+        <MappingFragment StoreEntitySet="AdministrasiRoleUser">
+          <ScalarProperty Name="KodeRole" ColumnName="KodeRole" />
+          <ScalarProperty Name="KodeUser" ColumnName="KodeUser" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiTombols">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiTombol">
+        <MappingFragment StoreEntitySet="AdministrasiTombol">
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="KodeMenu" ColumnName="KodeMenu" />
+          <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiUsers">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiUser">
+        <MappingFragment StoreEntitySet="AdministrasiUser">
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+          <ScalarProperty Name="Telepon" ColumnName="Telepon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="IsAdministrator" ColumnName="IsAdministrator" />
+          <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+          <ScalarProperty Name="KodePlant" ColumnName="KodePlant" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiHakAkses">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiHakAks">
+        <MappingFragment StoreEntitySet="AdministrasiHakAkses">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiHakAksesMenus">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiHakAksesMenu">
+        <MappingFragment StoreEntitySet="AdministrasiHakAksesMenu">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="KodeMenu" ColumnName="KodeMenu" />
+          <ScalarProperty Name="KodeHakAkses" ColumnName="KodeHakAkses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiHakAksesRoles">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiHakAksesRole">
+        <MappingFragment StoreEntitySet="AdministrasiHakAksesRole">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="KodeRole" ColumnName="KodeRole" />
+          <ScalarProperty Name="KodeHakAkses" ColumnName="KodeHakAkses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdministrasiHakAksesTombols">
+      <EntityTypeMapping TypeName="AHPModel.AdministrasiHakAksesTombol">
+        <MappingFragment StoreEntitySet="AdministrasiHakAksesTombol">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="KodeTombol" ColumnName="KodeTombol" />
+          <ScalarProperty Name="KodeHakAkses" ColumnName="KodeHakAkses" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalonKaryawans">
+      <EntityTypeMapping TypeName="AHPModel.CalonKaryawan">
+        <MappingFragment StoreEntitySet="CalonKaryawan">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Keterangan" ColumnName="Keterangan" />
+          <ScalarProperty Name="NilaiAkhir" ColumnName="NilaiAkhir" />
+          <ScalarProperty Name="Pendidikan" ColumnName="Pendidikan" />
+          <ScalarProperty Name="Tgllahir" ColumnName="Tgllahir" />
+          <ScalarProperty Name="Kelamin" ColumnName="Kelamin" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telepon" ColumnName="Telepon" />
+          <ScalarProperty Name="Alamat" ColumnName="Alamat" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lowongans">
+      <EntityTypeMapping TypeName="AHPModel.Lowongan">
+        <MappingFragment StoreEntitySet="Lowongan">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NoSurat" ColumnName="NoSurat" />
+          <ScalarProperty Name="Periode" ColumnName="Periode" />
+          <ScalarProperty Name="TglAkhir" ColumnName="TglAkhir" />
+          <ScalarProperty Name="TglMulai" ColumnName="TglMulai" />
+          <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kriterias">
+      <EntityTypeMapping TypeName="AHPModel.Kriteria">
+        <MappingFragment StoreEntitySet="Kriteria">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="NilaiKali" ColumnName="NilaiKali" />
+          <ScalarProperty Name="EigenvectorScore" ColumnName="EigenvectorScore" />
+          <ScalarProperty Name="JumlahBaris" ColumnName="JumlahBaris" />
+          <ScalarProperty Name="NilaiTarget" ColumnName="NilaiTarget" />
+          <ScalarProperty Name="Faktor" ColumnName="Faktor" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PerbandinganKriterias">
+      <EntityTypeMapping TypeName="AHPModel.PerbandinganKriteria">
+        <MappingFragment StoreEntitySet="PerbandinganKriteria">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Nilai2" ColumnName="Nilai2" />
+          <ScalarProperty Name="Nilai" ColumnName="Nilai" />
+          <ScalarProperty Name="Kode2" ColumnName="Kode2" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SpPerbandinganKriteria" FunctionName="AHPModel.Store.SpPerbandinganKriteria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AHPModel.SpPerbandinganKriteria_Result">
+          <ScalarProperty Name="Kode1" ColumnName="Kode1" />
+          <ScalarProperty Name="Kriteria1" ColumnName="Kriteria1" />
+          <ScalarProperty Name="Kode2" ColumnName="Kode2" />
+          <ScalarProperty Name="Kriteria2" ColumnName="Kriteria2" />
+          <ScalarProperty Name="Nilai1" ColumnName="Nilai1" />
+          <ScalarProperty Name="nilai2" ColumnName="nilai2" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>
