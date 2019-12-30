@@ -1,0 +1,134 @@
+<style>
+	#parallelogram {
+		width: auto;
+		height: auto;
+		transform: skew(0deg);
+		background: rgba(255,255,255,.7);
+		border: 1px solid #ccc;
+		border-top-left-radius: 10%;
+		border-bottom-right-radius: 10%;
+		padding: 3em 0em;
+	}
+</style>
+<body id="login">
+    <div class="va-table height-100vh width-100 bg-reg">
+        <div class="va-middle">
+            <div class="ajax-loader">
+                <figure>
+                    <div class="dot white"></div>
+                    <svg class="lds-message" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
+                        <g transform="translate(20 50)">
+                            <circle cx="0" cy="0" r="6" fill="#456caa" transform="scale(0.00227195 0.00227195)">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.3375s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </g>
+                        <g transform="translate(40 50)">
+                            <circle cx="0" cy="0" r="6" fill="#88a2ce" transform="scale(0.199233 0.199233)">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.225s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </g>
+                        <g transform="translate(60 50)">
+                            <circle cx="0" cy="0" r="6" fill="#c2d2ee" transform="scale(0.541624 0.541624)">
+                                <animateTransform attributeName="transform" type="scale" begin="-0.1125s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </g>
+                        <g transform="translate(80 50)">
+                            <circle cx="0" cy="0" r="6" fill="#fefefe" transform="scale(0.863728 0.863728)">
+                                <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                            </circle>
+                        </g>
+                    </svg>
+                </figure>
+            </div>
+
+            <div style="position: relative;border-radius: 32px;" class="width-75 width-90-m mar-4em-auto mar-2em-auto-m">
+                <div class="pad-3em width-100 mar-0-auto pad-1em-m">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="va-table" style="height:300px;">
+                                <div class="va-middle">
+                                    <div class="ta-center" style="padding-bottom:20px;"><img src="styles/img/logo-white.png" width="100%"></div>
+                                    <div class="ta-center">
+                                        <h1 class="text-primary"><b>AHP dan Profile Matching</b></h1> <span style="color:rgba(0,0,0,.7);">(Model Metode Analytical Hierarchy Process (AHP) & Profile Matching)</span>
+                                        <hr style="border-color:rgba(0,0,0,.1);">
+                                        <div style="color:rgba(0,0,0,.6);">Dalam meningkatkan kinerja dan kualitas perusahaan diperlukan adanya suatu aktivitas perbaikan dan perubahan yang bersifat berkesinambungan, itu telah diterapkan oleh Pertamina yang dikenal dengan Budget Transfer Online.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="va-table" style="height: 300px;">
+                                <div class="va-middle">
+                                	<div id="parallelogram">
+
+	                                    <form id="frmLogin" data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+	                                        <div>
+	                                            <div class="row">
+	                                                <div class="col-md-12 form-group">
+	                                                    <div class="col-md-12 ta-center">
+	                                                        <div class="fs-15">Silakan <strong>Login</strong> dengan Akun Anda!</div>
+	                                                        <br>
+	                                                    </div>
+	                                                </div>
+	                                                <div class="col-md-12 form-group">
+	                                                    <div class="col-md-12">
+	                                                        <input type="text" class="form-control pad-2em width-80 mar-0-auto width-100-m login-tksbox" name="userName" ng-model="loginData.userName" placeholder="User Name" data-bv-notempty="true" data-bv-notempty-message="The User Name is required and cannot be empty" />
+	                                                    </div>
+	                                                </div>
+	                                                <div class="col-md-12 form-group">
+	                                                    <div class="col-md-12">
+	                                                        <input type="password" class="form-control pad-2em width-80 mar-0-auto width-100-m login-tksbox" name="password" ng-model="loginData.password" placeholder="Password" data-bv-notempty="true" data-bv-notempty-message="The Password is required and cannot be empty" />
+	                                                    </div>
+	                                                </div>
+	                                                <div class="col-md-12 ta-center">
+	                                                    <div class="va-table width-75 mar-0-auto width-90-m">
+	                                                        <div class="va-middle width-50">
+	                                                            <button type="submit" class="btn btn-primary width-100 pad-1em" ng-click="login()">
+	                                                                Sign In&nbsp;&nbsp;<i class="fa fa-sign-in"></i>
+	                                                            </button>
+	                                                        </div>
+	                                                    </div>
+	                                                </div>
+	                                                <div class="col-md-12 form-group">
+	                                                    <div class="va-table width-75 mar-0-auto width-90-m">
+	                                                        <div class="va-middle width-50">
+	                                                        	<br>
+			                                                	<div class="ta-center">
+						                                            <span class="fs-15"></span>
+						                                        </div>
+						                                    </div>
+				                                        </div>
+	                                                </div>
+	                                            </div>
+	                                        </div>
+	                                    </form>
+                                	</div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end widget content -->
+                </div>
+                <!-- end widget div -->
+            </div>
+            <div class="ta-center mar-t-2em-m fs-14" style="margin-top: 8em;color:rgba(0,0,0,.5);">Copyright &copy; PT Pertamina Geothermal Energy</div>
+            <div class="visible-xs-block">
+                <br>
+            </div>
+            <!-- end widget -->
+        </div>
+    </div>
+      <script>
+        $(document).ready(function () {
+            //attributeForm
+            $('#attributeForm').bootstrapValidator();
+
+            $('#move-bg').mousemove(function (e) {
+                var amountMovedX = (e.pageX * -1 / 6);
+                var amountMovedY = (e.pageY * -1 / 6);
+                $(this).css('background-position', amountMovedX + 'px ' + amountMovedY + 'px');
+            });
+        });
+    </script>
+</body>

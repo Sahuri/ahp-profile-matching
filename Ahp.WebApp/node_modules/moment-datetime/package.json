@@ -1,0 +1,103 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "moment-datetime",
+        "scope": null,
+        "escapedName": "moment-datetime",
+        "name": "moment-datetime",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "H:\\DATA\\PGE\\Sources\\PGE.Net\\PGE.Net.WebApp.Lamp"
+    ]
+  ],
+  "_defaultsLoaded": true,
+  "_engineSupported": true,
+  "_from": "moment-datetime@latest",
+  "_id": "moment-datetime@0.0.2",
+  "_inCache": true,
+  "_location": "/moment-datetime",
+  "_nodeVersion": "v0.6.11",
+  "_npmUser": {
+    "name": "uruz",
+    "email": "sun.void@gmail.com"
+  },
+  "_npmVersion": "1.1.1",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "moment-datetime",
+    "scope": null,
+    "escapedName": "moment-datetime",
+    "name": "moment-datetime",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/moment-datetime/-/moment-datetime-0.0.2.tgz",
+  "_shasum": "4ceac2941b2e9114e6bd2c592f61b930926fde71",
+  "_shrinkwrap": null,
+  "_spec": "moment-datetime",
+  "_where": "H:\\DATA\\PGE\\Sources\\PGE.Net\\PGE.Net.WebApp.Lamp",
+  "author": {
+    "name": "Alexey Boriskin",
+    "email": "sun.void@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/uruz/moment-datetime/issues"
+  },
+  "contributors": [],
+  "dependencies": {
+    "moment": "1.7.2"
+  },
+  "description": "Strftime and strptime for moment.js",
+  "devDependencies": {
+    "jshint": "latest",
+    "moment": "latest",
+    "nodeunit": "latest",
+    "uglify-js": "latest"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "4ceac2941b2e9114e6bd2c592f61b930926fde71",
+    "tarball": "https://registry.npmjs.org/moment-datetime/-/moment-datetime-0.0.2.tgz"
+  },
+  "ender": "./ender.js",
+  "engines": {
+    "node": "*"
+  },
+  "homepage": "https://github.com/uruz/moment-datetime",
+  "keywords": [
+    "moment",
+    "date",
+    "strftime",
+    "strptime"
+  ],
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "main": "./moment-datetime.js",
+  "maintainers": [
+    {
+      "name": "uruz",
+      "email": "sun.void@gmail.com"
+    }
+  ],
+  "name": "moment-datetime",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uruz/moment-datetime.git"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "version": "0.0.2"
+}

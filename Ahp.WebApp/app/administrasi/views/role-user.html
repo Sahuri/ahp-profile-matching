@@ -1,0 +1,46 @@
+<div id="content">
+    <section widget-grid id="administrasi-role">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget id="list_role" data-widget-colorbutton="false"  data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>{{getWord('Daftar Role User')}}</h2>
+                        <div class="va-table" style="height: 45px;text-align: right;float: right;margin-right: 10px;">
+                            <div class="va-middle"><button id="btnSave" class="btn btn-success" ng-click="Save()"><i class="fa fa-save"></i>&nbsp;&nbsp;{{getWord('Save')}}</button></div>
+                        </div>
+                    </header>
+                    <div>
+                        <div class="widget-body bg-table no-padding">
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="table-responsive">
+                                        <table datatable dt-options="ctrl.tableOptions" dt-columns="ctrl.tableColumns" class="table table-striped table-bordered table-hover cursor-pointer" width="100%"></table>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 border-left">
+                                    <select id="dualUserList" ng-model="detail.lstUserSelected"
+                                            ng-options="item.value as item.text for item in lstUser"
+                                            multiple
+                                            bs-duallistbox></select>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="text-left">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button id="btnSave" class="btn btn-success" ng-click="Save()">
+                                <i class="fa fa-save"></i>
+                                {{getWord('Save')}}
+                            </button>
+                        </div>
+                    </div>
+                </div> -->
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>

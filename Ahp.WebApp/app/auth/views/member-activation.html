@@ -1,0 +1,73 @@
+<body id="registrasi">
+    <div class="va-table height-100vh width-100 bg-reg">
+        <div class="va-middle">
+            <div style="margin: 4em auto;">
+                <div class="bg-gradient-red-blue pad-3em width-75 mar-0-auto" style="position: relative;">
+                    <div style="position: absolute;top: 0;left: 0;background-color: white;">
+                        <div class="ta-center" style="position: relative;z-index: 1;padding: 1.7em 0em 1.7em 1.5em;"><img src="styles/img/pge-logo.png" width="200"></div>
+                        <div style="position: absolute;top: 0;right: -3em;z-index: 0">
+                            <div id="parallelogram"></div>
+                        </div>
+                    </div>
+                    <div style="position: absolute;top: 0;left: 0;width:100%;background-color: white;">
+                        <div class="ta-right pad-r-1em">
+                            <h1 style="font-size: 1.2em;"><b>CIP Online (Continuous Improvement Program)</b></h1>
+                        </div>
+                    </div>
+                    <div class="va-table width-100">
+                        <div class="va-middle width-75">
+                            <div class="ta-right">
+                            </div>
+                            <br>
+                            <div class="ta-center">
+                                <span class="color-white">Aktivasi Peserta</span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr class="width-50">
+                    <br>
+                    <div id="registrasi-cip" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <form id="frmAktivasi" name="frmAktivasi" class="form-horizontal">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-md-offset-3">
+                                                        <input type="text" class="form-control text-center" name="Kode" ng-model="data.Kode" placeholder="No. Gugus" maxlength="50" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <fieldset>
+                                            <div class="form-group mar-b-0">
+                                                <div class="col-md-12 ta-center">
+                                                    <div class="va-table width-100 mar-0-auto" style="padding-top: 28px;">
+                                                        <div class="va-middle width-20">
+                                                            <button class="btn btn-success width-30 pad-1em" ng-disabled="data.Kode != undefined && data.Kode.length < 4" ng-click="activation()" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);"><i class="fa fa-check-circle"></i> Aktivasi</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </form>
+                                <!-- end widget content -->
+                            </div>
+                            <!-- end widget div -->
+
+                        </div>
+                        <!-- end widget -->
+                    </div>
+                </div>
+                <br>
+                <div class="ta-center color-white">Copyright &copy; PT Pertamina Geothermal Energy</div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,335 @@
+<body id="registrasi">
+    <div class="va-table height-100vh width-100 bg-reg">
+        <div class="va-middle">
+            <div style="margin: 4em auto;">
+                <div class="bg-gradient-red-blue pad-3em width-75 mar-0-auto" style="position: relative;">
+                    <div style="position: absolute;top: 0;left: 0;background-color: white;">
+                        <div class="ta-center" style="position: relative;z-index: 1;padding: 1.7em 0em 1.7em 1.5em;"><img src="styles/img/pge-logo.png" width="200"></div>
+                        <div style="position: absolute;top: 0;right: -3em;z-index: 0">
+                            <div id="parallelogram"></div>
+                        </div>
+                    </div>
+                    <div style="position: absolute;top: 0;left: 0;width:100%;background-color: white;">
+                        <div class="ta-right pad-r-1em">
+                            <h1 style="font-size: 1.2em;"><b>Registrasi CIP Online (Continuous Improvement Program)</b></h1>
+                        </div>
+                    </div>
+                    <div class="va-table width-100">
+                        <div class="va-middle width-75 padding-top-20">
+                            <div class="ta-center padding-top-20">
+                                <a class="btn btn-sm btn-primary" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);" ui-sref="changepassmember">Ubah Password&nbsp;&nbsp;<i class="fa fa-unlock-alt"></i></a>&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-sm btn-danger" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);" ng-click="logOut()">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr class="width-50">
+                    <br>
+                    <div id="registrasi-cip" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <ul id="tabMember" class="nav nav-tabs bordered">
+                                    <li class="active">
+                                        <a href="#tab1" data-toggle="tab"><i class="fa fa-fw fa-group"></i> Detil Anggota</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab2" data-toggle="tab"><i class="fa fa-fw fa-folder-open"></i> Historikal</a>
+                                    </li>
+                                    <li>
+                                        <a href="#tab3" data-toggle="tab"><i class="fa fa-fw fa-archive"></i> Kelengkapan Dokumen</a>
+                                    </li>
+                                </ul>
+                                <div id="tabDetailMember" class="tab-content pad-1em" style="background: rgba(255,255,255,0.8)">
+                                    <div class="tab-pane fade in active" id="tab1">
+                                        <form id="frmRegistrasi" name="frmRegistrasi" class="form-horizontal" data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh" enctype="multipart/form-data">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">No. Gugus</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.Kode" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Nama Gugus</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.NamaGugus" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Fasilitator</span></label>
+                                                                <input type="text" class="form-control input-lg" id="Fasilitator" name="Fasilitator" ng-model="data.Fasilitator" placeholder="Fasilitator" maxlength="50" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Tahun</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.Tahun" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Jenis</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.JenisCIPDes" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Kategori</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.KetagoriDes" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Fungsi</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.FungsiDes" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Lokasi</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.LokasiDes" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Status</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.Status" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Judul CIP</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.JudulCIP" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Ketua</span></label>
+                                                                <input type="text" class="form-control" name="Ketua" id="Ketua" placeholder="Ketua" ng-model="data.Ketua" maxlength="50" disabled="disabled" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label text-left"><span class="text-muted">Anggota CIP </span><span><i class="text-muted">(Ketik ENTER setelah menambahkan anggota)</i></span></label>
+                                                                <input id="AnggotaCIP" name="AnggotaCIP" class="form-control" ng-model="data.Anggota" readonly="readonly" />
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Jumlah Anggota</span></label>
+                                                                <div><input type="text" class="form-control text-right" ng-model="data.JumlahAnggota" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Email</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.Email" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Value Creation - Real (USD)</span></label>
+                                                                <div><input type="text" class="form-control text-right" ng-model="data.ValueCreationReal" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Value Creation - Potensi (USD)</span></label>
+                                                                <div><input type="text" class="form-control text-right" ng-model="data.ValueCreationPotensi" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Value Creation - Kategori</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.ValueCreationKategori" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                    <fieldset>
+                                                        <div class="form-group">
+                                                            <div class="col-lg-12">
+                                                                <label class="control-label"><span class="text-muted">Keterangan</span></label>
+                                                                <div><input type="text" class="form-control" ng-model="data.Keterangan" readonly="readonly" disabled="disabled" /></div>
+                                                            </div>
+                                                        </div>
+                                                    </fieldset>
+                                                </div>
+                                                <div class="col-md-6" align="center">
+                                                </div>
+                                            </div>
+                                            <br><br><br>
+                                            <div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-md-12 ta-center">
+                                                            <div class="va-table width-75 mar-0-auto">
+                                                                <div class="va-middle width-50">
+                                                                    <a class="btn btn-primary width-30 pad-1em" ng-if="!isSubmit" ng-click="goRegister(goRegisterPage)" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);">
+                                                                        Ubah Data&nbsp;&nbsp;<i class="fa fa-pencil-square-o"></i>
+                                                                    </a>
+                                                                    <button class="btn btn-success width-30 pad-1em" ng-if="!isSubmit" ng-click="submit()" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);"><i class="fa fa-check-circle"></i> Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab2">
+                                        <div class="widget-body">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="col-md-12 ta-center">
+                                                        <div class="va-table width-75 mar-0-auto">
+                                                            <div class="va-middle width-50">
+                                                                <button ng-if="false" class="btn btn-default width-30 bg-color-blueDark txt-color-white" ng-click="refreshHistory()"><i class="fa fa-refresh"></i> Reload Data</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="widget-body no-padding table-responsive">
+                                                <table datatable dt-options="ctrl.tableOptions" dt-columns="ctrl.tableColumns" dt-instance="ctrl.dtInstance" class="table table-striped table-bordered table-hover" width="100%"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="tab3">
+                                        <div class="widget-body">
+                                            <form id="frmDokumen" name="frmDokumen" class="form-horizontal" enctype="multipart/form-data">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadRisalah">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left text-left">Risalah <span ng-if="isAuth">( <a href="#">{{data.Risalah}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadRisalah ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="Risalah" name="Risalah" onchange="angular.element(this).scope().uploadFile(this)" /><i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah Risalah" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadSTK">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left">STK <span ng-if="isAuth">( <a href="#">{{data.STK}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadSTK ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="STK" name="STK" ng-model="data.STK" onchange="angular.element(this).scope().uploadFile(this)" /><i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah STK" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadAbster">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left">Abster <span ng-if="isAuth">( <a href="#">{{data.Abster}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadAbster ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="Abster" name="Abster" ng-model="data.Abster" onchange="angular.element(this).scope().uploadFile(this)" /><i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah Abstar" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadKOMET">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left">Komet <span ng-if="isAuth">( <a href="#">{{data.KOMET}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadKOMET ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="KOMET" name="KOMET" ng-model="data.KOMET" onchange="angular.element(this).scope().uploadFile(this)" />
+                                                                            <i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah Komet" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadVerifikasiKeuangan">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left">Verifikasi Keuangan <span ng-if="isAuth">( <a href="#">{{data.VerifikasiKeuangan}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadVerifikasiKeuangan ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="VerifikasiKeuangan" name="VerifikasiKeuangan" ng-model="data.VerifikasiKeuangan" onchange="angular.element(this).scope().uploadFile(this)" />
+                                                                            <i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah Verifikasi Keuangan" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                        <fieldset class="smart-form" ng-disabled="data.IsUploadPresentasi">
+                                                            <div class="form-group">
+                                                                <div class="col-lg-12">
+                                                                    <label class="control-label pad-l-15 pad-r-15 text-left">Unggah Presentasi <span ng-if="isAuth">( <a href="#">{{data.UploadPresentasi}}</a> )</span></label>
+                                                                    <div class="input input-file pad-l-15 pad-r-15">
+                                                                        <span ng-class="data.IsUploadPresentasi ? 'button state-disabled' : 'button'">
+                                                                            <input type="file" id="UploadPresentasi" name="UploadPresentasi" ng-model="data.UploadPresentasi" onchange="angular.element(this).scope().uploadFile(this)" />
+                                                                            <i class="fa fa-upload"></i>&nbsp;&nbsp;Unggah Berkas
+                                                                        </span><input type="text" placeholder="Unggah Presentasi" readonly="" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end widget content -->
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+                    </div>
+                </div>
+                <br>
+                <div class="ta-center color-white">Copyright &copy; PT Pertamina Geothermal Energy</div>
+            </div>
+        </div>
+    </div>
+</body>

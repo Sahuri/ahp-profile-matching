@@ -1,0 +1,91 @@
+<div id="content">
+    <section widget-grid id="wgtPerbandinganKriteria">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i ng-class="'fa fa-money'"></i> </span>
+                        <h2>PERBANDINGAN KRITERIA</h2>
+                    </header>
+                    <div>
+
+                        <div class="widget-body">
+                            <form id="frmPerbandinganKriteria" name="frmPerbandinganKriteria" class="form-horizontal" data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                                <fieldset ng-if="isShowList">
+                                    
+                                    <div class="widget-body">
+                                        <div class="table-responsive dragscroll" style="overflow: auto !important; 
+                                max-height: 530px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                            <table id="tblStream" class="table table-hover cursor-pointer">
+                                               
+                                               
+                                                    <tr ng-repeat="itm in data">
+                                                        <td class="text-right"><label class="control-label text-muted"><b>{{itm.Kriteria1}}</b></label></td>
+                                                        <td class="text-center" style="width:200px;">
+                                                            <select2 class="form-control no-padding select" ng-model="itm.Nilai1" s2-options="item.id as item.text for item in listKriteriaKiri" placeholder="--Pilih nilai Kriteria 1--"></select2>
+                                                           
+                                                        </td>
+                                                        <td class="text-center" style="width:10px;"><label class="control-label text-muted"><b>:</b></label></td>
+                                                        <td class="text-center" style="width:200px;"><select2 class="form-control no-padding select-custom" ng-model="itm.nilai2" s2-options="item.id as item.text for item in listKriteriaKanan" placeholder="--Pilih nilai Kriteria 2--"></select2></td>
+                                                        <td class="text-left"><label class="control-label text-muted"><b>{{itm.Kriteria2}}</b></label></td>
+                                                    </tr>
+                                               
+                                            </table>
+                                        </div>
+                                        <div class="form-actions text-left">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button id="btnSave" type="submit" class="btn btn-success" ng-click="Save()">
+                                                        <i class="fa fa-save"></i>
+                                                        {{getWord('Submit')}}
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div class="widget-body" ng-if="!isShowList">   
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="table-responsive dragscroll" style="overflow: auto !important; max-height: 330px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                                <table id="tblStream" class="table table-bordered table-hover cursor-pointer">
+                                                    <thead>
+                                                        <tr>
+                                                            <th class="midtext text-center">KRITERIA</th>
+                                                            <th class="midtext text-center" ng-repeat="h in matrix.Kriterias">{{h.Nama}}</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr ng-repeat="h in matrix.Kriterias">
+                                                            <td class="midtext text-left">{{h.Nama}}</td>
+                                                            <td class="text-center" ng-repeat="v in (matrix.PerbandinganKriteria | filter: { 'Kode1' : h.Kode })" )>{{NumberFormat(v.Nilai)}}</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-actions text-left">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button id="btnBack" type="button" class="btn btn-primary" ng-click="ShowList()">
+                                                    <i class="fa fa-arrow-left"></i>
+                                                    {{getWord('Back')}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>

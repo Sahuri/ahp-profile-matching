@@ -1,0 +1,204 @@
+<body id="registrasi">
+    <div class="va-table height-100vh width-100 bg-reg">
+        <div class="va-middle">
+            <div style="margin: 4em auto;">
+                <div class="bg-gradient-red-blue pad-3em width-75 mar-0-auto" style="position: relative;">
+                    <div style="position: absolute;top: 0;left: 0;background-color: white;">
+                        <div class="ta-center" style="position: relative;z-index: 1;padding: 1.7em 0em 1.7em 1.5em;"><img src="styles/img/pge-logo.png" width="200"></div>
+                        <div style="position: absolute;top: 0;right: -3em;z-index: 0">
+                            <div id="parallelogram"></div>
+                        </div>
+                    </div>
+                    <div style="position: absolute;top: 0;left: 0;width:100%;background-color: white;">
+                        <div class="ta-right pad-r-1em">
+                            <h1 style="font-size: 1.2em;"><b>Registrasi CIP Online (Continuous Improvement Program)</b></h1>
+                        </div>
+                    </div>
+                    <div class="va-table width-100">
+                        <div class="va-middle width-75">
+                            <div class="ta-right" ng-if="isAuth">
+                                <a class="btn btn-sm btn-primary" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);" ui-sref="displaymember"><i class="fa fa-chevron-left"></i>&nbsp;&nbsp;Back</a>&nbsp;&nbsp;&nbsp;
+                                <a class="btn btn-sm btn-danger" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);" ng-click="logOut()">Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i></a>
+                            </div>
+                            <br>
+                            <div class="ta-center" ng-if="!isAuth">
+                                <span class="color-white" ng-if="!isAuth">Sudah punya akun anggota CIP? <a ui-sref="login"><b>Masuk disini!</b></a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr class="width-50">
+                    <br>
+                    <div id="registrasi-cip" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
+                        <div>
+                            <!-- widget content -->
+                            <div class="widget-body">
+                                <form id="frmRegistrasi" name="frmRegistrasi" class="form-horizontal" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">No. Gugus</label>
+                                                        <input type="text" class="form-control" name="Kode" placeholder="AUTO" ng-model="data.Kode" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Nama Gugus</label>
+                                                        <input type="text" class="form-control input-lg" id="NamaGugus" name="NamaGugus" ng-model="data.NamaGugus" placeholder="Nama Gugus" maxlength="100" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Fasilitator</label>
+                                                        <input type="text" class="form-control input-lg" id="Fasilitator" name="Fasilitator" ng-model="data.Fasilitator" placeholder="Fasilitator" maxlength="50" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Tahun</label>
+                                                        <select2 class="form-control no-padding select-custom" id="Tahun" name="Tahun" ng-model="data.Tahun" s2-options="item.id as item.text for item in listTahun" placeholder="-- --"></select2>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Jenis</label>
+                                                        <select2 class="form-control no-padding select-custom" id="KodeJenisCIP" name="KodeJenisCIP" ng-model="data.KodeJenisCIP" s2-options="item.id as item.text for item in listJenisCIP" placeholder="-- --"></select2>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Kategori</label>
+                                                        <select2 class="form-control no-padding select-custom" id="KodeKategori" name="KodeKategori" ng-model="data.KodeKategori" s2-options="item.id as item.text for item in listKategori" placeholder="-- --"></select2>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Fungsi</label>
+                                                        <select2 class="form-control no-padding select-custom" id="KodeFungsi" name="KodeFungsi" ng-model="data.KodeFungsi" s2-options="item.id as item.text for item in listFungsi" placeholder="-- --"></select2>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Lokasi</label>
+                                                        <select2 class="form-control no-padding select-custom" id="KodeLokasi" name="KodeLokasi" ng-model="data.KodeLokasi" s2-options="item.id as item.text for item in listLokasi" placeholder="-- --"></select2>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Judul CIP</label>
+                                                        <input type="text" class="form-control" name="JudulCIP" id="JudulCIP" placeholder="Judul CIP" ng-model="data.JudulCIP" maxlength="250" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Ketua</label>
+                                                        <input type="text" class="form-control" name="Ketua" id="Ketua" placeholder="Ketua" ng-model="data.Ketua" maxlength="50" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Anggota CIP <span><i class="text-muted">(Ketik ENTER setelah menambahkan anggota)</i></span></label>
+                                                        <input id="AnggotaCIP" name="AnggotaCIP" data-smart-tagsinput class="form-control tagsinput" data-role="tagsinput" ng-model="data.Anggota" required />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Jumlah Anggota</label>
+                                                        <input type="text" id="JumlahAnggota" name="JumlahAnggota" class="form-control text-right" ng-model="data.JumlahAnggota" custom-number-only allow-decimal="false" decimal-upto="0" allow-negative="false" placeholder="0" maxlength="4" ng-disabled="true" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Email</label>
+                                                        <input type="text" class="form-control" name="Email" id="Email" ng-model="data.Email" placeholder="Email" maxlength="30" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Value Creation - Real (USD)</label>
+                                                        <input type="text" id="ValueCreationReal" name="ValueCreationReal" class="form-control text-right" ng-model="data.ValueCreationReal" custom-number-only allow-decimal="true" decimal-upto="2" allow-negative="false" placeholder="0" maxlength="8" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Value Creation - Potensi (USD)</label>
+                                                        <input type="text" id="ValueCreationPotensi" name="ValueCreationPotensi" class="form-control text-right" ng-model="data.ValueCreationPotensi" custom-number-only allow-decimal="true" decimal-upto="2" allow-negative="false" placeholder="0" maxlength="8" />
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-lg-12">
+                                                        <label class="control-label">Value Creation - Kategori</label>
+                                                        <select class="form-control input-lg" ng-model="data.ValueCreationKategori" placeholder="Value Creation - Kategori" maxlength="50" required>
+                                                            <option>Revenue/Profit</option>
+                                                            <option>Cost Reduction</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div>&nbsp;</div>
+                                        <div>
+                                            <div class="row">
+                                                <fieldset>
+                                                    <div class="form-group mar-b-0">
+                                                        <div class="col-md-12 ta-center">
+                                                            <div class="va-table width-100 mar-0-auto" style="padding-top: 28px;">
+                                                                <div class="va-middle width-50">
+                                                                    <button class="btn btn-primary width-30 pad-1em" ng-if="!isSubmit" ng-click="register()" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);"><i class="fa fa-save"></i> Save</button>
+                                                                    <button class="btn btn-success width-30 pad-1em" ng-if="isSave" ng-click="submit()" style="-webkit-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);-moz-box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75); box-shadow: -1px 15px 21px -13px rgba(0,0,0,0.75);"><i class="fa fa-check-circle"></i> Submit</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </fieldset>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <!-- end widget content -->
+                            </div>
+                            <!-- end widget div -->
+                        </div>
+                        <!-- end widget -->
+                    </div>
+                </div>
+                <br>
+                <div class="ta-center color-white">Copyright &copy; PT Pertamina Geothermal Energy</div>
+            </div>
+        </div>
+    </div>
+</body>

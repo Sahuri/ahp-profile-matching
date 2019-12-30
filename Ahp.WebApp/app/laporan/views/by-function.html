@@ -1,0 +1,91 @@
+<div id="content">
+    <section widget-grid id="wgtTaskList">
+        <div class="row">
+            <article class="col-sm-12">
+                <!-- <div jarvis-widget id="mstFungsi" data-widget-color="red" data-widget-editbutton="false" data-widget-deletebutton="false"> -->
+                <div jarvis-widget id="mstTaskList" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+                        <h2>{{getWord('Budget Transfer by Function')}}</h2>
+                        <div class="va-table" style="height: 45px;text-align: right;float: right;margin-right: 10px;">
+                            <div class="va-middle"></div>
+                        </div>
+                    </header>
+                    <div>
+                        <div class="widget-body">
+                            <form name="frmByFunction" id="frmByFunction" class="form-horizontal">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <fieldset>
+                                            <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <div class="float-right">
+                                                        <fieldset>
+                                                            <div class="form-group">
+                                                                <div class="col-md-3">
+                                                                    <label class="control-label text-muted"><b>KP / Area</b></label>
+                                                                    <!-- <select2 class="form-control input-lg select-custom" placeholder="-- --"></select2> -->
+                                                                    <select2 class="form-control no-padding select-custom" id="area" name="area" ng-model="area" ng-show="listArea.length !== 1" s2-options="item.id as item.text for item in listArea" placeholder="-- Choose KP / Area --"></select2>
+                                                                    <input type="text" name="areaDesc" id="areaDesc" class="form-control" ng-model="areaDesc" readonly="readonly" ng-show="listArea.length == 1" />
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label class="control-label text-muted"><b>Start Date</b></label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="startDate" class="form-control datepicker" ng-model="startDate" data-smart-datepicker data-date-format="dd.mm.yy" placeholder="dd.MM.yyyy" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label class="control-label text-muted"><b>End Date</b></label>
+                                                                    <div class="input-group">
+                                                                        <input type="text" name="endDate" class="form-control datepicker" ng-model="endDate" data-smart-datepicker data-date-format="dd.mm.yy" placeholder="dd.MM.yyyy" />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label class="control-label text-muted"><b>&nbsp;</b></label>
+                                                                    <div><button class="btn btn-primary" ng-click="find()"><i class="fa fa-search"></i> Load Data</button></div>
+                                                                </div>
+                                                                <div class="col-md-2">
+                                                                    <label class="control-label text-muted"><b>&nbsp;</b></label>
+                                                                    <div><button class="btn btn-success width-100" ng-click="downloadPDF()"><i class="fa fa-file-pdf-o"></i>&nbsp;&nbsp;Download</button></div>
+                                                                </div>
+                                                            </div>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <table datatable dt-options="ctrl.tableOptions" dt-columns="ctrl.tableColumns" dt-instance="ctrl.dtInstance" class="table table-striped table-bordered table-hover cursor-pointer" width="100%">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th rowspan="2" style="vertical-align: middle; text-align: center;">Function</th>
+                                                    <th colspan="4" style="vertical-align: middle; text-align: center;">Jumlah Pengalihan</th>
+                                                    <th colspan="4" style="vertical-align: middle; text-align: center;">Nilai Pengalihan (IDR)</th>
+                                                </tr>
+                                                <tr>
+                                                    <th style="vertical-align: middle; text-align: center;">Sender</th>
+                                                    <th style="vertical-align: middle; text-align: center;">Receiver</th>
+                                                    <th style="vertical-align: middle; text-align: center;">Total</th>
+                                                    <th style="vertical-align: middle; text-align: center;">%</th>
+                                                    <th style="vertical-align: middle; text-align: center;">Sender</th>
+                                                    <th style="vertical-align: middle; text-align: center;">Receiver</th>
+                                                    <th style="vertical-align: middle; text-align: center;">%</th>
+                                                    <th style="vertical-align: middle; text-align: center;"></th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>

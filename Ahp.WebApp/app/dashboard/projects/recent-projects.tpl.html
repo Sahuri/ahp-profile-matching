@@ -1,0 +1,15 @@
+<div class="project-context hidden-xs dropdown" dropdown>
+    <!--<span class="label">{{getWord('Projects')}}</span>-->
+    <span class="project-selector dropdown-toggle" data-toggle="dropdown">
+        <i class="font-lg"> </i>
+        {{getWord('AHP & Profile Matching')}}
+        <i class="fa fa-angle-down"></i>
+    </span>
+        <ul class="dropdown-menu">
+            <li>
+                <a ng-click="downloadManualBook()">
+                    <i class="fa fa-download text-danger"></i> {{getWord('Download')}} {{getWord('Manual Book')}}
+                </a>
+            </li>
+        </ul>
+</div>

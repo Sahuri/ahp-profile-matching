@@ -1,0 +1,57 @@
+<header id="header">
+    <div id="logo-group">
+        <!-- PLACE YOUR LOGO HERE -->
+        <div class="va-table width-100" style="height: 49px;background-color:white;">
+            <div class="va-middle ta-center"><img src="styles/img/logo-white.png" width="50%"></div>
+        </div>
+        <!--<span id="logo"> <img src="styles/img/pge-logoX.png" alt="SmartAdmin"> </span>-->
+        <!-- Note: The activity badge color changes when clicked and resets the number to 0
+    Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->
+        <!--<span id="activity" class="activity-dropdown" activities-dropdown-toggle>
+            <i class="fa fa-user"></i>
+            <b class="badge bg-color-red">21</b>
+        </span>
+        <div smart-include="app/dashboard/activities/activities.html"></div>-->
+    </div>
+
+    <recent-projects></recent-projects>
+    <!-- pulled right: nav area -->
+    <div class="pull-right">
+        <div id="logout" class="btn-header transparent pull-right" ng-show="isAuth==true">
+            <span>
+                <a title="Sign Out" ng-click="logOut()" class="cls-logout"
+                   data-logout-msg="You can improve your security further after logging out by closing this opened browser">
+                    <i class="fa fa-sign-out"></i>
+                </a>
+            </span>
+        </div>
+        <!-- multiple lang dropdown : find all flags in the flags page -->
+        <ul id="mobile-profile-img" class="header-dropdown-list hidden-xs padding-5">
+            <li class="">
+                <a href="#" class="dropdown-toggle no-margin userdropdown" data-toggle="dropdown">
+                    <img src="styles/img/avatars/avatar.png" alt="Avatar" class="online" />
+                </a>
+            </li>
+        </ul>
+        <!-- fullscreen button -->
+        <div id="fullscreen" class="btn-header transparent pull-right">
+            <span>
+                <a full-screen title="Full Screen">
+                    <i class="fa fa-arrows-alt"></i>
+                </a>
+            </span>
+        </div>
+        <!-- collapse menu button -->
+        <div id="hide-menu" class="btn-header pull-right">
+            <span>
+                <a toggle-menu title="Collapse Menu">
+                    <i class="fa fa-reorder"></i>
+                </a>
+            </span>
+        </div>
+
+        <!-- end multiple lang -->
+        <language-selector></language-selector>
+    </div>
+    <!-- end pulled right: nav area -->
+</header>

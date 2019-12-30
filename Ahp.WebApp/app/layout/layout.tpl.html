@@ -1,0 +1,63 @@
+<!-- HEADER -->
+<div data-smart-include="app/layout/partials/header.tpl.html" class="placeholder-header"></div>
+<!-- END HEADER -->
+<!-- Left panel : Navigation area -->
+<!-- Note: This width of the aside area can be adjusted through LESS variables -->
+<div data-smart-include="app/layout/partials/navigation.tpl.html" class="placeholder-left-panel"></div>
+<!-- END NAVIGATION -->
+<!-- MAIN PANEL -->
+<div id="main" role="main">
+    <!-- <div data-smart-include="app/layout/partials/header.tpl.html" class="placeholder-header"></div> -->
+    <div class="ajax-loader">
+        <figure>
+            <div class="dot white"></div>
+            <svg class="lds-message" width="300px" height="300px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="background: none;">
+                <g transform="translate(20 50)">
+                    <circle cx="0" cy="0" r="6" fill="#456caa" transform="scale(0.00227195 0.00227195)">
+                        <animateTransform attributeName="transform" type="scale" begin="-0.3375s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </g>
+                <g transform="translate(40 50)">
+                    <circle cx="0" cy="0" r="6" fill="#88a2ce" transform="scale(0.199233 0.199233)">
+                        <animateTransform attributeName="transform" type="scale" begin="-0.225s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </g>
+                <g transform="translate(60 50)">
+                    <circle cx="0" cy="0" r="6" fill="#c2d2ee" transform="scale(0.541624 0.541624)">
+                        <animateTransform attributeName="transform" type="scale" begin="-0.1125s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </g>
+                <g transform="translate(80 50)">
+                    <circle cx="0" cy="0" r="6" fill="#fefefe" transform="scale(0.863728 0.863728)">
+                        <animateTransform attributeName="transform" type="scale" begin="0s" calcMode="spline" keySplines="0.3 0 0.7 1;0.3 0 0.7 1" values="0;1;0" keyTimes="0;0.5;1" dur="0.9s" repeatCount="indefinite"></animateTransform>
+                    </circle>
+                </g>
+            </svg>
+        </figure>
+    </div>
+    <!-- RIBBON -->
+    <div id="ribbon">
+        <span class="ribbon-button-alignment">
+            <span id="refresh" class="btn btn-ribbon" reset-widgets
+                  tooltip-placement="bottom"
+                  smart-tooltip-html="
+                <i class='text-warning fa fa-warning'></i> Warning! This will reset all your widget settings.">
+                <i class="fa fa-refresh"></i>
+            </span>
+        </span>
+
+        <!-- breadcrumb -->
+        <state-breadcrumbs></state-breadcrumbs>
+        <!-- end breadcrumb -->
+    </div>
+    <!-- END RIBBON -->
+
+    <div data-smart-router-animation-wrap="content content@app" data-wrap-for="#content">
+        <div data-ui-view="content" data-autoscroll="false"></div>
+    </div>
+</div>
+<!-- END MAIN PANEL -->
+<!-- PAGE FOOTER -->
+<div data-smart-include="app/layout/partials/footer.tpl.html"></div>
+<div data-smart-include="app/layout/shortcut/shortcut.tpl.html"></div>
+<!-- END PAGE FOOTER -->

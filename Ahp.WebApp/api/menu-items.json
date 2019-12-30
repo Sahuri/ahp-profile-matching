@@ -1,0 +1,55 @@
+{
+    "items": [
+        {
+            "title": "Dashboard",
+            "sref": "app.dashboard",
+            "icon": "dashboard"
+        },
+        {
+            "title": "Master Data",
+            "href": "#",
+            "icon": "book",
+            "items": [
+                {
+                    "title": "Lokasi",
+                    "href": "#",
+                    "icon": "folder-open",
+                    "items": [
+                        {
+                            "title": "Provinsi",
+                            "sref": "app.provinsi",
+                            "icon": ""
+                        },
+                        {
+                            "title": "Kabupaten",
+                            "sref": "app.kabupaten",
+                            "icon": ""
+                        },
+                        {
+                            "title": "Kecamatan",
+                            "sref": "app.kecamatan",
+                            "icon": ""
+                        },
+                        { 
+                            "title": "Desa",
+                            "sref": "app.desa",
+                            "icon": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "App Views",
+            "href": "#",
+            "icon": "puzzle-piece",
+            "items": [
+                {
+                    "title": "Projects",
+                    "sref": "app.appViews.projects",
+                    "icon": "file-text-o"
+                }
+            ]
+        }
+    ]
+}

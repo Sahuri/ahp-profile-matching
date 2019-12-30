@@ -1,0 +1,23 @@
+{
+  "name": "datatables-autofill",
+  "version": "2.2.0",
+  "main": [
+    "js/dataTables.autoFill.js",
+    "css/autoFill.dataTables.scss"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0",
+    "datatables": ">=1.10.8"
+  },
+  "homepage": "https://github.com/DataTables/AutoFill",
+  "_release": "2.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.0",
+    "commit": "567cba681e38b7f36ac260c604c1d60052335815"
+  },
+  "_source": "https://github.com/DataTables/AutoFill.git",
+  "_target": "^2.2.0",
+  "_originalSource": "datatables-autofill",
+  "_direct": true
+}

@@ -1,0 +1,118 @@
+<div id="content">
+    <section widget-grid id="wgtLowongan">
+        <div class="row">
+            <article class="col-sm-12">
+                <!-- <div jarvis-widget id="mstFungsi" data-widget-color="red" data-widget-editbutton="false" data-widget-deletebutton="false"> -->
+                <div jarvis-widget id="mstLowongan" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i ng-class="isShowList ? 'fa fa-table' : 'fa fa-edit'"></i> </span>
+                        <h2>{{isShowList ? getWord('') : getWord(isNew ? 'New' : 'Update')}} {{getWord('Daftar Lowongan')}}</h2>
+                        <div class="va-table" style="height: 45px;text-align: right;float: right;margin-right: 10px;">
+                            <div class="va-middle"><button class="btn btn-primary" ng-click="NewData(event)" ng-if="isShowList"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{getWord('New')}}</button></div>
+                        </div>
+                    </header>
+                    <div>
+                        <div class="widget-body" ng-if="isShowList">
+                            <div class="widget-body no-padding table-responsive">
+                                <table datatable dt-options="ctrl.tableOptions" dt-columns="ctrl.tableColumns" class="table table-striped table-bordered table-hover cursor-pointer" width="100%"></table>
+                            </div>
+
+                        </div>
+
+                        <div class="widget-body" ng-if="!isShowList">
+                            <form name="frmLowongan" id="frmLowongan" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-lg-1 control-label">Kode</label>
+                                    <div class="col-lg-4">
+                                        <input name="Plant" ng-model="data.Kode" ng-disabled="true" type="text" class="form-control" placeholder="Kode" maxlength="32"  />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-1 control-label">Nama</label>
+                                    <div class="col-lg-4">
+
+                                        <input name="Nama" ng-model="data.Nama" type="text" class="form-control" placeholder="Nama" maxlength="50" required />
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-1 control-label">Jumlah</label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group">
+                                            <input type="text" name="Jumlah" class="form-control" ng-model="data.Jumlah"
+                                                   custom-number-only allow-decimal="true" decimal-upto="2" 
+                                                   allow-negative="false" placeholder="Jumlah" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-lg-1 control-label">Tanggal Awal</label>
+                                    <div class="col-lg-4">
+                                        <div class="input-group">
+                                            <input type="text" name="TglMulai" class="form-control datepicker" ng-model="data.TglMulai"
+                                                   placeholder="dd.MM.yyyy"
+                                                   data-smart-datepicker data-date-format="dd.mm.yy" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">Tanggal Akhir</label>
+                            <div class="col-lg-4">
+                                <div class="input-group">
+                                    <input type="text" name="TglAkhir" class="form-control datepicker" ng-model="data.TglAkhir"
+                                           placeholder="dd.MM.yyyy"
+                                           data-smart-datepicker data-date-format="dd.mm.yy" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">Periode</label>
+                            <div class="col-lg-4">
+                                <select2 class="form-control no-padding select-custom" id="" name="" ng-model="data.Periode" s2-options="item.id as item.text for item in listPeriode" placeholder="--Pilih periode--"></select2>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-lg-1 control-label">Nomor Surat</label>
+                            <div class="col-lg-4">
+                                <input name="Nama" ng-model="data.NoSurat" type="text" class="form-control" placeholder="Nomor surat" maxlength="20" required />
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-actions text-left">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button id="btnSave" type="submit" class="btn btn-success" ng-click="Save()">
+                                        <i class="fa fa-save"></i>
+                                        {{getWord(isNew ? 'Save' : 'Update')}}
+                                    </button>
+                                    <button id="btn_undo" type="button" class="btn btn-warning" ng-click="Undo()">
+                                        <i class="fa fa-undo"></i>
+                                        {{getWord('Undo')}}
+                                    </button>
+                                    <!--<button id="btnDelete" type="button" class="btn btn-danger" ng-if="!isNew" ng-click="Delete()">
+                    <i class="fa fa-remove"></i>
+                    {{getWord('Delete')}}
+                </button>-->
+                                    <button id="btnBack" type="button" class="btn btn-primary" ng-click="ShowList()">
+                                        <i class="fa fa-arrow-left"></i>
+                                        {{getWord('Back')}}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>
