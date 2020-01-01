@@ -41,10 +41,26 @@ namespace Ahp.Core.Models
         public virtual DbSet<Lowongan> Lowongans { get; set; }
         public virtual DbSet<Kriteria> Kriterias { get; set; }
         public virtual DbSet<PerbandinganKriteria> PerbandinganKriterias { get; set; }
+        public virtual DbSet<NilaiScoring> NilaiScorings { get; set; }
+        public virtual DbSet<VwRankingPosisi> VwRankingPosisis { get; set; }
+        public virtual DbSet<VwRankingScore> VwRankingScores { get; set; }
     
         public virtual ObjectResult<SpPerbandinganKriteria_Result> SpPerbandinganKriteria()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpPerbandinganKriteria_Result>("SpPerbandinganKriteria");
+        }
+    
+        public virtual ObjectResult<SpProseGap_Result> SpProseGap(string posisi, string periode)
+        {
+            var posisiParameter = posisi != null ?
+                new ObjectParameter("posisi", posisi) :
+                new ObjectParameter("posisi", typeof(string));
+    
+            var periodeParameter = periode != null ?
+                new ObjectParameter("periode", periode) :
+                new ObjectParameter("periode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<SpProseGap_Result>("SpProseGap", posisiParameter, periodeParameter);
         }
     }
 }

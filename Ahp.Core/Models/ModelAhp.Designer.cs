@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\17054094\Documents\github-project\pge\ahp-profile-matching\Ahp.Core\Models\ModelAhp.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Core\Models\ModelAhp.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

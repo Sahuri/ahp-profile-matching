@@ -128,6 +128,7 @@
     <Compile Include="Models\CalonKaryawan.cs">
       <DependentUpon>ModelAhp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Gap.cs" />
     <Compile Include="Models\Kriteria.cs">
       <DependentUpon>ModelAhp.tt</DependentUpon>
     </Compile>
@@ -151,6 +152,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAhp.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NilaiScoring.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ParamAdministrasiHakAkses.cs" />
     <Compile Include="Models\PerbandinganKriteria.cs">
       <DependentUpon>ModelAhp.tt</DependentUpon>
@@ -158,7 +162,16 @@
     <Compile Include="Models\SpPerbandinganKriteria_Result.cs">
       <DependentUpon>ModelAhp.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SpProseGap_Result.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserProfile.cs" />
+    <Compile Include="Models\VwRankingPosisi.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VwRankingScore.cs">
+      <DependentUpon>ModelAhp.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesMenuRepository.cs" />
     <Compile Include="Repositories\Abstractions\Administrasi\IAdministrasiHakAksesRepository.cs" />
@@ -172,6 +185,7 @@
     <Compile Include="Repositories\Abstractions\Master\ICalonKaryawanRepository.cs" />
     <Compile Include="Repositories\Abstractions\Master\ILowonganRepository.cs" />
     <Compile Include="Repositories\Abstractions\Master\IKriteriaRepository.cs" />
+    <Compile Include="Repositories\Abstractions\Proses\INilaiScoringRepository.cs" />
     <Compile Include="Repositories\Abstractions\Proses\IPerbandinganKriteriaRepository.cs" />
     <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesMenuRepository.cs" />
     <Compile Include="Repositories\Concretes\Administrasi\AdministrasiHakAksesRepository.cs" />
@@ -187,6 +201,7 @@
     <Compile Include="Repositories\Concretes\Master\CalonKaryawanRepository.cs" />
     <Compile Include="Repositories\Concretes\Master\LowonganRepository.cs" />
     <Compile Include="Repositories\Concretes\Master\KriteriaRepository.cs" />
+    <Compile Include="Repositories\Concretes\Proses\NilaiScoringRepository.cs" />
     <Compile Include="Repositories\Concretes\Proses\PerbandinganKriteriaRepository.cs" />
     <Compile Include="Security\Cryptography.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />

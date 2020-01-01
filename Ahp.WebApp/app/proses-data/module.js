@@ -13,6 +13,30 @@ angular.module('app.proses', [
                 title: 'Proses Data'
             }
         })
+        .state('app.proses.nilaigap', {
+            url: '/proses-data/nilai-gap',
+            data: {
+                title: 'Proses GAP'
+            },
+            views: {
+                "content@app": {
+                    controller: 'ProsesGapController as ctrl',
+                    templateUrl: "app/proses-data/views/proses-gap.html"
+                }
+            }
+        })
+        .state('app.proses.hasilakhir', {
+            url: '/proses-data/proses-hasil-akhir',
+            data: {
+                title: 'Laporan Hasil Akhir'
+            },
+            views: {
+                "content@app": {
+                    controller: 'ProsesHasilAkhirController as ctrl',
+                    templateUrl: "app/proses-data/views/proses-hasil-akhir.html"
+                }
+            }
+        })
         .state('app.proses.perbandingankriteria', {
             url: '/proses-data/perbandingan-kriteria',
             data: {

@@ -1,0 +1,194 @@
+<div id="content">
+    <section widget-grid id="wgtProsesGap">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i ng-class="'fa fa-money'"></i> </span>
+                        <h2 ng-if="isShowList==1 || isShowList==2">PROSES GAP</h2>
+                        <h2 ng-if="isShowList==3">PROSES NCF & NSF</h2>
+                        <div class="va-table" style="height: 45px;text-align: right;float: right;margin-right: 10px;">
+                            <div class="va-middle"><button class="btn btn-primary" ng-click="NewData()" ng-if="isShowList==1"><i class="fa fa-plus"></i>&nbsp;&nbsp;{{getWord('New')}}</button></div>
+                        </div>
+                    </header>
+                    <div>
+
+                        <div class="widget-body">
+                            <form id="frmProsesGap" name="frmProsesGap" class="form-horizontal" data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                                <fieldset>
+                                    <div class="row" ng-if="isShowList==1 || isShowList==3">
+                                        <div class="col-md-12">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <div class="float-right">
+                                                            <fieldset>
+                                                                <div class="form-group">
+
+                                                                    <div class="col-md-3">
+                                                                        <label class="control-label text-muted"><b>Periode</b></label>
+                                                                        <select2 class="form-control no-padding select-custom" id="periode" name="periode" ng-change="FindPosisi(periode)" ng-model="periode" s2-options="item.id as item.text for item in listPeriode" placeholder="-- Pilih periode --"></select2>
+                                                                    </div>
+                                                                    <div class="col-md-3">
+                                                                        <label class="control-label text-muted"><b>Posisi</b></label>
+                                                                        <select2 class="form-control no-padding select-custom" id="posisi" name="posisi" ng-model="posisi" s2-options="item.id as item.text for item in listPosisi" placeholder="-- Pilih posisi --"></select2>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <label class="control-label text-muted"><b>&nbsp;</b></label>
+                                                                        <div><button class="btn btn-primary" ng-click="load(posisi,periode)"><i class="fa fa-spinner"></i>&nbsp;&nbsp;Filter data</button></div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-body" ng-if="isShowList==1">
+                                        <div class="table-responsive dragscroll" style="overflow: auto !important; max-height: 430px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                            <table id="tblStream" class="table table-bordered table-hover cursor-pointer">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="midtext text-center">Kode Calon</th>
+                                                        <th class="midtext text-center">Calon karyawan</th>
+                                                        <th class="midtext text-center" ng-repeat="h in data.kriterias">{{h.Nama}}</th>
+                                                        <th class="midtext text-center">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="n in data.calonKaryawanGaps">
+                                                        <td class="midtext text-left">{{n.kodeKaryawan}}</td>
+                                                        <td class="midtext text-left">{{n.namaKaryawan}}</td>
+                                                        <td class="text-center" ng-repeat="v in n.nilaiGapBobots" )>{{v.nilaiAlternatif}}</td>
+
+
+                                                        <td class="text-center">
+
+                                                            <input type="button" value="Edit" class="btn btn-xs btn-warning" ng-click="EditData(n)">
+                                                        </td>
+
+
+                                                    </tr>
+
+                                                    <tr ng-if="data.calonKaryawanGaps.length>0">
+                                                        <td class="midtext text-left" colspan="2"><b>NILAI TARGET</b></td>
+                                                        <td class="text-center" ng-repeat="t in data.kriterias">{{t.NilaiTarget}}</td>
+                                                        <td class="text-center">&nbsp;</td>
+                                                    </tr>
+                                                    <tr ng-repeat="n in data.calonKaryawanGaps">
+                                                        <td class="midtext text-left">{{n.kodeKaryawan}}</td>
+                                                        <td class="midtext text-left">{{n.namaKaryawan}}</td>
+                                                        <td class="text-center" ng-repeat="v in n.nilaiGapBobots" )>{{v.nilaiGap}}</td>
+                                                        <td class="text-center">&nbsp;</td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-body" ng-if="isShowList==3">
+                                        <div class="table-responsive dragscroll" style="overflow: auto !important; max-height: 330px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                            <table id="tblStream" class="table table-bordered table-hover cursor-pointer">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="midtext text-center">Kode Calon</th>
+                                                        <th class="midtext text-center">Calon karyawan</th>
+                                                        <th class="midtext text-center" ng-repeat="h in data.kriterias">{{h.Nama}}</th>
+                                                        <th class="midtext text-center">Ncf</th>
+                                                        <th class="midtext text-center">Nsf</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="n in data.calonKaryawanGaps">
+                                                        <td class="midtext text-left">{{n.kodeKaryawan}}</td>
+                                                        <td class="midtext text-left">{{n.namaKaryawan}}</td>
+                                                        <td class="text-center" ng-repeat="v in n.nilaiGapBobots" )>{{v.nilaiBobot}}</td>
+                                                        <td class="text-center">{{NumberFormat(n.nilaiGapBobots[0].ncf)}}</td>
+                                                        <td class="text-center">{{NumberFormat(n.nilaiGapBobots[0].nsf)}}</td>
+
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-actions text-left" ng-if="isShowList==1 || isShowList==3">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <button id="btnSave" type="submit" class="btn btn-success" ng-click="ShowNext()">
+                                                    <i class="fa fa-save"></i>
+                                                    {{getWord(isShowList==1 ? 'Next' : 'Back')}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+                                <div class="widget-body" ng-if="isShowList==2">
+                                    <
+                                    <div class="row">
+                                        
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Periode</label>
+                                            <div class="col-lg-4">
+                                                <select2 class="form-control no-padding select-custom" id="" name="" ng-change="FindPosisi(calonKaryawanGap.periode)" ng-model="calonKaryawanGap.periode" s2-options="item.id as item.text for item in listPeriode" placeholder="--Pilih periode--"></select2>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Posisi</label>
+                                            <div class="col-lg-4">
+                                                <select2 class="form-control no-padding select-custom" id="" name="" ng-model="calonKaryawanGap.kodeLowongan" s2-options="item.id as item.text for item in listPosisi" placeholder="--Pilih posisi--"></select2>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-lg-2 control-label">Calon Karyawan</label>
+                                            <div class="col-lg-4">
+                                                <select2 class="form-control no-padding select-custom" id="" name="" ng-model="calonKaryawanGap.kodeKaryawan" s2-options="item.id as item.text for item in listKaryawan" placeholder="--Pilih Calon karyawan--"></select2>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" ng-repeat="x in calonKaryawanGap.nilaiGapBobots">
+                                            <label class="col-lg-2 control-label">{{x.kriteria}}</label>
+                                            <div class="col-lg-4">
+                                                <select2 class="form-control no-padding select-custom" id="" name="" ng-model="x.nilaiAlternatif" s2-options="item.id as item.text for item in listNilai" placeholder="--Pilih nilai--"></select2>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                        <div class="form-actions text-left">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <button id="btnSave" type="submit" class="btn btn-success" ng-click="Save()">
+                                                        <i class="fa fa-save"></i>
+                                                        {{getWord(isNew ? 'Save' : 'Update')}}
+                                                    </button>
+
+                                                    <button id="btnDelete" type="button" class="btn btn-danger" ng-if="!isNew" ng-click="Delete()">
+                                                        <i class="fa fa-remove"></i>
+                                                        {{getWord('Delete')}}
+                                                    </button>
+                                                    <button id="btnBack" type="button" class="btn btn-primary" ng-click="ShowList()">
+                                                        <i class="fa fa-arrow-left"></i>
+                                                        {{getWord('Back')}}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>

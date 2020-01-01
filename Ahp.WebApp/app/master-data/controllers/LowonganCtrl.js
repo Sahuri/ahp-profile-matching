@@ -82,7 +82,7 @@ angular.module('app.masterdata').controller('LowonganController', function ($sco
         me.isNew = false;
         me.data = data;
         me.LoadComboJb();
-    }
+    };
 
     me.Undo = function () {
         me.data = {};

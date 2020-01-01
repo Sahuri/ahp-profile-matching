@@ -219,5 +219,69 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="NilaiScorings">
+      <EntityTypeMapping TypeName="AHPModel.NilaiScoring">
+        <MappingFragment StoreEntitySet="NilaiScoring">
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Nsf" ColumnName="Nsf" />
+          <ScalarProperty Name="Ncf" ColumnName="Ncf" />
+          <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+          <ScalarProperty Name="RangkingScoring" ColumnName="RangkingScoring" />
+          <ScalarProperty Name="NilaiAlternatif" ColumnName="NilaiAlternatif" />
+          <ScalarProperty Name="NilaiBobot" ColumnName="NilaiBobot" />
+          <ScalarProperty Name="NilaiGap" ColumnName="NilaiGap" />
+          <ScalarProperty Name="KodeKriteria" ColumnName="KodeKriteria" />
+          <ScalarProperty Name="KodeLowongan" ColumnName="KodeLowongan" />
+          <ScalarProperty Name="KodeKaryawan" ColumnName="KodeKaryawan" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SpProseGap" FunctionName="AHPModel.Store.SpProseGap">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AHPModel.SpProseGap_Result">
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="KodeKaryawan" ColumnName="KodeKaryawan" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="KodeLowongan" ColumnName="KodeLowongan" />
+          <ScalarProperty Name="KodeKriteria" ColumnName="KodeKriteria" />
+          <ScalarProperty Name="Kriteria" ColumnName="Kriteria" />
+          <ScalarProperty Name="NilaiGap" ColumnName="NilaiGap" />
+          <ScalarProperty Name="NilaiBobot" ColumnName="NilaiBobot" />
+          <ScalarProperty Name="NilaiAlternatif" ColumnName="NilaiAlternatif" />
+          <ScalarProperty Name="Ncf" ColumnName="Ncf" />
+          <ScalarProperty Name="Nsf" ColumnName="Nsf" />
+          <ScalarProperty Name="RangkingScoring" ColumnName="RangkingScoring" />
+          <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+          <ScalarProperty Name="Periode" ColumnName="Periode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="VwRankingPosisis">
+      <EntityTypeMapping TypeName="AHPModel.VwRankingPosisi">
+        <MappingFragment StoreEntitySet="VwRankingPosisi">
+          <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Posisi" ColumnName="Posisi" />
+          <ScalarProperty Name="Pendidikan" ColumnName="Pendidikan" />
+          <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+          <ScalarProperty Name="Periode" ColumnName="Periode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VwRankingScores">
+      <EntityTypeMapping TypeName="AHPModel.VwRankingScore">
+        <MappingFragment StoreEntitySet="VwRankingScore">
+          <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+          <ScalarProperty Name="Nama" ColumnName="Nama" />
+          <ScalarProperty Name="Kode" ColumnName="Kode" />
+          <ScalarProperty Name="Periode" ColumnName="Periode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

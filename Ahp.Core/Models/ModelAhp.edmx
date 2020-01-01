@@ -189,6 +189,26 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="NilaiScoring">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Kode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KodeKaryawan" Type="varchar" MaxLength="32" />
+          <Property Name="KodeLowongan" Type="varchar" MaxLength="32" />
+          <Property Name="KodeKriteria" Type="int" />
+          <Property Name="NilaiGap" Type="float" />
+          <Property Name="NilaiBobot" Type="float" />
+          <Property Name="NilaiAlternatif" Type="float" />
+          <Property Name="RangkingScoring" Type="float" />
+          <Property Name="NilaiTotal" Type="float" />
+          <Property Name="Ncf" Type="float" />
+          <Property Name="Nsf" Type="float" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="50" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="PerbandinganKriteria">
           <Key>
             <PropertyRef Name="Kode" />
@@ -203,7 +223,36 @@
           <Property Name="UpdatedDate" Type="datetime" />
           <Property Name="UpdatedBy" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AHP.dbo.VwRankingPosisi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VwRankingPosisi">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Periode" Type="varchar" MaxLength="50" />
+          <Property Name="Jumlah" Type="int" />
+          <Property Name="Pendidikan" Type="varchar" MaxLength="10" />
+          <Property Name="Posisi" Type="varchar" MaxLength="20" />
+          <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Nama" Type="varchar" MaxLength="50" />
+          <Property Name="NilaiTotal" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VwRankingScore">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Periode" Type="varchar" MaxLength="50" />
+          <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="Nama" Type="varchar" MaxLength="50" />
+          <Property Name="NilaiTotal" Type="float" />
+        </EntityType>
         <Function Name="SpPerbandinganKriteria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="SpProseGap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="posisi" Type="varchar" Mode="In" />
+          <Parameter Name="periode" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="AHPModelStoreContainer">
           <EntitySet Name="AdministrasiHakAkses" EntityType="Self.AdministrasiHakAkses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdministrasiHakAksesMenu" EntityType="Self.AdministrasiHakAksesMenu" Schema="dbo" store:Type="Tables" />
@@ -218,7 +267,27 @@
           <EntitySet Name="CalonKaryawan" EntityType="Self.CalonKaryawan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kriteria" EntityType="Self.Kriteria" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Lowongan" EntityType="Self.Lowongan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NilaiScoring" EntityType="Self.NilaiScoring" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PerbandinganKriteria" EntityType="Self.PerbandinganKriteria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VwRankingPosisi" EntityType="Self.VwRankingPosisi" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VwRankingPosisi].[Periode] AS [Periode], 
+    [VwRankingPosisi].[Jumlah] AS [Jumlah], 
+    [VwRankingPosisi].[Pendidikan] AS [Pendidikan], 
+    [VwRankingPosisi].[Posisi] AS [Posisi], 
+    [VwRankingPosisi].[Kode] AS [Kode], 
+    [VwRankingPosisi].[Nama] AS [Nama], 
+    [VwRankingPosisi].[NilaiTotal] AS [NilaiTotal]
+    FROM [dbo].[VwRankingPosisi] AS [VwRankingPosisi]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VwRankingScore" EntityType="Self.VwRankingScore" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VwRankingScore].[Periode] AS [Periode], 
+    [VwRankingScore].[Kode] AS [Kode], 
+    [VwRankingScore].[Nama] AS [Nama], 
+    [VwRankingScore].[NilaiTotal] AS [NilaiTotal]
+    FROM [dbo].[VwRankingScore] AS [VwRankingScore]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -326,6 +395,13 @@
           <EntitySet Name="Kriterias" EntityType="AHPModel.Kriteria" />
           <EntitySet Name="PerbandinganKriterias" EntityType="AHPModel.PerbandinganKriteria" />
           <FunctionImport Name="SpPerbandinganKriteria" ReturnType="Collection(AHPModel.SpPerbandinganKriteria_Result)" />
+          <EntitySet Name="NilaiScorings" EntityType="AHPModel.NilaiScoring" />
+          <FunctionImport Name="SpProseGap" ReturnType="Collection(AHPModel.SpProseGap_Result)">
+            <Parameter Name="posisi" Mode="In" Type="String" />
+            <Parameter Name="periode" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="VwRankingPosisis" EntityType="AHPModel.VwRankingPosisi" />
+          <EntitySet Name="VwRankingScores" EntityType="AHPModel.VwRankingScore" />
         </EntityContainer>
         <EntityType Name="AdministrasiHakAks">
           <Key>
@@ -447,6 +523,63 @@
           <Property Type="Double" Name="Nilai1" Nullable="false" />
           <Property Type="Double" Name="nilai2" Nullable="false" />
         </ComplexType>
+        <EntityType Name="NilaiScoring">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Kode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KodeKaryawan" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="KodeLowongan" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="KodeKriteria" Type="Int32" />
+          <Property Name="NilaiGap" Type="Double" />
+          <Property Name="NilaiBobot" Type="Double" />
+          <Property Name="NilaiAlternatif" Type="Double" />
+          <Property Name="RangkingScoring" Type="Double" />
+          <Property Name="NilaiTotal" Type="Double" />
+          <Property Name="Ncf" Type="Double" />
+          <Property Name="Nsf" Type="Double" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="SpProseGap_Result">
+          <Property Type="Int32" Name="Kode" Nullable="false" />
+          <Property Type="String" Name="KodeKaryawan" Nullable="true" MaxLength="32" />
+          <Property Type="String" Name="Nama" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="KodeLowongan" Nullable="true" MaxLength="32" />
+          <Property Type="Int32" Name="KodeKriteria" Nullable="true" />
+          <Property Type="String" Name="Kriteria" Nullable="true" MaxLength="50" />
+          <Property Type="Double" Name="NilaiGap" Nullable="true" />
+          <Property Type="Double" Name="NilaiBobot" Nullable="true" />
+          <Property Type="Double" Name="NilaiAlternatif" Nullable="true" />
+          <Property Type="Double" Name="Ncf" Nullable="true" />
+          <Property Type="Double" Name="Nsf" Nullable="true" />
+          <Property Type="Double" Name="RangkingScoring" Nullable="true" />
+          <Property Type="Double" Name="NilaiTotal" Nullable="true" />
+          <Property Type="String" Name="Periode" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="VwRankingPosisi">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Jumlah" Type="Int32" />
+          <Property Name="Pendidikan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NilaiTotal" Type="Double" />
+        </EntityType>
+        <EntityType Name="VwRankingScore">
+          <Key>
+            <PropertyRef Name="Kode" />
+          </Key>
+          <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NilaiTotal" Type="Double" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -671,6 +804,70 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="NilaiScorings">
+            <EntityTypeMapping TypeName="AHPModel.NilaiScoring">
+              <MappingFragment StoreEntitySet="NilaiScoring">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Nsf" ColumnName="Nsf" />
+                <ScalarProperty Name="Ncf" ColumnName="Ncf" />
+                <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+                <ScalarProperty Name="RangkingScoring" ColumnName="RangkingScoring" />
+                <ScalarProperty Name="NilaiAlternatif" ColumnName="NilaiAlternatif" />
+                <ScalarProperty Name="NilaiBobot" ColumnName="NilaiBobot" />
+                <ScalarProperty Name="NilaiGap" ColumnName="NilaiGap" />
+                <ScalarProperty Name="KodeKriteria" ColumnName="KodeKriteria" />
+                <ScalarProperty Name="KodeLowongan" ColumnName="KodeLowongan" />
+                <ScalarProperty Name="KodeKaryawan" ColumnName="KodeKaryawan" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SpProseGap" FunctionName="AHPModel.Store.SpProseGap">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AHPModel.SpProseGap_Result">
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+                <ScalarProperty Name="KodeKaryawan" ColumnName="KodeKaryawan" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="KodeLowongan" ColumnName="KodeLowongan" />
+                <ScalarProperty Name="KodeKriteria" ColumnName="KodeKriteria" />
+                <ScalarProperty Name="Kriteria" ColumnName="Kriteria" />
+                <ScalarProperty Name="NilaiGap" ColumnName="NilaiGap" />
+                <ScalarProperty Name="NilaiBobot" ColumnName="NilaiBobot" />
+                <ScalarProperty Name="NilaiAlternatif" ColumnName="NilaiAlternatif" />
+                <ScalarProperty Name="Ncf" ColumnName="Ncf" />
+                <ScalarProperty Name="Nsf" ColumnName="Nsf" />
+                <ScalarProperty Name="RangkingScoring" ColumnName="RangkingScoring" />
+                <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+                <ScalarProperty Name="Periode" ColumnName="Periode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="VwRankingPosisis">
+            <EntityTypeMapping TypeName="AHPModel.VwRankingPosisi">
+              <MappingFragment StoreEntitySet="VwRankingPosisi">
+                <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+                <ScalarProperty Name="Posisi" ColumnName="Posisi" />
+                <ScalarProperty Name="Pendidikan" ColumnName="Pendidikan" />
+                <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+                <ScalarProperty Name="Periode" ColumnName="Periode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VwRankingScores">
+            <EntityTypeMapping TypeName="AHPModel.VwRankingScore">
+              <MappingFragment StoreEntitySet="VwRankingScore">
+                <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="Kode" ColumnName="Kode" />
+                <ScalarProperty Name="Periode" ColumnName="Periode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

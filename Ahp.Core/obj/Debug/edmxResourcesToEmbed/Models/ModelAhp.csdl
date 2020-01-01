@@ -102,6 +102,13 @@
     <EntitySet Name="Kriterias" EntityType="AHPModel.Kriteria" />
     <EntitySet Name="PerbandinganKriterias" EntityType="AHPModel.PerbandinganKriteria" />
     <FunctionImport Name="SpPerbandinganKriteria" ReturnType="Collection(AHPModel.SpPerbandinganKriteria_Result)" />
+    <EntitySet Name="NilaiScorings" EntityType="AHPModel.NilaiScoring" />
+    <FunctionImport Name="SpProseGap" ReturnType="Collection(AHPModel.SpProseGap_Result)">
+      <Parameter Name="posisi" Mode="In" Type="String" />
+      <Parameter Name="periode" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="VwRankingPosisis" EntityType="AHPModel.VwRankingPosisi" />
+    <EntitySet Name="VwRankingScores" EntityType="AHPModel.VwRankingScore" />
   </EntityContainer>
   <EntityType Name="AdministrasiHakAks">
     <Key>
@@ -223,4 +230,61 @@
     <Property Type="Double" Name="Nilai1" Nullable="false" />
     <Property Type="Double" Name="nilai2" Nullable="false" />
   </ComplexType>
+  <EntityType Name="NilaiScoring">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Kode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KodeKaryawan" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="KodeLowongan" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="KodeKriteria" Type="Int32" />
+    <Property Name="NilaiGap" Type="Double" />
+    <Property Name="NilaiBobot" Type="Double" />
+    <Property Name="NilaiAlternatif" Type="Double" />
+    <Property Name="RangkingScoring" Type="Double" />
+    <Property Name="NilaiTotal" Type="Double" />
+    <Property Name="Ncf" Type="Double" />
+    <Property Name="Nsf" Type="Double" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="SpProseGap_Result">
+    <Property Type="Int32" Name="Kode" Nullable="false" />
+    <Property Type="String" Name="KodeKaryawan" Nullable="true" MaxLength="32" />
+    <Property Type="String" Name="Nama" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="KodeLowongan" Nullable="true" MaxLength="32" />
+    <Property Type="Int32" Name="KodeKriteria" Nullable="true" />
+    <Property Type="String" Name="Kriteria" Nullable="true" MaxLength="50" />
+    <Property Type="Double" Name="NilaiGap" Nullable="true" />
+    <Property Type="Double" Name="NilaiBobot" Nullable="true" />
+    <Property Type="Double" Name="NilaiAlternatif" Nullable="true" />
+    <Property Type="Double" Name="Ncf" Nullable="true" />
+    <Property Type="Double" Name="Nsf" Nullable="true" />
+    <Property Type="Double" Name="RangkingScoring" Nullable="true" />
+    <Property Type="Double" Name="NilaiTotal" Nullable="true" />
+    <Property Type="String" Name="Periode" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="VwRankingPosisi">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Jumlah" Type="Int32" />
+    <Property Name="Pendidikan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NilaiTotal" Type="Double" />
+  </EntityType>
+  <EntityType Name="VwRankingScore">
+    <Key>
+      <PropertyRef Name="Kode" />
+    </Key>
+    <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NilaiTotal" Type="Double" />
+  </EntityType>
 </Schema>

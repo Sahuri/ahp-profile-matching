@@ -24,7 +24,7 @@ namespace Ahp.Core.Repositories.Concretes.Master
 
         public override bool Create(Lowongan model)
         {
-            model.Kode = Guid.NewGuid().ToString("N").Substring(0, 32);
+            model.Kode = DateTime.Now.ToString("yyMMddhhFFF");
             var result = base.Create(model);
 
             return result;

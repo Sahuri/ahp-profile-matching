@@ -269,6 +269,7 @@
     <Compile Include="Controllers\Master\CalonKaryawanController.cs" />
     <Compile Include="Controllers\Master\LowonganController.cs" />
     <Compile Include="Controllers\Master\KriteriaController.cs" />
+    <Compile Include="Controllers\Proses\NilaiScoringController.cs" />
     <Compile Include="Controllers\Proses\PerbandinganKriteriaController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <!--<Compile Include="DB_BudgetTransfer.Designer.cs">

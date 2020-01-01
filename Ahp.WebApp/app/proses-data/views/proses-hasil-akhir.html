@@ -1,0 +1,102 @@
+<div id="content">
+    <section widget-grid id="wgtProsesHasilAkhir">
+        <div class="row">
+            <article class="col-sm-12">
+                <div jarvis-widget data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+                    <header>
+                        <span class="widget-icon"> <i ng-class="'fa fa-money'"></i> </span>
+                        <h2>LAPORAN HASIL AKHIR</h2>
+                    </header>
+                    <div>
+
+                        <div class="widget-body">
+                            <form id="frmProsesHasilAkhir" name="frmProsesHasilAkhir" class="form-horizontal" data-bv-message="This value is not valid" data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove" data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+                                <fieldset>
+
+
+                                    <div class="widget-body">
+                                        <div class="table-responsive dragscroll" style="overflow: auto !important; max-height: 430px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                            <table id="tblStream" class="table table-bordered table-hover cursor-pointer">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="midtext text-center">Kode Calon</th>
+                                                        <th class="midtext text-center">Calon karyawan</th>
+                                                        <th class="midtext text-center">Nilai Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="n in rankingScore">
+                                                        <td class="midtext text-left">{{n.Kode}}</td>
+                                                        <td class="midtext text-left">{{n.Nama}}</td>
+                                                        <td class="text-center">{{NumberFormat(n.NilaiTotal)}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <fieldset>
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <div class="float-right">
+                                                            <fieldset>
+                                                                <div class="form-group">
+                                                                    <div class="col-md-2">
+                                                                        <label class="control-label text-muted"><b>Posisi</b></label>
+                                                                        <select2 class="form-control no-padding select-custom" id="posisi" name="posisi" ng-change="FindJumlah(posisi)" ng-model="posisi" s2-options="item.id as item.text for item in listPosisi" placeholder="-- Pilih posisi --"></select2>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <label class="control-label text-muted"><b>Jumlah kebutuhan</b></label>
+                                                                        <select2 class="form-control no-padding select-custom" id="jumlah" name="jumlah" ng-model="jumlah" s2-options="item.id as item.text for item in listJumlah" placeholder="-- Pilih jumlah --"></select2>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <label class="control-label text-muted"><b>&nbsp;</b></label>
+                                                                        <div><button class="btn btn-primary" ng-click="loadRankingPosisi(periode,posisi,jumlah)"><i class="fa fa-spinner"></i>&nbsp;&nbsp;Filter data</button></div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </fieldset>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+
+                                    <div class="widget-body">
+                                        <div class="table-responsive dragscroll" style="overflow: auto !important; max-height: 430px;cursor: grab; cursor : -o-grab; cursor : -moz-grab; cursor : -webkit-grab;">
+                                            <table id="tblStream" class="table table-bordered table-hover cursor-pointer">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="midtext text-center">Kode Calon</th>
+                                                        <th class="midtext text-center">Calon karyawan</th>
+                                                        <th class="midtext text-center">Pendidikan</th>
+                                                        <th class="midtext text-center">Nilai Total</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="n in rankingPosisi">
+                                                        <td class="midtext text-left">{{n.Kode}}</td>
+                                                        <td class="midtext text-left">{{n.Nama}}</td>
+                                                        <td class="midtext text-left">{{n.Pendidikan}}</td>
+                                                        <td class="text-center">{{NumberFormat(n.NilaiTotal)}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+
+                                </fieldset>
+                                
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- content -->
+</div>
