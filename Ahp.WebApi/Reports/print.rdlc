@@ -1024,7 +1024,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>di : </Value>
+                    <Value>di     :  </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Calibri</FontFamily>
@@ -1080,7 +1080,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>Hari                                   </Value>
+                    <Value>Hari                                      </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Calibri</FontFamily>
@@ -1090,7 +1090,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>: </Value>
+                    <Value>:  </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Calibri</FontFamily>
@@ -1136,7 +1136,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Tanggal                                       </Value>
+                    <Value>Tanggal                                          </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Calibri</FontFamily>
@@ -1146,7 +1146,7 @@
                     </Style>
                   </TextRun>
                   <TextRun>
-                    <Value>: </Value>
+                    <Value>:  </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Calibri</FontFamily>
