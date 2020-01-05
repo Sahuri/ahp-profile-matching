@@ -91,3 +91,4 @@ C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Co
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Core\obj\Debug\Ahp.Core.csproj.CopyComplete
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Core\obj\Debug\Ahp.Core.dll
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Core\obj\Debug\Ahp.Core.pdb
+C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.Core\obj\Debug\Ahp.Core.csprojAssemblyReference.cache
