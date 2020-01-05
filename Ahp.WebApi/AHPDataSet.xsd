@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="AHPDataSet" targetNamespace="http://tempuri.org/AHPDataSet.xsd" xmlns:mstns="http://tempuri.org/AHPDataSet.xsd" xmlns="http://tempuri.org/AHPDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="AHPConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="AHPConnectionString (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.AHPConnectionString.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="VwRankingPosisiTableAdapter" GeneratorDataComponentClassName="VwRankingPosisiTableAdapter" Name="VwRankingPosisi" UserDataComponentName="VwRankingPosisiTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="AHPConnectionString (Web.config)" DbObjectName="AHP.dbo.VwRankingPosisi" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT Periode, Jumlah, Pendidikan, Posisi, Kode, Nama, Email, NilaiTotal FROM dbo.VwRankingPosisi</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Periode" DataSetColumn="Periode" />
+              <Mapping SourceColumn="Jumlah" DataSetColumn="Jumlah" />
+              <Mapping SourceColumn="Pendidikan" DataSetColumn="Pendidikan" />
+              <Mapping SourceColumn="Posisi" DataSetColumn="Posisi" />
+              <Mapping SourceColumn="Kode" DataSetColumn="Kode" />
+              <Mapping SourceColumn="Nama" DataSetColumn="Nama" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="NilaiTotal" DataSetColumn="NilaiTotal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="AHPDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="AHPDataSet" msprop:Generator_UserDSName="AHPDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="VwRankingPosisi" msprop:Generator_TableClassName="VwRankingPosisiDataTable" msprop:Generator_TableVarName="tableVwRankingPosisi" msprop:Generator_TablePropName="VwRankingPosisi" msprop:Generator_RowDeletingName="VwRankingPosisiRowDeleting" msprop:Generator_RowChangingName="VwRankingPosisiRowChanging" msprop:Generator_RowEvHandlerName="VwRankingPosisiRowChangeEventHandler" msprop:Generator_RowDeletedName="VwRankingPosisiRowDeleted" msprop:Generator_UserTableName="VwRankingPosisi" msprop:Generator_RowChangedName="VwRankingPosisiRowChanged" msprop:Generator_RowEvArgName="VwRankingPosisiRowChangeEvent" msprop:Generator_RowClassName="VwRankingPosisiRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Periode" msprop:Generator_ColumnVarNameInTable="columnPeriode" msprop:Generator_ColumnPropNameInRow="Periode" msprop:Generator_ColumnPropNameInTable="PeriodeColumn" msprop:Generator_UserColumnName="Periode" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Jumlah" msprop:Generator_ColumnVarNameInTable="columnJumlah" msprop:Generator_ColumnPropNameInRow="Jumlah" msprop:Generator_ColumnPropNameInTable="JumlahColumn" msprop:Generator_UserColumnName="Jumlah" type="xs:int" minOccurs="0" />
+              <xs:element name="Pendidikan" msprop:Generator_ColumnVarNameInTable="columnPendidikan" msprop:Generator_ColumnPropNameInRow="Pendidikan" msprop:Generator_ColumnPropNameInTable="PendidikanColumn" msprop:Generator_UserColumnName="Pendidikan" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Posisi" msprop:Generator_ColumnVarNameInTable="columnPosisi" msprop:Generator_ColumnPropNameInRow="Posisi" msprop:Generator_ColumnPropNameInTable="PosisiColumn" msprop:Generator_UserColumnName="Posisi">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Kode" msprop:Generator_ColumnVarNameInTable="columnKode" msprop:Generator_ColumnPropNameInRow="Kode" msprop:Generator_ColumnPropNameInTable="KodeColumn" msprop:Generator_UserColumnName="Kode">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="32" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nama" msprop:Generator_ColumnVarNameInTable="columnNama" msprop:Generator_ColumnPropNameInRow="Nama" msprop:Generator_ColumnPropNameInTable="NamaColumn" msprop:Generator_UserColumnName="Nama" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NilaiTotal" msprop:Generator_ColumnVarNameInTable="columnNilaiTotal" msprop:Generator_ColumnPropNameInRow="NilaiTotal" msprop:Generator_ColumnPropNameInTable="NilaiTotalColumn" msprop:Generator_UserColumnName="NilaiTotal" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:VwRankingPosisi" />
+      <xs:field xpath="mstns:Posisi" />
+      <xs:field xpath="mstns:Kode" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

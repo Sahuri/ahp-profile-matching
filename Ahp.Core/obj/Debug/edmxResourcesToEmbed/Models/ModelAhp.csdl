@@ -273,7 +273,7 @@
     <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Jumlah" Type="Int32" />
     <Property Name="Pendidikan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Posisi" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NilaiTotal" Type="Double" />
@@ -285,6 +285,8 @@
     <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
     <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Jumlah" Type="Int32" />
     <Property Name="NilaiTotal" Type="Double" />
   </EntityType>
 </Schema>

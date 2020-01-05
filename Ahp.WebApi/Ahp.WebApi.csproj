@@ -221,6 +221,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AHPDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AHPDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -348,6 +353,17 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="AHPDataSet.xsc">
+      <DependentUpon>AHPDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="AHPDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>AHPDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="AHPDataSet.xss">
+      <DependentUpon>AHPDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -357,7 +373,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Avatars\" />
     <Folder Include="Models\" />
-    <Folder Include="Reports\" />
     <Folder Include="Templates\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
@@ -371,6 +386,9 @@
       <Project>{74c5259a-9e75-4fce-970e-2c1d52f68b79}</Project>
       <Name>Ahp.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\print.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

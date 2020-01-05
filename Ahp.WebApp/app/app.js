@@ -29,8 +29,7 @@ angular.module('app', [
     'app.laporan',
     'app.administrasi',
     'app.masterdata',
-    'app.proses',
-    'app.prosespengalihan'
+    'app.proses'
 ])
     .config(function ($provide, $httpProvider, RestangularProvider) {
         $httpProvider.interceptors.push('authInterceptorSvc');

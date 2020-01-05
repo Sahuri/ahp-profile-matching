@@ -17,6 +17,8 @@ namespace Ahp.Core.Models
         public string Periode { get; set; }
         public string Kode { get; set; }
         public string Nama { get; set; }
+        public string Posisi { get; set; }
+        public Nullable<int> Jumlah { get; set; }
         public Nullable<double> NilaiTotal { get; set; }
     }
 }

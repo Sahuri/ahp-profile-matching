@@ -16,7 +16,7 @@ namespace Ahp.Core.Repositories.Abstractions.Proses
         bool Update(CalonKaryawanGap model);
         List<Dropdown> DropdownJumlah(string term);
         List<VwRankingPosisi> FindRankingPosisi(string periode, string posisi, string jumlah);
-        List<VwRankingScore> FindRankingScoring(string periode);
+        List<VwRankingScore> FindRankingScoring(string periode,string posisi);
 
     }
 }

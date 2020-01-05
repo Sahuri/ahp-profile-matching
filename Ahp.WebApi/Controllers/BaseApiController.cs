@@ -494,6 +494,7 @@ namespace Ahp.WebApi.Controllers
             string deviceInfo =
             "<DeviceInfo>" +
             "  <OutputFormat>PDF</OutputFormat>" +
+            "  <EmbedFonts>None</EmbedFonts>"+
             "  <PageWidth>" + pageWidth + "in</PageWidth>" +
             "  <PageHeight>" + pageHeight + "in</PageHeight>" +
             "  <MarginTop>" + marginTop + "in</MarginTop>" +

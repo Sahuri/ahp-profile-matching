@@ -226,14 +226,6 @@ namespace Ahp.Core.GenericRepositories.Abstractions
                     model.GetType().GetProperty("UpdateDate").SetValue(model, update_at, null);
                 }
 
-                if (model.GetType().GetProperty("AreaID") != null)
-                {
-                    var value = model.GetType().GetProperty("AreaID").GetValue(model, null);
-                    if (value == null)
-                    {
-                        model.GetType().GetProperty("AreaID").SetValue(model, this._UserProfile.KodePlant, null);
-                    }
-                }
 
                 ctx.Entry(model).State = EntityState.Modified;
                 return ctx.SaveChanges() > 0;

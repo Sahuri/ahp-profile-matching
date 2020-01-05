@@ -12,8 +12,7 @@ namespace Ahp.Core.Models
         public string UserName { get; set; }
         public string KodePlant { get; set; }
         public string NamaPlant { get; set; }
-        public string KodeArea { get; set; }
-        public string NamaArea { get; set; }
+        
         public string ProfileID { get; set; }
         public bool IsAdministrator { get; set; }
     }
@@ -31,7 +30,7 @@ namespace Ahp.Core.Models
         public string Roles { get; set; }
         public string HakAkses { get; set; }
         public string KodePlant { get; set; }
-        public string KodeArea { get; set; }
+       
         public bool IsLdapAccount { get; set; }
     }
 }

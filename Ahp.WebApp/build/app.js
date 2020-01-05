@@ -771,8 +771,7 @@ angular.module('app', [
     'app.laporan',
     'app.administrasi',
     'app.masterdata',
-    'app.proses',
-    'app.prosespengalihan'
+    'app.proses'
 ])
     .config(function ($provide, $httpProvider, RestangularProvider) {
         $httpProvider.interceptors.push('authInterceptorSvc');
@@ -2014,162 +2013,6 @@ angular.module('app.proses', [
 "use strict";
 
 
-angular.module('app.prosespengalihan', ['ui.router', 'datatables', 'datatables.bootstrap', 'ngHandsontable']);
-
-angular.module('app.prosespengalihan').config(function ($stateProvider) {
-
-    $stateProvider
-        .state('app.prosespengalihan', {
-            abstract: true,
-            data: {
-                title: 'Process Budget Transfer'
-            }
-        })
-        .state('app.prosespengalihan.receiverbh', {
-            url: '/budget-holder/receiverbh',
-            data: {
-                title: 'Budget Holder(Receiver) Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'ReceiverBhController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/receiver-bh.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.senderbh', {
-            url: '/budget-holder/senderbh',
-            data: {
-                title: 'Budget Holder(Sender) Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'SenderBhController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/sender-bh.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.verificator', {
-            url: '/budget-holder/verificator',
-            data: {
-                title: 'Verificator Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'VerificatorController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/verificator.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.submiter', {
-            url: '/budget-holder/submiter',
-            data: {
-                title: 'Submiter Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'SubmiterController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/submiter.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.approver', {
-            url: '/budget-holder/approver',
-            data: {
-                title: 'Final Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'ApproverController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/approver.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.executor', {
-            url: '/budget-holder/executor',
-            data: {
-                title: 'Executor Approval'
-            },
-            views: {
-                "content@app": {
-                    controller: 'ExecutorController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/executor.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-        .state('app.prosespengalihan.history', {
-            url: '/budget-holder/history',
-            data: {
-                title: 'Budget Transfer History'
-            },
-            views: {
-                "content@app": {
-                    controller: 'HistoryController as ctrl',
-                    templateUrl: 'app/proses-pengalihan/views/history.html'
-                }
-            }
-            , resolve: {
-                srcipts: function (lazyScript) {
-                    return lazyScript.register([
-                        'build/vendor.ui.js'
-                    ])
-
-                }
-            }
-        })
-});
-
-"use strict";
-
-
 angular.module('app.smartAdmin', ['ui.router']);
 
 
@@ -2231,24 +2074,6 @@ angular.module('app.smartAdmin').config(function ($stateProvider) {
             }
         })
 });
-angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/layout/layout.tpl.html","<!-- HEADER -->\r\n<div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\r\n<!-- END HEADER -->\r\n<!-- Left panel : Navigation area -->\r\n<!-- Note: This width of the aside area can be adjusted through LESS variables -->\r\n<div data-smart-include=\"app/layout/partials/navigation.tpl.html\" class=\"placeholder-left-panel\"></div>\r\n<!-- END NAVIGATION -->\r\n<!-- MAIN PANEL -->\r\n<div id=\"main\" role=\"main\">\r\n    <!-- <div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div> -->\r\n    <div class=\"ajax-loader\">\r\n        <figure>\r\n            <div class=\"dot white\"></div>\r\n            <svg class=\"lds-message\" width=\"300px\" height=\"300px\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"xMidYMid\" style=\"background: none;\">\r\n                <g transform=\"translate(20 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#456caa\" transform=\"scale(0.00227195 0.00227195)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.3375s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(40 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#88a2ce\" transform=\"scale(0.199233 0.199233)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.225s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(60 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#c2d2ee\" transform=\"scale(0.541624 0.541624)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.1125s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(80 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#fefefe\" transform=\"scale(0.863728 0.863728)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"0s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n            </svg>\r\n        </figure>\r\n    </div>\r\n    <!-- RIBBON -->\r\n    <div id=\"ribbon\">\r\n        <span class=\"ribbon-button-alignment\">\r\n            <span id=\"refresh\" class=\"btn btn-ribbon\" reset-widgets\r\n                  tooltip-placement=\"bottom\"\r\n                  smart-tooltip-html=\"\r\n                <i class=\'text-warning fa fa-warning\'></i> Warning! This will reset all your widget settings.\">\r\n                <i class=\"fa fa-refresh\"></i>\r\n            </span>\r\n        </span>\r\n\r\n        <!-- breadcrumb -->\r\n        <state-breadcrumbs></state-breadcrumbs>\r\n        <!-- end breadcrumb -->\r\n    </div>\r\n    <!-- END RIBBON -->\r\n\r\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\r\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\r\n    </div>\r\n</div>\r\n<!-- END MAIN PANEL -->\r\n<!-- PAGE FOOTER -->\r\n<div data-smart-include=\"app/layout/partials/footer.tpl.html\"></div>\r\n<div data-smart-include=\"app/layout/shortcut/shortcut.tpl.html\"></div>\r\n<!-- END PAGE FOOTER -->\r\n");
-$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\r\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\r\n        <a  href=\"\" toggle-shortcut>\r\n            <img ng-src=\"styles/img/avatars/{{user.picture}}\" alt=\"me\" class=\"online\">\r\n                <span>{{user.username}}\r\n                </span>\r\n            <i class=\"fa fa-angle-down\"></i>\r\n        </a>\r\n     </span>\r\n</div>");
-$templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\r\n    <!--<span class=\"label\">{{getWord(\'Projects\')}}</span>-->\r\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">\r\n        <i class=\"font-lg\"> </i>\r\n        {{getWord(\'AHP & Profile Matching\')}}\r\n        <i class=\"fa fa-angle-down\"></i>\r\n    </span>\r\n        <ul class=\"dropdown-menu\">\r\n            <li>\r\n                <a ng-click=\"downloadManualBook()\">\r\n                    <i class=\"fa fa-download text-danger\"></i> {{getWord(\'Download\')}} {{getWord(\'Manual Book\')}}\r\n                </a>\r\n            </li>\r\n        </ul>\r\n</div>");
-$templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\r\n    <li class=\"dropdown\" dropdown>\r\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\r\n            <i class=\"fa fa-angle-down\"></i> </a>\r\n        <ul class=\"dropdown-menu pull-right\">\r\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\r\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\r\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\r\n            </li>\r\n        </ul>\r\n    </li>\r\n</ul>");
-$templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"base-border-footer hidden-sm hidden-md hidden-lg\">\r\n    <div class=\"page-footer\">\r\n        <div class=\"row center\">\r\n            <div class=\"col-xs-12 col-sm-12\">\r\n                <span class=\"txt-color-white\">Copyright © 2017 ICT Departement - Pertamina Geothermal Energy</span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
-$templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\r\n    <div id=\"logo-group\">\r\n        <!-- PLACE YOUR LOGO HERE -->\r\n        <div class=\"va-table width-100\" style=\"height: 49px;background-color:white;\">\r\n            <div class=\"va-middle ta-center\"><img src=\"styles/img/logo-white.png\" width=\"50%\"></div>\r\n        </div>\r\n        <!--<span id=\"logo\"> <img src=\"styles/img/pge-logoX.png\" alt=\"SmartAdmin\"> </span>-->\r\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\r\n    Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\r\n        <!--<span id=\"activity\" class=\"activity-dropdown\" activities-dropdown-toggle>\r\n            <i class=\"fa fa-user\"></i>\r\n            <b class=\"badge bg-color-red\">21</b>\r\n        </span>\r\n        <div smart-include=\"app/dashboard/activities/activities.html\"></div>-->\r\n    </div>\r\n\r\n    <recent-projects></recent-projects>\r\n    <!-- pulled right: nav area -->\r\n    <div class=\"pull-right\">\r\n        <div id=\"logout\" class=\"btn-header transparent pull-right\" ng-show=\"isAuth==true\">\r\n            <span>\r\n                <a title=\"Sign Out\" ng-click=\"logOut()\" class=\"cls-logout\"\r\n                   data-logout-msg=\"You can improve your security further after logging out by closing this opened browser\">\r\n                    <i class=\"fa fa-sign-out\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n        <!-- multiple lang dropdown : find all flags in the flags page -->\r\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\r\n            <li class=\"\">\r\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\r\n                    <img src=\"styles/img/avatars/avatar.png\" alt=\"Avatar\" class=\"online\" />\r\n                </a>\r\n            </li>\r\n        </ul>\r\n        <!-- fullscreen button -->\r\n        <div id=\"fullscreen\" class=\"btn-header transparent pull-right\">\r\n            <span>\r\n                <a full-screen title=\"Full Screen\">\r\n                    <i class=\"fa fa-arrows-alt\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n        <!-- collapse menu button -->\r\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\r\n            <span>\r\n                <a toggle-menu title=\"Collapse Menu\">\r\n                    <i class=\"fa fa-reorder\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- end multiple lang -->\r\n        <language-selector></language-selector>\r\n    </div>\r\n    <!-- end pulled right: nav area -->\r\n</header>");
-$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\" ng-controller=\"MenuItemsController as ctrl\">\r\n\r\n   \r\n    <div login-info></div>\r\n    <!-- end user info -->\r\n\r\n    <nav>\r\n        <ul data-smart-menu-items=\"{{apiMenu}}\"></ul>\r\n    </nav>\r\n\r\n    <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\r\n        <i class=\"fa fa-arrow-circle-left hit\"></i>\r\n    </span>\r\n\r\n</aside>");
-$templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\r\n    <ul id=\"sparks\" class=\"\">\r\n        <li class=\"sparks-info\">\r\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\r\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\r\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\r\n            </div>\r\n        </li>\r\n        <li class=\"sparks-info\">\r\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\r\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\r\n                110,150,300,130,400,240,220,310,220,300, 270, 210\r\n            </div>\r\n        </li>\r\n        <li class=\"sparks-info\">\r\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\r\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\r\n                110,150,300,130,400,240,220,310,220,300, 270, 210\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>\r\n			");
-$templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\r\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\r\n\r\n<!-- MODAL PLACE HOLDER\r\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\r\n<div class=\"modal-dialog\">\r\n<div class=\"modal-content\"></div>\r\n</div>\r\n</div>   -->\r\n<!--////////////////////////////////////-->\r\n\r\n<!--<div class=\"modal-header\">\r\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\r\n&times;\r\n</button>\r\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\r\n</div>-->\r\n<div class=\"modal-body\">\r\n\r\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\r\n	<hr class=\"simple\">\r\n	<h5>Instruction</h5>\r\n\r\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\r\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\r\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\r\n	<br>\r\n	<br>\r\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\r\n	<br>\r\n	<br>\r\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\r\n	<br>\r\n	<br>\r\n	<h5>Commands</h5>\r\n	<ul>\r\n		<li>\r\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\r\n		</li>\r\n		<li>\r\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\r\n		</li>\r\n		<li>\r\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\r\n		</li>\r\n		<li>\r\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\r\n		</li>\r\n		<li>\r\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\r\n		</li>\r\n		<li>\r\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\r\n		</li>\r\n		<li>\r\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\r\n		</li>\r\n		<li>\r\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\r\n		</li>\r\n		<li>\r\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\r\n		</li>\r\n		<li>\r\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\r\n		</li>\r\n		<li>\r\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\r\n		</li>\r\n		<li>\r\n			<strong>\'logout\'</strong> - logs you out\r\n		</li>\r\n	</ul>\r\n	<br>\r\n	<h5>Adding your own commands</h5>\r\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \r\n\r\n	<hr class=\"simple\">\r\n	<div class=\"text-right\">\r\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\r\n			Got it!\r\n		</button>\r\n	</div>\r\n\r\n</div>\r\n<!--<div class=\"modal-footer\">\r\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\r\n</div> -->");
-$templateCache.put("app/layout/shortcut/shortcut.tpl.html","<div id=\"shortcut\">\r\n	<ul>\r\n		<li>\r\n			<a href=\"#/profile\" class=\"jarvismetro-tile big-cubes selected bg-color-pinkDark\"> <span class=\"iconbox\"> <i class=\"fa fa-user fa-4x\"></i> <span>{{getWord(\'My Profile\')}}</span> </span> </a>\r\n		</li>\r\n	</ul>\r\n</div>");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-attribute-form.tpl.html","<form id=\"attributeForm\" class=\"form-horizontal\"\r\n      data-bv-message=\"This value is not valid\"\r\n      data-bv-feedbackicons-valid=\"glyphicon glyphicon-ok\"\r\n      data-bv-feedbackicons-invalid=\"glyphicon glyphicon-remove\"\r\n      data-bv-feedbackicons-validating=\"glyphicon glyphicon-refresh\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Set validator options via HTML attributes\r\n        </legend>\r\n\r\n        <div class=\"alert alert-warning\">\r\n            <code>&lt; input\r\n                data-bv-validatorname\r\n                data-bv-validatorname-validatoroption=\"...\" / &gt;</code>\r\n\r\n            <br>\r\n            <br>\r\n            More validator options can be found here:\r\n            <a href=\"http://bootstrapvalidator.com/validators/\" target=\"_blank\">http://bootstrapvalidator.com/validators/</a>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Full name</label>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"\" />\r\n            </div>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The last name is required and cannot be empty\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Username</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"username\"\r\n                       data-bv-message=\"The username is not valid\"\r\n\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"\"\r\n\r\n                       data-bv-regexp=\"true\"\r\n                       data-bv-regexp-regexp=\"^[a-zA-Z0-9_\\.]+$\"\r\n                       data-bv-regexp-message=\"The username can only consist of alphabetical, number, dot and underscore\"\r\n\r\n                       data-bv-stringlength=\"true\"\r\n                       data-bv-stringlength-min=\"6\"\r\n                       data-bv-stringlength-max=\"30\"\r\n                       data-bv-stringlength-message=\"The username must be more than 6 and less than 30 characters long\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"password\"\r\n                       data-bv-different-message=\"The username and password cannot be the same as each other\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Email address</label>\r\n            <div class=\"col-lg-5\">\r\n                <input class=\"form-control\" name=\"email\" type=\"email\"\r\n                       data-bv-emailaddress=\"true\"\r\n                       data-bv-emailaddress-message=\"The input is not a valid email address\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Password</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"password\" class=\"form-control\" name=\"password\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The password is required and cannot be empty\"\r\n\r\n                       data-bv-identical=\"true\"\r\n                       data-bv-identical-field=\"confirmPassword\"\r\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"username\"\r\n                       data-bv-different-message=\"The password cannot be the same as username\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Retype password</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"password\" class=\"form-control\" name=\"confirmPassword\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The confirm password is required and cannot be empty\"\r\n\r\n                       data-bv-identical=\"true\"\r\n                       data-bv-identical-field=\"password\"\r\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"username\"\r\n                       data-bv-different-message=\"The password cannot be the same as username\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Languages</label>\r\n            <div class=\"col-lg-5\">\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\"\r\n                               data-bv-message=\"Please specify at least one language you can speak\"\r\n                               data-bv-notempty=\"true\" />\r\n                        English </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\r\n                        French </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\r\n                        German </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\r\n                        Russian </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"other\" />\r\n                        Other </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n                <button type=\"submit\" formnovalidate class=\"btn btn-warning cancel\">\r\n                    <i class=\"fa fa-undo\"></i>\r\n                    {{getWord(\'Undo\')}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n     ");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-button-group-form.tpl.html","<form id=\"buttonGroupForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Gender</label>\r\n            <div class=\"col-lg-9\">\r\n                <div class=\"btn-group\" data-toggle=\"buttons\">\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"male\" />\r\n                        Male </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"female\" />\r\n                        Female </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"other\" />\r\n                        Other </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Languages</label>\r\n            <div class=\"col-lg-9\">\r\n                <div class=\"btn-group\" data-toggle=\"buttons\">\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\" />\r\n                        English </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\r\n                        German </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\r\n                        French </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\r\n                        Russian </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"italian\">\r\n                        Italian </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <!--<button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>-->\r\n                <button type=\"submit\" id=\"validateButton\" class=\"btn btn-default\" >Validate and Submit</button>\r\n                <button type=\"button\" id=\"skipButton\" class=\"btn btn-default\" formnovalidate>Skip validation</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-contact-form.tpl.html","<form id=\"contactForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>Showing messages in custom area</legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Full name</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"fullName\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Email</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"email\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Title</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"title\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Content</label>\r\n            <div class=\"col-md-6\">\r\n                <textarea class=\"form-control\" name=\"content\" rows=\"5\"></textarea>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <!-- #messages is where the messages are placed inside -->\r\n        <div class=\"form-group\">\r\n            <div class=\"col-md-9 col-md-offset-3\">\r\n                <div id=\"messages\"></div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-movie-form.tpl.html","\r\n<form id=\"movieForm\" method=\"post\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-8\">\r\n                    <label class=\"control-label\">Movie title</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"title\" />\r\n                </div>\r\n\r\n                <div class=\"col-md-4 selectContainer\">\r\n                    <label class=\"control-label\">Genre</label>\r\n                    <select class=\"form-control\" name=\"genre\">\r\n                        <option value=\"\">Choose a genre</option>\r\n                        <option value=\"action\">Action</option>\r\n                        <option value=\"comedy\">Comedy</option>\r\n                        <option value=\"horror\">Horror</option>\r\n                        <option value=\"romance\">Romance</option>\r\n                    </select>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Director</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"director\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Writer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"writer\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Producer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"producer\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-6\">\r\n                    <label class=\"control-label\">Website</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"website\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-6\">\r\n                    <label class=\"control-label\">Youtube trailer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"trailer\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\">Review</label>\r\n            <textarea class=\"form-control\" name=\"review\" rows=\"8\"></textarea>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-12\">\r\n                    <label class=\"control-label\">Rating</label>\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-10\">\r\n\r\n                    <label class=\"radio radio-inline no-margin\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"terrible\" class=\"radiobox style-2\" />\r\n                        <span>Terrible</span> </label>\r\n\r\n                    <label class=\"radio radio-inline\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"watchable\" class=\"radiobox style-2\" />\r\n                        <span>Watchable</span> </label>\r\n                    <label class=\"radio radio-inline\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"best\" class=\"radiobox style-2\" />\r\n                        <span>Best ever</span> </label>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n\r\n ");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-product-form.tpl.html","<form id=\"productForm\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Price</label>\r\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\r\n                <div class=\"input-group\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"price\" />\r\n                    <span class=\"input-group-addon\">$</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Amount</label>\r\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">&#8364;</span>\r\n                    <input type=\"text\" class=\"form-control\" name=\"amount\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Color</label>\r\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\r\n                <select class=\"form-control\" name=\"color\">\r\n                    <option value=\"\">Choose a color</option>\r\n                    <option value=\"blue\">Blue</option>\r\n                    <option value=\"green\">Green</option>\r\n                    <option value=\"red\">Red</option>\r\n                    <option value=\"yellow\">Yellow</option>\r\n                    <option value=\"white\">White</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Size</label>\r\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\r\n                <select class=\"form-control\" name=\"size\">\r\n                    <option value=\"\">Choose a size</option>\r\n                    <option value=\"S\">S</option>\r\n                    <option value=\"M\">M</option>\r\n                    <option value=\"L\">L</option>\r\n                    <option value=\"XL\">XL</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>\r\n\r\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-profile-form.tpl.html","<form id=\"profileForm\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label>Email address</label>\r\n            <input type=\"text\" class=\"form-control\" name=\"email\" />\r\n        </div>\r\n    </fieldset>\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label>Password</label>\r\n            <input type=\"password\" class=\"form-control\" name=\"password\" />\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>\r\n");
-$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-toggling-form.tpl.html","<form id=\"togglingForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Full name <sup>*</sup></label>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\" />\r\n            </div>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Company <sup>*</sup></label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"company\"\r\n                       required data-bv-notempty-message=\"The company name is required\" />\r\n            </div>\r\n            <div class=\"col-lg-2\">\r\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#jobInfo\">\r\n                    Add more info\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <!-- These fields will not be validated as long as they are not visible -->\r\n    <div id=\"jobInfo\" style=\"display: none;\">\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Job title <sup>*</sup></label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"job\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Department <sup>*</sup></label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"department\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n    </div>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Mobile phone <sup>*</sup></label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"mobilePhone\" />\r\n            </div>\r\n            <div class=\"col-lg-2\">\r\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#phoneInfo\">\r\n                    Add more phone numbers\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n    <!-- These fields will not be validated as long as they are not visible -->\r\n    <div id=\"phoneInfo\" style=\"display: none;\">\r\n\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Home phone</label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"homePhone\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Office phone</label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"officePhone\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n    </div>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n                <button id=\"btn_undo\" type=\"reset\" class=\"btn btn-warning cancel\" ng-click=\"Undo(event)\">\r\n                    <i class=\"fa fa-undo\"></i>\r\n                    {{getWord(\'Undo\')}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>");
-$templateCache.put("app/_common/layout/directives/demo/demo-states.tpl.html","<div class=\"demo\"><span id=\"demo-setting\"><i class=\"fa fa-cog txt-color-blueDark\"></i></span>\r\n\r\n    <form>\r\n        <legend class=\"no-padding margin-bottom-10\">Layout Options</legend>\r\n        <section>\r\n            <label><input type=\"checkbox\" ng-model=\"fixedHeader\"\r\n                          class=\"checkbox style-0\"><span>Fixed Header</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedNavigation\"\r\n                          class=\"checkbox style-0\"><span>Fixed Navigation</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedRibbon\"\r\n                          class=\"checkbox style-0\"><span>Fixed Ribbon</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedPageFooter\"\r\n                          class=\"checkbox style-0\"><span>Fixed Footer</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"insideContainer\"\r\n                          class=\"checkbox style-0\"><span>Inside <b>.container</b></span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"rtl\"\r\n                          class=\"checkbox style-0\"><span>RTL</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"menuOnTop\"\r\n                          class=\"checkbox style-0\"><span>Menu on <b>top</b></span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"colorblindFriendly\"\r\n                          class=\"checkbox style-0\"><span>For Colorblind <div\r\n                    class=\"font-xs text-right\">(experimental)\r\n            </div></span>\r\n            </label><span id=\"smart-bgimages\"></span></section>\r\n        <section><h6 class=\"margin-top-10 semi-bold margin-bottom-5\">Clear Localstorage</h6><a\r\n                ng-click=\"factoryReset()\" class=\"btn btn-xs btn-block btn-primary\" id=\"reset-smart-widget\"><i\r\n                class=\"fa fa-refresh\"></i> Factory Reset</a></section>\r\n\r\n        <h6 class=\"margin-top-10 semi-bold margin-bottom-5\">SmartAdmin Skins</h6>\r\n\r\n\r\n        <section id=\"smart-styles\">\r\n            <a ng-repeat=\"skin in skins\" ng-click=\"setSkin(skin)\" class=\"{{skin.class}}\" style=\"{{skin.style}}\"><i ng-if=\"skin.name == $parent.smartSkin\" class=\"fa fa-check fa-fw\"></i> {{skin.label}} <sup ng-if=\"skin.beta\">beta</sup></a>\r\n        </section>\r\n    </form>\r\n</div>");}]);
 "use strict";
 
 angular.module('app.tables', [ 'ui.router', 'datatables', 'datatables.bootstrap']);
@@ -2311,6 +2136,24 @@ angular.module('app.tables').config(function ($stateProvider) {
             }
         })
 });
+angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/layout/layout.tpl.html","<!-- HEADER -->\r\n<div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\r\n<!-- END HEADER -->\r\n<!-- Left panel : Navigation area -->\r\n<!-- Note: This width of the aside area can be adjusted through LESS variables -->\r\n<div data-smart-include=\"app/layout/partials/navigation.tpl.html\" class=\"placeholder-left-panel\"></div>\r\n<!-- END NAVIGATION -->\r\n<!-- MAIN PANEL -->\r\n<div id=\"main\" role=\"main\">\r\n    <!-- <div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div> -->\r\n    <div class=\"ajax-loader\">\r\n        <figure>\r\n            <div class=\"dot white\"></div>\r\n            <svg class=\"lds-message\" width=\"300px\" height=\"300px\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"0 0 100 100\" preserveAspectRatio=\"xMidYMid\" style=\"background: none;\">\r\n                <g transform=\"translate(20 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#456caa\" transform=\"scale(0.00227195 0.00227195)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.3375s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(40 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#88a2ce\" transform=\"scale(0.199233 0.199233)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.225s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(60 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#c2d2ee\" transform=\"scale(0.541624 0.541624)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"-0.1125s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n                <g transform=\"translate(80 50)\">\r\n                    <circle cx=\"0\" cy=\"0\" r=\"6\" fill=\"#fefefe\" transform=\"scale(0.863728 0.863728)\">\r\n                        <animateTransform attributeName=\"transform\" type=\"scale\" begin=\"0s\" calcMode=\"spline\" keySplines=\"0.3 0 0.7 1;0.3 0 0.7 1\" values=\"0;1;0\" keyTimes=\"0;0.5;1\" dur=\"0.9s\" repeatCount=\"indefinite\"></animateTransform>\r\n                    </circle>\r\n                </g>\r\n            </svg>\r\n        </figure>\r\n    </div>\r\n    <!-- RIBBON -->\r\n    <div id=\"ribbon\">\r\n        <span class=\"ribbon-button-alignment\">\r\n            <span id=\"refresh\" class=\"btn btn-ribbon\" reset-widgets\r\n                  tooltip-placement=\"bottom\"\r\n                  smart-tooltip-html=\"\r\n                <i class=\'text-warning fa fa-warning\'></i> Warning! This will reset all your widget settings.\">\r\n                <i class=\"fa fa-refresh\"></i>\r\n            </span>\r\n        </span>\r\n\r\n        <!-- breadcrumb -->\r\n        <state-breadcrumbs></state-breadcrumbs>\r\n        <!-- end breadcrumb -->\r\n    </div>\r\n    <!-- END RIBBON -->\r\n\r\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\r\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\r\n    </div>\r\n</div>\r\n<!-- END MAIN PANEL -->\r\n<!-- PAGE FOOTER -->\r\n<div data-smart-include=\"app/layout/partials/footer.tpl.html\"></div>\r\n<div data-smart-include=\"app/layout/shortcut/shortcut.tpl.html\"></div>\r\n<!-- END PAGE FOOTER -->\r\n");
+$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\r\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\r\n        <a  href=\"\" toggle-shortcut>\r\n            <img ng-src=\"styles/img/avatars/{{user.picture}}\" alt=\"me\" class=\"online\">\r\n                <span>{{user.username}}\r\n                </span>\r\n            <i class=\"fa fa-angle-down\"></i>\r\n        </a>\r\n     </span>\r\n</div>");
+$templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\r\n    <!--<span class=\"label\">{{getWord(\'Projects\')}}</span>-->\r\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">\r\n        <i class=\"font-lg\"> </i>\r\n        {{getWord(\'AHP & Profile Matching\')}}\r\n        <i class=\"fa fa-angle-down\"></i>\r\n    </span>\r\n        <ul class=\"dropdown-menu\">\r\n            <li>\r\n                <a ng-click=\"downloadManualBook()\">\r\n                    <i class=\"fa fa-download text-danger\"></i> {{getWord(\'Download\')}} {{getWord(\'Manual Book\')}}\r\n                </a>\r\n            </li>\r\n        </ul>\r\n</div>");
+$templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\r\n    <li class=\"dropdown\" dropdown>\r\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\r\n            <i class=\"fa fa-angle-down\"></i> </a>\r\n        <ul class=\"dropdown-menu pull-right\">\r\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\r\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\r\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\r\n            </li>\r\n        </ul>\r\n    </li>\r\n</ul>");
+$templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"base-border-footer hidden-sm hidden-md hidden-lg\">\r\n    <div class=\"page-footer\">\r\n        <div class=\"row center\">\r\n            <div class=\"col-xs-12 col-sm-12\">\r\n                <span class=\"txt-color-white\">Copyright © 2017 ICT Departement - Pertamina Geothermal Energy</span>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>");
+$templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\r\n    <div id=\"logo-group\">\r\n        <!-- PLACE YOUR LOGO HERE -->\r\n        <div class=\"va-table width-100\" style=\"height: 49px;background-color:white;\">\r\n            <div class=\"va-middle ta-center\"><img src=\"styles/img/logo-white.png\" width=\"50%\"></div>\r\n        </div>\r\n        <!--<span id=\"logo\"> <img src=\"styles/img/pge-logoX.png\" alt=\"SmartAdmin\"> </span>-->\r\n        <!-- Note: The activity badge color changes when clicked and resets the number to 0\r\n    Suggestion: You may want to set a flag when this happens to tick off all checked messages / notifications -->\r\n        <!--<span id=\"activity\" class=\"activity-dropdown\" activities-dropdown-toggle>\r\n            <i class=\"fa fa-user\"></i>\r\n            <b class=\"badge bg-color-red\">21</b>\r\n        </span>\r\n        <div smart-include=\"app/dashboard/activities/activities.html\"></div>-->\r\n    </div>\r\n\r\n    <recent-projects></recent-projects>\r\n    <!-- pulled right: nav area -->\r\n    <div class=\"pull-right\">\r\n        <div id=\"logout\" class=\"btn-header transparent pull-right\" ng-show=\"isAuth==true\">\r\n            <span>\r\n                <a title=\"Sign Out\" ng-click=\"logOut()\" class=\"cls-logout\"\r\n                   data-logout-msg=\"You can improve your security further after logging out by closing this opened browser\">\r\n                    <i class=\"fa fa-sign-out\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n        <!-- multiple lang dropdown : find all flags in the flags page -->\r\n        <ul id=\"mobile-profile-img\" class=\"header-dropdown-list hidden-xs padding-5\">\r\n            <li class=\"\">\r\n                <a href=\"#\" class=\"dropdown-toggle no-margin userdropdown\" data-toggle=\"dropdown\">\r\n                    <img src=\"styles/img/avatars/avatar.png\" alt=\"Avatar\" class=\"online\" />\r\n                </a>\r\n            </li>\r\n        </ul>\r\n        <!-- fullscreen button -->\r\n        <div id=\"fullscreen\" class=\"btn-header transparent pull-right\">\r\n            <span>\r\n                <a full-screen title=\"Full Screen\">\r\n                    <i class=\"fa fa-arrows-alt\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n        <!-- collapse menu button -->\r\n        <div id=\"hide-menu\" class=\"btn-header pull-right\">\r\n            <span>\r\n                <a toggle-menu title=\"Collapse Menu\">\r\n                    <i class=\"fa fa-reorder\"></i>\r\n                </a>\r\n            </span>\r\n        </div>\r\n\r\n        <!-- end multiple lang -->\r\n        <language-selector></language-selector>\r\n    </div>\r\n    <!-- end pulled right: nav area -->\r\n</header>");
+$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\" ng-controller=\"MenuItemsController as ctrl\">\r\n\r\n   \r\n    <div login-info></div>\r\n    <!-- end user info -->\r\n\r\n    <nav>\r\n        <ul data-smart-menu-items=\"{{apiMenu}}\"></ul>\r\n    </nav>\r\n\r\n    <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\r\n        <i class=\"fa fa-arrow-circle-left hit\"></i>\r\n    </span>\r\n\r\n</aside>");
+$templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\r\n    <ul id=\"sparks\" class=\"\">\r\n        <li class=\"sparks-info\">\r\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\r\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\r\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\r\n            </div>\r\n        </li>\r\n        <li class=\"sparks-info\">\r\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\r\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\r\n                110,150,300,130,400,240,220,310,220,300, 270, 210\r\n            </div>\r\n        </li>\r\n        <li class=\"sparks-info\">\r\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\r\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\r\n                110,150,300,130,400,240,220,310,220,300, 270, 210\r\n            </div>\r\n        </li>\r\n    </ul>\r\n</div>\r\n			");
+$templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\r\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\r\n\r\n<!-- MODAL PLACE HOLDER\r\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\r\n<div class=\"modal-dialog\">\r\n<div class=\"modal-content\"></div>\r\n</div>\r\n</div>   -->\r\n<!--////////////////////////////////////-->\r\n\r\n<!--<div class=\"modal-header\">\r\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\r\n&times;\r\n</button>\r\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\r\n</div>-->\r\n<div class=\"modal-body\">\r\n\r\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\r\n	<hr class=\"simple\">\r\n	<h5>Instruction</h5>\r\n\r\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\r\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\r\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\r\n	<br>\r\n	<br>\r\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\r\n	<br>\r\n	<br>\r\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\r\n	<br>\r\n	<br>\r\n	<h5>Commands</h5>\r\n	<ul>\r\n		<li>\r\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\r\n		</li>\r\n		<li>\r\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\r\n		</li>\r\n		<li>\r\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\r\n		</li>\r\n		<li>\r\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\r\n		</li>\r\n		<li>\r\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\r\n		</li>\r\n		<li>\r\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\r\n		</li>\r\n		<li>\r\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\r\n		</li>\r\n		<li>\r\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\r\n		</li>\r\n		<li>\r\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\r\n		</li>\r\n		<li>\r\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\r\n		</li>\r\n		<li>\r\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\r\n		</li>\r\n		<li>\r\n			<strong>\'logout\'</strong> - logs you out\r\n		</li>\r\n	</ul>\r\n	<br>\r\n	<h5>Adding your own commands</h5>\r\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \r\n\r\n	<hr class=\"simple\">\r\n	<div class=\"text-right\">\r\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\r\n			Got it!\r\n		</button>\r\n	</div>\r\n\r\n</div>\r\n<!--<div class=\"modal-footer\">\r\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\r\n</div> -->");
+$templateCache.put("app/layout/shortcut/shortcut.tpl.html","<div id=\"shortcut\">\r\n	<ul>\r\n		<li>\r\n			<a href=\"#/profile\" class=\"jarvismetro-tile big-cubes selected bg-color-pinkDark\"> <span class=\"iconbox\"> <i class=\"fa fa-user fa-4x\"></i> <span>{{getWord(\'My Profile\')}}</span> </span> </a>\r\n		</li>\r\n	</ul>\r\n</div>");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-attribute-form.tpl.html","<form id=\"attributeForm\" class=\"form-horizontal\"\r\n      data-bv-message=\"This value is not valid\"\r\n      data-bv-feedbackicons-valid=\"glyphicon glyphicon-ok\"\r\n      data-bv-feedbackicons-invalid=\"glyphicon glyphicon-remove\"\r\n      data-bv-feedbackicons-validating=\"glyphicon glyphicon-refresh\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Set validator options via HTML attributes\r\n        </legend>\r\n\r\n        <div class=\"alert alert-warning\">\r\n            <code>&lt; input\r\n                data-bv-validatorname\r\n                data-bv-validatorname-validatoroption=\"...\" / &gt;</code>\r\n\r\n            <br>\r\n            <br>\r\n            More validator options can be found here:\r\n            <a href=\"http://bootstrapvalidator.com/validators/\" target=\"_blank\">http://bootstrapvalidator.com/validators/</a>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Full name</label>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"\" />\r\n            </div>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The last name is required and cannot be empty\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Username</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"username\"\r\n                       data-bv-message=\"The username is not valid\"\r\n\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"\"\r\n\r\n                       data-bv-regexp=\"true\"\r\n                       data-bv-regexp-regexp=\"^[a-zA-Z0-9_\\.]+$\"\r\n                       data-bv-regexp-message=\"The username can only consist of alphabetical, number, dot and underscore\"\r\n\r\n                       data-bv-stringlength=\"true\"\r\n                       data-bv-stringlength-min=\"6\"\r\n                       data-bv-stringlength-max=\"30\"\r\n                       data-bv-stringlength-message=\"The username must be more than 6 and less than 30 characters long\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"password\"\r\n                       data-bv-different-message=\"The username and password cannot be the same as each other\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Email address</label>\r\n            <div class=\"col-lg-5\">\r\n                <input class=\"form-control\" name=\"email\" type=\"email\"\r\n                       data-bv-emailaddress=\"true\"\r\n                       data-bv-emailaddress-message=\"The input is not a valid email address\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Password</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"password\" class=\"form-control\" name=\"password\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The password is required and cannot be empty\"\r\n\r\n                       data-bv-identical=\"true\"\r\n                       data-bv-identical-field=\"confirmPassword\"\r\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"username\"\r\n                       data-bv-different-message=\"The password cannot be the same as username\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Retype password</label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"password\" class=\"form-control\" name=\"confirmPassword\"\r\n                       data-bv-notempty=\"true\"\r\n                       data-bv-notempty-message=\"The confirm password is required and cannot be empty\"\r\n\r\n                       data-bv-identical=\"true\"\r\n                       data-bv-identical-field=\"password\"\r\n                       data-bv-identical-message=\"The password and its confirm are not the same\"\r\n\r\n                       data-bv-different=\"true\"\r\n                       data-bv-different-field=\"username\"\r\n                       data-bv-different-message=\"The password cannot be the same as username\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Languages</label>\r\n            <div class=\"col-lg-5\">\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\"\r\n                               data-bv-message=\"Please specify at least one language you can speak\"\r\n                               data-bv-notempty=\"true\" />\r\n                        English </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\r\n                        French </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\r\n                        German </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\r\n                        Russian </label>\r\n                </div>\r\n                <div class=\"checkbox\">\r\n                    <label>\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"other\" />\r\n                        Other </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n                <button type=\"submit\" formnovalidate class=\"btn btn-warning cancel\">\r\n                    <i class=\"fa fa-undo\"></i>\r\n                    {{getWord(\'Undo\')}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n     ");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-button-group-form.tpl.html","<form id=\"buttonGroupForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Gender</label>\r\n            <div class=\"col-lg-9\">\r\n                <div class=\"btn-group\" data-toggle=\"buttons\">\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"male\" />\r\n                        Male </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"female\" />\r\n                        Female </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"radio\" name=\"gender\" value=\"other\" />\r\n                        Other </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Languages</label>\r\n            <div class=\"col-lg-9\">\r\n                <div class=\"btn-group\" data-toggle=\"buttons\">\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"english\" />\r\n                        English </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"german\" />\r\n                        German </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"french\" />\r\n                        French </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"russian\" />\r\n                        Russian </label>\r\n                    <label class=\"btn btn-default\">\r\n                        <input type=\"checkbox\" name=\"languages[]\" value=\"italian\">\r\n                        Italian </label>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <!--<button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>-->\r\n                <button type=\"submit\" id=\"validateButton\" class=\"btn btn-default\" >Validate and Submit</button>\r\n                <button type=\"button\" id=\"skipButton\" class=\"btn btn-default\" formnovalidate>Skip validation</button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-contact-form.tpl.html","<form id=\"contactForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>Showing messages in custom area</legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Full name</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"fullName\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Email</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"email\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Title</label>\r\n            <div class=\"col-md-6\">\r\n                <input type=\"text\" class=\"form-control\" name=\"title\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-md-3 control-label\">Content</label>\r\n            <div class=\"col-md-6\">\r\n                <textarea class=\"form-control\" name=\"content\" rows=\"5\"></textarea>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <!-- #messages is where the messages are placed inside -->\r\n        <div class=\"form-group\">\r\n            <div class=\"col-md-9 col-md-offset-3\">\r\n                <div id=\"messages\"></div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-movie-form.tpl.html","\r\n<form id=\"movieForm\" method=\"post\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-md-8\">\r\n                    <label class=\"control-label\">Movie title</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"title\" />\r\n                </div>\r\n\r\n                <div class=\"col-md-4 selectContainer\">\r\n                    <label class=\"control-label\">Genre</label>\r\n                    <select class=\"form-control\" name=\"genre\">\r\n                        <option value=\"\">Choose a genre</option>\r\n                        <option value=\"action\">Action</option>\r\n                        <option value=\"comedy\">Comedy</option>\r\n                        <option value=\"horror\">Horror</option>\r\n                        <option value=\"romance\">Romance</option>\r\n                    </select>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Director</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"director\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Writer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"writer\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-4\">\r\n                    <label class=\"control-label\">Producer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"producer\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-6\">\r\n                    <label class=\"control-label\">Website</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"website\" />\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-6\">\r\n                    <label class=\"control-label\">Youtube trailer</label>\r\n                    <input type=\"text\" class=\"form-control\" name=\"trailer\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"control-label\">Review</label>\r\n            <textarea class=\"form-control\" name=\"review\" rows=\"8\"></textarea>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-12 col-md-12\">\r\n                    <label class=\"control-label\">Rating</label>\r\n                </div>\r\n\r\n                <div class=\"col-sm-12 col-md-10\">\r\n\r\n                    <label class=\"radio radio-inline no-margin\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"terrible\" class=\"radiobox style-2\" />\r\n                        <span>Terrible</span> </label>\r\n\r\n                    <label class=\"radio radio-inline\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"watchable\" class=\"radiobox style-2\" />\r\n                        <span>Watchable</span> </label>\r\n                    <label class=\"radio radio-inline\">\r\n                        <input type=\"radio\" name=\"rating\" value=\"best\" class=\"radiobox style-2\" />\r\n                        <span>Best ever</span> </label>\r\n\r\n                </div>\r\n\r\n            </div>\r\n\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n\r\n</form>\r\n\r\n ");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-product-form.tpl.html","<form id=\"productForm\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Price</label>\r\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\r\n                <div class=\"input-group\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"price\" />\r\n                    <span class=\"input-group-addon\">$</span>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Amount</label>\r\n            <div class=\"col-xs-9 col-lg-6 inputGroupContainer\">\r\n                <div class=\"input-group\">\r\n                    <span class=\"input-group-addon\">&#8364;</span>\r\n                    <input type=\"text\" class=\"form-control\" name=\"amount\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Color</label>\r\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\r\n                <select class=\"form-control\" name=\"color\">\r\n                    <option value=\"\">Choose a color</option>\r\n                    <option value=\"blue\">Blue</option>\r\n                    <option value=\"green\">Green</option>\r\n                    <option value=\"red\">Red</option>\r\n                    <option value=\"yellow\">Yellow</option>\r\n                    <option value=\"white\">White</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-xs-2 col-lg-3 control-label\">Size</label>\r\n            <div class=\"col-xs-9 col-lg-6 selectContainer\">\r\n                <select class=\"form-control\" name=\"size\">\r\n                    <option value=\"\">Choose a size</option>\r\n                    <option value=\"S\">S</option>\r\n                    <option value=\"M\">M</option>\r\n                    <option value=\"L\">L</option>\r\n                    <option value=\"XL\">XL</option>\r\n                </select>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>\r\n\r\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-profile-form.tpl.html","<form id=\"profileForm\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label>Email address</label>\r\n            <input type=\"text\" class=\"form-control\" name=\"email\" />\r\n        </div>\r\n    </fieldset>\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label>Password</label>\r\n            <input type=\"password\" class=\"form-control\" name=\"password\" />\r\n        </div>\r\n    </fieldset>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>\r\n");
+$templateCache.put("app/_common/forms/directives/bootstrap-validation/bootstrap-toggling-form.tpl.html","<form id=\"togglingForm\" method=\"post\" class=\"form-horizontal\">\r\n\r\n    <fieldset>\r\n        <legend>\r\n            Default Form Elements\r\n        </legend>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Full name <sup>*</sup></label>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"firstName\" placeholder=\"First name\" />\r\n            </div>\r\n            <div class=\"col-lg-4\">\r\n                <input type=\"text\" class=\"form-control\" name=\"lastName\" placeholder=\"Last name\" />\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Company <sup>*</sup></label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"company\"\r\n                       required data-bv-notempty-message=\"The company name is required\" />\r\n            </div>\r\n            <div class=\"col-lg-2\">\r\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#jobInfo\">\r\n                    Add more info\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <!-- These fields will not be validated as long as they are not visible -->\r\n    <div id=\"jobInfo\" style=\"display: none;\">\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Job title <sup>*</sup></label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"job\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Department <sup>*</sup></label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"department\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n    </div>\r\n\r\n    <fieldset>\r\n        <div class=\"form-group\">\r\n            <label class=\"col-lg-3 control-label\">Mobile phone <sup>*</sup></label>\r\n            <div class=\"col-lg-5\">\r\n                <input type=\"text\" class=\"form-control\" name=\"mobilePhone\" />\r\n            </div>\r\n            <div class=\"col-lg-2\">\r\n                <button type=\"button\" class=\"btn btn-info btn-sm\" data-toggle=\"#phoneInfo\">\r\n                    Add more phone numbers\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n    <!-- These fields will not be validated as long as they are not visible -->\r\n    <div id=\"phoneInfo\" style=\"display: none;\">\r\n\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Home phone</label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"homePhone\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n        <fieldset>\r\n            <div class=\"form-group\">\r\n                <label class=\"col-lg-3 control-label\">Office phone</label>\r\n                <div class=\"col-lg-5\">\r\n                    <input type=\"text\" class=\"form-control\" name=\"officePhone\" />\r\n                </div>\r\n            </div>\r\n        </fieldset>\r\n    </div>\r\n\r\n    <div class=\"form-actions\">\r\n        <div class=\"row\">\r\n            <div class=\"col-md-12\">\r\n                <button class=\"btn btn-default\" type=\"submit\">\r\n                    <i class=\"fa fa-eye\"></i>\r\n                    Validate\r\n                </button>\r\n                <button id=\"btn_undo\" type=\"reset\" class=\"btn btn-warning cancel\" ng-click=\"Undo(event)\">\r\n                    <i class=\"fa fa-undo\"></i>\r\n                    {{getWord(\'Undo\')}}\r\n                </button>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</form>");
+$templateCache.put("app/_common/layout/directives/demo/demo-states.tpl.html","<div class=\"demo\"><span id=\"demo-setting\"><i class=\"fa fa-cog txt-color-blueDark\"></i></span>\r\n\r\n    <form>\r\n        <legend class=\"no-padding margin-bottom-10\">Layout Options</legend>\r\n        <section>\r\n            <label><input type=\"checkbox\" ng-model=\"fixedHeader\"\r\n                          class=\"checkbox style-0\"><span>Fixed Header</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedNavigation\"\r\n                          class=\"checkbox style-0\"><span>Fixed Navigation</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedRibbon\"\r\n                          class=\"checkbox style-0\"><span>Fixed Ribbon</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"fixedPageFooter\"\r\n                          class=\"checkbox style-0\"><span>Fixed Footer</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"insideContainer\"\r\n                          class=\"checkbox style-0\"><span>Inside <b>.container</b></span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"rtl\"\r\n                          class=\"checkbox style-0\"><span>RTL</span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"menuOnTop\"\r\n                          class=\"checkbox style-0\"><span>Menu on <b>top</b></span></label>\r\n            <label><input type=\"checkbox\"\r\n                          ng-model=\"colorblindFriendly\"\r\n                          class=\"checkbox style-0\"><span>For Colorblind <div\r\n                    class=\"font-xs text-right\">(experimental)\r\n            </div></span>\r\n            </label><span id=\"smart-bgimages\"></span></section>\r\n        <section><h6 class=\"margin-top-10 semi-bold margin-bottom-5\">Clear Localstorage</h6><a\r\n                ng-click=\"factoryReset()\" class=\"btn btn-xs btn-block btn-primary\" id=\"reset-smart-widget\"><i\r\n                class=\"fa fa-refresh\"></i> Factory Reset</a></section>\r\n\r\n        <h6 class=\"margin-top-10 semi-bold margin-bottom-5\">SmartAdmin Skins</h6>\r\n\r\n\r\n        <section id=\"smart-styles\">\r\n            <a ng-repeat=\"skin in skins\" ng-click=\"setSkin(skin)\" class=\"{{skin.class}}\" style=\"{{skin.style}}\"><i ng-if=\"skin.name == $parent.smartSkin\" class=\"fa fa-check fa-fw\"></i> {{skin.label}} <sup ng-if=\"skin.beta\">beta</sup></a>\r\n        </section>\r\n    </form>\r\n</div>");}]);
 'use strict'
 
 angular.module('app.ui', ['ui.router']);
@@ -2774,6 +2617,35 @@ angular.module('app.forms').value('formsCommon', {
             }
         }
     });
+'use strict';
+
+angular.module('app.appViews').controller('ProjectsDemoCtrl', function ($scope, projects) {
+
+    $scope.projects = projects.data;
+
+    $scope.tableOptions =  {
+        "data": projects.data.data,
+//            "bDestroy": true,
+        "iDisplayLength": 15,
+        "columns": [
+            {
+                "class":          'details-control',
+                "orderable":      false,
+                "data":           null,
+                "defaultContent": ''
+            },
+            { "data": "name" },
+            { "data": "est" },
+            { "data": "contacts" },
+            { "data": "status" },
+            { "data": "target-actual" },
+            { "data": "starts" },
+            { "data": "ends" },
+            { "data": "tracker" }
+        ],
+        "order": [[1, 'asc']]
+    }
+});
 'use strict';
 
 angular.module('app.administrasi').controller('HakAksesController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language) {
@@ -3730,8 +3602,7 @@ angular.module('app.administrasi').controller('UserController', function ($scope
 
         obj.tableColumns = [
             DTColumnBuilder.newColumn('Kode').withTitle('Kode').withClass('text-primary'),
-            DTColumnBuilder.newColumn('Nama').withTitle('Nama'),
-            DTColumnBuilder.newColumn('KodeArea').withTitle('Area')
+            DTColumnBuilder.newColumn('Nama').withTitle('Nama')
         ];
     };
 
@@ -3765,9 +3636,7 @@ angular.module('app.administrasi').controller('UserController', function ($scope
     me.Undo = function () {
         me.data = {};
         me.isNew = true;
-        Select2Helper.GetDataForCombo(BASE_API + 'MasterArea/Dropdown').then(function (result) {
-            me.listArea = result.Dropdown;
-        });
+       
     };
 
    
@@ -3845,35 +3714,21 @@ angular.module('app.administrasi').controller('UserController', function ($scope
 
     me.init(this);
 });
-'use strict';
+"use strict";
 
-angular.module('app.appViews').controller('ProjectsDemoCtrl', function ($scope, projects) {
+angular.module('app.auth').directive('loginInfo', function(User){
 
-    $scope.projects = projects.data;
-
-    $scope.tableOptions =  {
-        "data": projects.data.data,
-//            "bDestroy": true,
-        "iDisplayLength": 15,
-        "columns": [
-            {
-                "class":          'details-control',
-                "orderable":      false,
-                "data":           null,
-                "defaultContent": ''
-            },
-            { "data": "name" },
-            { "data": "est" },
-            { "data": "contacts" },
-            { "data": "status" },
-            { "data": "target-actual" },
-            { "data": "starts" },
-            { "data": "ends" },
-            { "data": "tracker" }
-        ],
-        "order": [[1, 'asc']]
+    return {
+        restrict: 'A',
+        templateUrl: 'app/auth/directives/login-info.tpl.html',
+        link: function(scope, element){
+            User.initialized.then(function(){
+                scope.user = User
+            });
+        }
     }
-});
+})
+
 'use strict';
 
 angular.module('app.auth').controller('ChangePasswordController', function ($scope, $http, $state, Select2Helper, BASE_API, User, authSvc) {
@@ -4661,21 +4516,6 @@ angular.module('app.auth').controller('ExternalLoginCtrl', function ($scope, $st
     });
 })
 
-"use strict";
-
-angular.module('app.auth').directive('loginInfo', function(User){
-
-    return {
-        restrict: 'A',
-        templateUrl: 'app/auth/directives/login-info.tpl.html',
-        link: function(scope, element){
-            User.initialized.then(function(){
-                scope.user = User
-            });
-        }
-    }
-})
-
 
 
 'use strict';
@@ -4969,71 +4809,6 @@ angular.module('app.auth').factory('tokensManagerSvc', function ($http, BASE_API
 
     return tokenManagerServiceFactory;
 });
-'use strict';
-
-angular.module('app.dashboard').controller('DashboardController', function ($scope, $http, $interval, $state, authSvc, $filter, BASE_API) {
-    var msgTitle = "Dashboard";
-    var me = $scope;
-    var module = 'Dashboard/';
-    var api = BASE_API + module;
-
-    me.init = function () {
-        me.dataCountApproval = 0;
-        me.dataCountPenjurian = 0;
-        me.dataCountAudit = 0;
-        me.dataCountNewReg = 0;
-        countApproval();
-        countPenjurian();
-        countAudit();
-        countNewReg();
-    }
-
-    function countApproval() {
-        //var headers = authSvc.headers();
-        //headers.Accept = "application/json";
-        //$http.get(api + 'GetCountApproval').success(function (response) {
-        //    me.dataCountApproval = response;
-            
-        //}).error(function (err, status) {
-        //    console.log(err);
-        //});
-    }
-
-    function countAudit() {
-        //var headers = authSvc.headers();
-        //headers.Accept = "application/json";
-        //$http.get(api + 'GetCountAudit').success(function (response) {
-        //    me.dataCountAudit = response;
-
-        //}).error(function (err, status) {
-        //    console.log(err);
-        //});
-    }
-
-    function countNewReg() {
-        //var headers = authSvc.headers();
-        //headers.Accept = "application/json";
-        //$http.get(api + 'GetCountNewReg').success(function (response) {
-        //    me.dataCountNewReg = response;
-
-        //}).error(function (err, status) {
-        //    console.log(err);
-        //});
-    }
-
-    function countPenjurian() {
-        //var headers = authSvc.headers();
-        //headers.Accept = "application/json";
-        //$http.get(api + 'GetCountPenjurian').success(function (response) {
-        //    me.dataCountPenjurian = response;
-
-        //}).error(function (err, status) {
-        //    console.log(err);
-        //});
-    }
-
-    me.init();
-});
 "use strict";	
 
 angular.module('app').controller("ActivitiesCtrl", function ActivitiesCtrl($scope, $log, activityService){
@@ -5155,6 +4930,71 @@ angular.module('app').factory('activityService', function($http, $log, APP_CONFI
 			getActivitiesByType(type, callback);
 		}
 	}
+});
+'use strict';
+
+angular.module('app.dashboard').controller('DashboardController', function ($scope, $http, $interval, $state, authSvc, $filter, BASE_API) {
+    var msgTitle = "Dashboard";
+    var me = $scope;
+    var module = 'Dashboard/';
+    var api = BASE_API + module;
+
+    me.init = function () {
+        me.dataCountApproval = 0;
+        me.dataCountPenjurian = 0;
+        me.dataCountAudit = 0;
+        me.dataCountNewReg = 0;
+        countApproval();
+        countPenjurian();
+        countAudit();
+        countNewReg();
+    }
+
+    function countApproval() {
+        //var headers = authSvc.headers();
+        //headers.Accept = "application/json";
+        //$http.get(api + 'GetCountApproval').success(function (response) {
+        //    me.dataCountApproval = response;
+            
+        //}).error(function (err, status) {
+        //    console.log(err);
+        //});
+    }
+
+    function countAudit() {
+        //var headers = authSvc.headers();
+        //headers.Accept = "application/json";
+        //$http.get(api + 'GetCountAudit').success(function (response) {
+        //    me.dataCountAudit = response;
+
+        //}).error(function (err, status) {
+        //    console.log(err);
+        //});
+    }
+
+    function countNewReg() {
+        //var headers = authSvc.headers();
+        //headers.Accept = "application/json";
+        //$http.get(api + 'GetCountNewReg').success(function (response) {
+        //    me.dataCountNewReg = response;
+
+        //}).error(function (err, status) {
+        //    console.log(err);
+        //});
+    }
+
+    function countPenjurian() {
+        //var headers = authSvc.headers();
+        //headers.Accept = "application/json";
+        //$http.get(api + 'GetCountPenjurian').success(function (response) {
+        //    me.dataCountPenjurian = response;
+
+        //}).error(function (err, status) {
+        //    console.log(err);
+        //});
+    }
+
+    me.init();
 });
 "use strict";
 
@@ -5801,12 +5641,6 @@ angular.module('app.graphs').controller('FlotCtrl', function ($scope) {
 });
 'use strict';
 
-angular.module('app.home').controller('HomeController', function ($scope) {
-
-
-});
-'use strict';
-
 angular.module('app.laporan').controller('ByFunctionController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper, $filter) {
     var me = $scope;
     var module = 'pengalihan/';
@@ -5947,7 +5781,7 @@ angular.module('app.laporan').controller('ByFunctionController', function ($scop
 
     me.$watch("listArea", function (n, o) {
         var count = n.length;
-        if (count == 1) {
+        if (count === 1) {
             me.area = n[0].id;
             me.areaDesc = n[0].text;
 
@@ -6358,232 +6192,10 @@ angular.module('app.laporan').controller('formAuditPdca2Controller', function ($
 });
 'use strict';
 
-angular.module('app.layout').controller('LayoutController', function ($scope, $rootScope, $state, User, authSvc) {
-    $scope.init = function () {
-        $scope.isAuth = authSvc.authenticationData.isAuth;
-        if (!$scope.isAuth)
-            $state.go('login');
+angular.module('app.home').controller('HomeController', function ($scope) {
 
-    }
-
-    var $root = $('body');
-    $scope.menuOnTop = localStorage.getItem('sm-menu-on-top') === 'true' || $root.hasClass('menu-on-top');
-
-    localStorage.setItem('sm-menu-on-top', $scope.menuOnTop);
-    $root.toggleClass('menu-on-top', $scope.menuOnTop);
-    $rootScope.$broadcast('$smartLayoutMenuOnTop', $scope.menuOnTop);
-    if ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) {
-        $scope.faIconMenu = 'fa fa-hand-o-up';
-    }
-    else {
-        $scope.faIconMenu = 'fa fa-hand-o-left';
-    }
-    
-    $scope.SetTopMenu = function (event) {
-        $scope.menuOnTop = ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) ? 'false' : 'true';
-
-        localStorage.setItem('sm-menu-on-top', $scope.menuOnTop);
-        $root.toggleClass('menu-on-top', $scope.menuOnTop);
-        $rootScope.$broadcast('$smartLayoutMenuOnTop', $scope.menuOnTop);
-        if ($scope.menuOnTop) $root.removeClass('minified');
-
-        if ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) {
-            $scope.faIconMenu = 'fa fa-hand-o-up';
-        }
-        else {
-            $scope.faIconMenu = 'fa fa-hand-o-left';
-        }
-    }
-
-    $scope.logOut = function () {
-        $.SmartMessageBox({
-            title: "",
-            content: "Are you sure to exit from AHP & Profile Matching?",
-            buttons: '[OK][Batal]',
-            theme: 'bg-danger'
-        },
-        function (action) {
-            if (action === "OK") {
-                User.initialized = "";
-                User.userName = "";
-
-                authSvc.logOut();
-                $state.go('login');
-            }
-            else {
-                return;
-            }
-        });
-    }
-
-    $scope.init();
-});
-"use strict";
-
-
-angular.module('app').controller("LanguagesCtrl",  function LanguagesCtrl($scope, $rootScope, $log, Language){
-
-    $rootScope.lang = {};
-    
-    Language.getLanguages(function(data){
-
-        $rootScope.currentLanguage = data[0];
-
-        $rootScope.languages = data;
-
-        Language.getLang(data[0].key,function(data){
-
-            $rootScope.lang = data;
-        });
-
-    });
-
-    $scope.selectLanguage = function(language){
-        $rootScope.currentLanguage = language;
-        
-        Language.getLang(language.key,function(data){
-
-            $rootScope.lang = data;
-            
-        });
-    }
-
-    $rootScope.getWord = function(key){
-        if(angular.isDefined($rootScope.lang[key])){
-            return $rootScope.lang[key];
-        } 
-        else {
-            return key;
-        }
-    }
 
 });
-"use strict";
-
-angular.module('app').factory('Language', function ($rootScope, $http, APP_CONFIG) {
-
-	function getLanguage(key, callback) {
-
-		$http.get(APP_CONFIG.apiRootUrl + '/langs/' + key + '.json').success(function(data){
-
-			callback(data);
-			
-		}).error(function(){
-
-			$log.log('Error');
-			callback([]);
-
-		});
-
-	}
-
-	function getLanguages(callback) {
-
-		$http.get(APP_CONFIG.apiRootUrl + '/languages.json').success(function(data){
-
-			callback(data);
-			
-		}).error(function(){
-
-			$log.log('Error');
-			callback([]);
-
-		});
-
-	}
-
-	function getLanguagePath() {
-	    var key = $rootScope.currentLanguage == undefined ? 'id' : $rootScope.currentLanguage.key;
-	    var path = APP_CONFIG.apiRootUrl + '/langs/' + key + '.json';
-
-	    return path;
-	}
-
-	return {
-		getLang: function(type, callback) {
-			getLanguage(type, callback);
-		},
-		getLanguages:function(callback){
-			getLanguages(callback);
-		},
-		getLanguagePath: function (key) {
-		    return getLanguagePath(key);
-		}
-	}
-
-});
-"use strict";
-
-angular.module('app').directive('languageSelector', function(Language){
-    return {
-        restrict: "EA",
-        replace: true,
-        templateUrl: "app/layout/language/language-selector.tpl.html",
-        scope: true
-    }
-});
-"use strict";
-
-angular.module('app').directive('toggleShortcut', function($log,$timeout) {
-
-	var initDomEvents = function($element){
-
-		var shortcut_dropdown = $('#shortcut');
-
-		$element.on('click',function(){
-		
-			if (shortcut_dropdown.is(":visible")) {
-				shortcut_buttons_hide();
-			} else {
-				shortcut_buttons_show();
-			}
-
-		})
-
-		shortcut_dropdown.find('a').click(function(e) {
-			e.preventDefault();
-			window.location = $(this).attr('href');
-			setTimeout(shortcut_buttons_hide, 300);
-		});
-
-		
-
-		// SHORTCUT buttons goes away if mouse is clicked outside of the area
-		$(document).mouseup(function(e) {
-			if (shortcut_dropdown && !shortcut_dropdown.is(e.target) && shortcut_dropdown.has(e.target).length === 0) {
-				shortcut_buttons_hide();
-			}
-		});
-
-		// SHORTCUT ANIMATE HIDE
-		function shortcut_buttons_hide() {
-			shortcut_dropdown.animate({
-				height : "hide"
-			}, 300, "easeOutCirc");
-			$('body').removeClass('shortcut-on');
-
-		}
-
-		// SHORTCUT ANIMATE SHOW
-		function shortcut_buttons_show() {
-			shortcut_dropdown.animate({
-				height : "show"
-			}, 200, "easeOutCirc");
-			$('body').addClass('shortcut-on');
-		}
-	}
-
-	var link = function($scope,$element){
-		$timeout(function(){
-			initDomEvents($element);
-		});
-	}
-
-	return{
-		restrict:'EA',
-		link:link
-	}
-})
 'use strict';
 
 angular.module('app.masterdata').controller('CalonKaryawanController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
@@ -7099,1699 +6711,232 @@ angular.module('app.masterdata').controller('LowonganController', function ($sco
 });
 'use strict';
 
-angular.module('app.prosespengalihan').controller('ApproverController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesPengalihan/';
-    var api = BASE_API + module;
-    var msgTitle = 'Final Approval';
+angular.module('app.layout').controller('LayoutController', function ($scope, $rootScope, $state, User, authSvc) {
+    $scope.init = function () {
+        $scope.isAuth = authSvc.authenticationData.isAuth;
+        if (!$scope.isAuth)
+            $state.go('login');
 
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.Undo();
-
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
-
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTablesApprover',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Approval", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0', 'desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
-
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
-
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatus').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-
-        ];
-    };
-
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
-        });
-        return nRow;
-    };
-
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
-        
-    };
-       
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
-
-    };
-
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };
-        
-    function getApproval(cc) {
-        $http.post(api + 'ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-                    
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
     }
 
-    me.Approve = function () {
-        if (this.frmApprover.$valid) {
-            $.SmartMessageBox({
-                title: "Approve",
-                content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                theme: 'bg-warning'
-            },
-            function (action) {
-                if (action === "OK") {
-                    msgTitle = 'Approved by Executor';
-                    me.hr.reason = "";
-                    $http.get(api + 'GetApprovalByApprover?NomorPengalihan=' + me.data.Kode + '&Reasons=' + me.hr.reasons)
-                        .success(function (result) {
-                            if (result.Success) {
-                                NotifBoxSuccess(msgTitle, result.Message);
-                                me.ShowList();
-                            }
-                            else {
-                                NotifBoxWarning(msgTitle, result.Message);
-                            }
-                        })
-                        .error(function (error, status) {
-                            NotifBoxError(msgTitle, status + " - " + error.Message);
-                        });
-                    return;
-                }
-                else {
-                    return;
-                }
-            });
-        }
-    };
+    var $root = $('body');
+    $scope.menuOnTop = localStorage.getItem('sm-menu-on-top') === 'true' || $root.hasClass('menu-on-top');
 
-    me.Reject = function () {
-        if (this.frmApprover.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-            function (action, value) {
-                if (action === "OK") {
-                    if (isNullorEmpty(value) || value == 'undefined') {
-                        alert("Please enter reason.");
-
-                        return;
-                    }
-                    else {
-                        msgTitle = 'Rejected';
-                        $http.get(api + 'GetRejectedByApprover?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value)
-                        .success(function (result) {
-                            if (result.Success) {
-                                NotifBoxSuccess(msgTitle, result.Message);
-                                me.ShowList();
-                            }
-                            else {
-                                NotifBoxWarning(msgTitle, result.Message);
-                            }
-                        })
-                        .error(function (error, status) {
-                            NotifBoxError(msgTitle, status + " - " + error.Message);
-                        });
-
-                        return;
-                    }
-                }
-                else {
-                    return;
-                }
-            });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
+    localStorage.setItem('sm-menu-on-top', $scope.menuOnTop);
+    $root.toggleClass('menu-on-top', $scope.menuOnTop);
+    $rootScope.$broadcast('$smartLayoutMenuOnTop', $scope.menuOnTop);
+    if ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) {
+        $scope.faIconMenu = 'fa fa-hand-o-up';
+    }
+    else {
+        $scope.faIconMenu = 'fa fa-hand-o-left';
+    }
     
-    me.init(this);
-});
-'use strict';
+    $scope.SetTopMenu = function (event) {
+        $scope.menuOnTop = ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) ? 'false' : 'true';
 
-angular.module('app.prosespengalihan').controller('ExecutorController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesExecute/';
-    var api = BASE_API + module;
-    var msgTitle = 'Execute Budget Transfer';
+        localStorage.setItem('sm-menu-on-top', $scope.menuOnTop);
+        $root.toggleClass('menu-on-top', $scope.menuOnTop);
+        $rootScope.$broadcast('$smartLayoutMenuOnTop', $scope.menuOnTop);
+        if ($scope.menuOnTop) $root.removeClass('minified');
 
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.hr.FMDocPosting = '';
-        me.Undo();
-
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
-
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTables',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Load Data", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0','desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-                "t" +
-                "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
-
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
-
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatusExecutor').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-        ];
-    };
-
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
-        });
-        return nRow;
-    };
-
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
-
-    };
-
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
-
-    };
-
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };
-
-    function getApproval(cc) {
-        $http.post(BASE_API + 'ProsesPengalihan/ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');
-                    me.hr.FMDocPosting = result.Data.Header.FMDocPosting;
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
-    }
-
-    me.Approve = function () {
-        if (this.frmApprover.$valid) {
-            if (me.hr.FMDocPosting == undefined) {
-                me.hr.FMDocPosting = '';
-            }
-
-            if (isNullOrEmpty(me.hr.FMDocPosting)) {
-                errorMessage = "FM Document Posting required.";
-                NotifBoxWarning('Warning', errorMessage);
-
-                $("#FMDoc").focus();
-                return;
-            }
-            else {
-                if (me.hr.FMDocPosting.length != 9) {
-                    errorMessage = "FM Document Posting must be 9 digits.";
-                    NotifBoxWarning('Warning', errorMessage);
-                    return;
-                }
-                else {
-                    $.SmartMessageBox({
-                        title: "Approve",
-                        content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                        buttons: '[Cancel],[OK]',
-                        theme: 'bg-warning'
-                    },
-                        function (action) {
-                            if (action === "OK") {
-                                msgTitle = 'Approved by Executor';
-                                me.hr.reason = "";
-                                $http.get(api + 'GetFinish?NomorPengalihan=' + me.data.Kode + '&FMDoc=' + me.hr.FMDocPosting)
-                                    .success(function (result) {
-                                        if (result.Success) {
-                                            NotifBoxSuccess(msgTitle, result.Message);
-                                            me.ShowList();
-                                        }
-                                        else {
-                                            NotifBoxWarning(msgTitle, result.Message);
-                                        }
-                                    })
-                                    .error(function (error, status) {
-                                        NotifBoxError(msgTitle, status + " - " + error.Message);
-                                    });
-                                return;
-                            }
-                            else {
-                                return;
-                            }
-                        });
-                }
-            }
-        }
-    };
-
-    me.Reject = function () {
-        if (this.frmApprover.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-            function (action, value) {
-                if (action === "OK") {
-                    if (isNullorEmpty(value) || value == 'undefined') {
-                        alert("Please enter reason.");
-
-                        return;
-                    }
-                    else {
-                        msgTitle = 'Rejected by Executor';
-                        $http.get(api + 'GetRejected?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value)
-                        .success(function (result) {
-                            if (result.Success) {
-                                NotifBoxSuccess(msgTitle, result.Message);
-                                me.ShowList();
-                            }
-                            else {
-                                NotifBoxWarning(msgTitle, result.Message);
-                            }
-                        })
-                        .error(function (error, status) {
-                            NotifBoxError(msgTitle, status + " - " + error.Message);
-                        });
-
-                        return;
-                    }
-                }
-                else {
-                    return;
-                }
-            });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
-    me.onBlurFMDoc = function () {
-        if (me.hr.FMDocPosting == undefined) {
-            me.hr.FMDocPosting = '';
-        }
-
-        if (isNullOrEmpty(me.hr.FMDocPosting)) {
-            errorMessage = "FM Document Posting required.";
-            NotifBoxWarning('Warning', errorMessage);
-
-            $("#FMDoc").focus();
+        if ($scope.menuOnTop === 'true' || $scope.menuOnTop === true) {
+            $scope.faIconMenu = 'fa fa-hand-o-up';
         }
         else {
-            if (me.hr.FMDocPosting.length != 9) {
-                errorMessage = "FM Document Posting must be 9 digits.";
-                NotifBoxWarning('Warning', errorMessage);
-
-                $("#FMDoc").focus();
-            }
+            $scope.faIconMenu = 'fa fa-hand-o-left';
         }
-    };
+    }
 
-    me.init(this);
-});
-'use strict';
+    $scope.logOut = function () {
+        $.SmartMessageBox({
+            title: "",
+            content: "Are you sure to exit from AHP & Profile Matching?",
+            buttons: '[OK][Batal]',
+            theme: 'bg-danger'
+        },
+        function (action) {
+            if (action === "OK") {
+                User.initialized = "";
+                User.userName = "";
 
-angular.module('app.prosespengalihan').controller('HistoryController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper, $filter) {
-    var obj = this;
-    var me = $scope;
-    var module = 'history/';
-    var api = BASE_API + module;
-    var msgTitle = 'Budget Transfer History';
-
-    me.init = function () {
-        me.data = {};
-        me.plant = '';
-        me.startDate = DateFormat(new Date());
-        me.endDate = DateFormat(new Date());
-        me.listPlant = [];
-
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-
-        me.vm = obj;
-        me.vm.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('ajax', me.dataSource())
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            // .withPaginationType('full_numbers')
-
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withOption('order', ['0', 'desc'])
-
-            .withFixedColumns({
-                leftColumns: 2,
-                rightColumns: 1
-            })
-
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-
-        me.vm.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('No.').withClass('text-primary'),
-            DTColumnBuilder.newColumn('TrxDate').withTitle('Date').renderWith(function (value) {
-                return DateTimeFormat(value);
-            }),
-            //DTColumnBuilder.newColumn('TkoPengalihan').withTitle('TKO'),
-            //DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('Requester').withTitle('Requester'),
-            DTColumnBuilder.newColumn('AmountReceiver').withTitle('Amount Receiver').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('AmountSender').withTitle('Amount Sender').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('ApprovalStatusName').withTitle('Approval Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-
-            //DTColumnBuilder.newColumn('Bh1Receiver').withTitle('BH1(Receiver)'),
-            //DTColumnBuilder.newColumn('Bh2Receiver').withTitle('BH2(Receiver)'),
-            //DTColumnBuilder.newColumn('Bh1Sender').withTitle('BH1(Sender)'),
-            //DTColumnBuilder.newColumn('Bh2Sender').withTitle('BH2(Sender)'),
-            //DTColumnBuilder.newColumn('Verifikator').withTitle('Verificator'),
-            //DTColumnBuilder.newColumn('Submiter1').withTitle('Submiter'),
-            //DTColumnBuilder.newColumn('Approver1').withTitle('Approver 1'),
-            //DTColumnBuilder.newColumn('Approver2').withTitle('Approver 2'),
-
-            //DTColumnBuilder.newColumn('executor').withTitle('Executor'),
-            DTColumnBuilder.newColumn('ExecutorStatusName').withTitle('Executor Status'),
-            DTColumnBuilder.newColumn(null).withTitle('Action').withClass('text-center').notSortable().renderWith(actionsHtml)
-        ];
-
-        me.vm.dtInstance = {};
-        me.LoadComboPlant();
-    };
-
-    function actionsHtml(data, type, full, meta) {
-        var isSubmited = data.Status !== "0" ? 'disabled="disabled"' : '';
-        var clsPrint = isSubmited == '' ? 'disabled="disabled"' : '';
-        var btnDownload = '<button class="btn btn-xs btn-primary" ' + clsPrint + ' onclick="angular.element(this).scope().downloadForm(\'' + full.Kode + '\')"><i class="fa fa-print"></i> Print</button>';
-
-        return btnDownload;
-    };
-
-    me.downloadForm = function (NomorPengalihan) {
-        $http.get(BASE_API + 'ProsesPengalihan/GetFormulir?NomorPengalihan=' + NomorPengalihan, { responseType: 'arraybuffer' }).success(function (response) {
-            if (response !== null) {
-                var file = new Blob([response], { type: 'application/pdf' });
-                var fileURL = URL.createObjectURL(file);
-                window.open(fileURL, '_blank');
-                //var blob = new Blob([response], { type: 'application/pdf' });
-                //saveAs(blob, 'FormulirPengalihan_' + NomorPengalihan + '.pdf');
-            }
-        }).error(function (err, status) {
-            NotifBoxError(msgTitle, "Print document failed.");
-        });
-    };
-
-    me.downloadPDF = function () {
-        var startDate = me.startDate.includes('.') ? DateReformat(me.startDate) : me.startDate;
-        var endDate = me.endDate.includes('.') ? DateReformat(me.endDate) : me.endDate;
-
-        $http.get(api + 'gethistorypdf?plant=' + me.plant + '&startDate=' + startDate + '&endDate=' + endDate, { responseType: 'arraybuffer' }).success(function (response) {
-            if (response !== null) {
-                var file = new Blob([response], { type: 'application/pdf' });
-                var fileURL = URL.createObjectURL(file);
-                window.open(fileURL, '_blank');
-            }
-        }).error(function (err, status) {
-            NotifBoxError(msgTitle, "Download document failed.");
-        });
-    };
-
-
-    me.LoadComboPlant = function () {
-        Select2Helper.GetDataForCombo(BASE_API + 'MasterCostCenter/DropdownPlantByUser').then(function (result) {
-            me.listPlant = result.Dropdown;
-        });
-    };
-
-    me.find = function () {
-        if (IsNullOrEmpty(me.startDate)) {
-            NotifBoxWarning(msgTitle, "Start Date required.");
-
-            return;
-        }
-        else {
-            if (IsNullOrEmpty(me.endDate)) {
-                NotifBoxWarning(msgTitle, "End Date required.");
-
-                return;
+                authSvc.logOut();
+                $state.go('login');
             }
             else {
-                me.vm.dtInstance.reloadData(function () {
-                    me.vm.tableOptions.withOption('ajax', me.dataSource());
-                }, true);
-            }
-        }
-    };
-
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-
-    me.dataSource = function () {
-        var startDate = me.startDate.includes('.') ? DateReformat(me.startDate) : me.startDate;
-        var endDate = me.endDate.includes('.') ? DateReformat(me.endDate) : me.endDate;
-
-        return {
-            url: api + 'DataTables?Plant=' + me.plant + '&StartDate=' + startDate + '&EndDate=' + endDate,
-            type: 'POST',
-            accepts: "application/json",
-            headers: authSvc.headers(),
-            error: function (xhr, ajaxOptions, thrownError) {
-                var msg = "Loading data failed.";
-                NotifBoxErrorTable(msgTitle, msg, xhr.status, $state, authSvc);
-            }
-        };
-    };
-
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            console.log($(this).text());
-            if ($(this).text() != ' Print') {
-                me.$apply(function () {
-                    me.EditData(aData);
-                });
+                return;
             }
         });
-        return nRow;
-    };
-
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.data = data;
-
-        getApproval(data.Kode);
-
-    };
-
-    function getApproval(cc) {
-        $http.post(BASE_API + 'ProsesPengalihan/ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-                    me.data.FMDocPosting = result.Data.Header.FMDocPosting;
-
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
     }
 
-    me.ShowList = function () {
-        me.isShowList = true;
-    };
-
-    me.init();
+    $scope.init();
 });
-'use strict';
+"use strict";
 
-angular.module('app.prosespengalihan').controller('ReceiverBhController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesPengalihan/';
-    var api = BASE_API + module;
-    var msgTitle = 'Budget Holder(Receiver) Approval';
+
+angular.module('app').controller("LanguagesCtrl",  function LanguagesCtrl($scope, $rootScope, $log, Language){
+
+    $rootScope.lang = {};
     
+    Language.getLanguages(function(data){
 
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.Undo();
-        
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
+        $rootScope.currentLanguage = data[0];
 
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTablesReceiverBudgetHolder',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Approval Budget Holder(Receiver) ", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0', 'desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
+        $rootScope.languages = data;
 
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
+        Language.getLang(data[0].key,function(data){
 
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatus').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type')
-        ];
-    };
-
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
+            $rootScope.lang = data;
         });
-        return nRow;
-    };
 
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
+    });
+
+    $scope.selectLanguage = function(language){
+        $rootScope.currentLanguage = language;
         
-    };
+        Language.getLang(language.key,function(data){
 
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
-    };
-
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };
-        
-    function getApproval(cc) {
-        $http.post(api + 'ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender,'Amount');
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
-    }
-
-    me.Approve = function () {
-        if (this.frmReceiverBh.$valid) {
-            $.SmartMessageBox({
-                title: "Approve",
-                content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                theme: 'bg-warning'
-            },
-                function (action) {
-                    if (action === "OK") {
-                        me.hr.reason = "";
-                        msgTitle = 'Approved by Budget Holder(Receiver)';
-                        $http.get(api + 'GetApprovalByBhReceiver?NomorPengalihan=' + me.data.Kode + '&Reasons=' + me.hr.reasons)
-                            .success(function (result) {
-                                if (result.Success) {
-                                    NotifBoxSuccess(msgTitle, result.Message);
-                                    me.ShowList();
-                                }
-                                else {
-                                    NotifBoxWarning(msgTitle, result.Message);
-                                }
-                            })
-                            .error(function (error, status) {
-                                NotifBoxError(msgTitle, status + " - " + error.Message);
-                            });
-                        return;
-                    }
-                    else {
-                        return;
-                    }
-                });
-        }
-    };
-
-    me.Reject = function () {
-        if (this.frmReceiverBh.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-                function (action, value) {
-                    if (action === "OK") {
-                        if (isNullorEmpty(value) || value == 'undefined') {
-                            alert("Please enter reason.");
-
-                            return;
-                        }
-                        else {
-                            msgTitle = 'Rejected by Budget Holder(Receiver)';
-                            $http.get(api + 'GetRejectedByBhReceiver?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value)
-                                .success(function (result) {
-                                    if (result.Success) {
-                                        NotifBoxSuccess(msgTitle, result.Message);
-                                        me.ShowList();
-                                    }
-                                    else {
-                                        NotifBoxWarning(msgTitle, result.Message);
-                                    }
-                                })
-                                .error(function (error, status) {
-                                    NotifBoxError(msgTitle, status + " - " + error.Message);
-                                });
-
-                            return;
-                        }
-                    }
-                    else {
-                        return;
-                    }
-                });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
-    
-    me.init(this);
-});
-'use strict';
-
-angular.module('app.prosespengalihan').controller('SenderBhController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesPengalihan/';
-    var api = BASE_API + module;
-    var msgTitle = 'Budget Holder(Sender) Approval';
-
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.Undo();
-
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
-
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTablesSenderBudgetHolder',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Approval Budget Holder(Sender) ", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0', 'desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
-
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
-
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatus').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-
-        ];
-    };
-
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
-        });
-        return nRow;
-    };
-
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
-        
-    };
-
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
-
-    };
-
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };
-    
-    
-    function getApproval(cc) {
-        $http.post(api + 'ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
-    }
-
-    me.Approve = function () {
-        if (this.frmSenderBh.$valid) {
-            $.SmartMessageBox({
-                title: "Approve",
-                content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                theme: 'bg-warning'
-            },
-            function (action) {
-                if (action === "OK") {
-                    me.hr.reason = "";
-                    msgTitle = 'Approved by Budget Holder(Sender)';
-                    $http.get(api + 'GetApprovalByBhSender?NomorPengalihan=' + me.data.Kode + '&Reasons=' + me.hr.reasons)
-                        .success(function (result) {
-                            if (result.Success) {
-                                NotifBoxSuccess(msgTitle, result.Message);
-                                me.ShowList();
-                            }
-                            else {
-                                NotifBoxWarning(msgTitle, result.Message);
-                            }
-                        })
-                        .error(function (error, status) {
-                            NotifBoxError(msgTitle, status + " - " + error.Message);
-                        });
-                    return;
-                }
-                else {
-                    return;
-                }
-            });
-        }
-    };
-
-    me.Reject = function () {
-        if (this.frmSenderBh.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-                function (action, value) {
-                    if (action === "OK") {
-                        if (isNullorEmpty(value) || value == 'undefined') {
-                            alert("Please enter reason.");
-
-                            return;
-                        }
-                        else {
-                            msgTitle = 'Rejected by Budget Holder(Sender)';
-                            $http.get(api + 'GetRejectedByBhSender?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value)
-                                .success(function (result) {
-                                    if (result.Success) {
-                                        NotifBoxSuccess(msgTitle, result.Message);
-                                        me.ShowList();
-                                    }
-                                    else {
-                                        NotifBoxWarning(msgTitle, result.Message);
-                                    }
-                                })
-                                .error(function (error, status) {
-                                    NotifBoxError(msgTitle, status + " - " + error.Message);
-                                });
-
-                            return;
-                        }
-                    }
-                    else {
-                        return;
-                    }
-                });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
-    
-    me.init(this);
-});
-'use strict';
-
-angular.module('app.prosespengalihan').controller('SubmiterController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesPengalihan/';
-    var api = BASE_API + module;
-    var msgTitle = 'Submiter Approval';
-
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.Undo();
-
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
-
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTablesSubmiter',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Submiter Approval", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0', 'desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
-
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
+            $rootScope.lang = data;
             
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
-
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatus').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-        ];
-    };
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
         });
-        return nRow;
     }
 
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
-        
-    };
-
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
-
-    }
-
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };
-    
-    
-    function getApproval(cc) {
-        $http.post(api + 'ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
-
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');          
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
-    }
-
-    me.Approve = function () {
-        if (this.frmSubmiter.$valid) {
-            $.SmartMessageBox({
-                title: "Approve",
-                content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                theme: 'bg-warning'
-            },
-            function (action) {
-                if (action === "OK") {
-                    me.hr.reason = "";
-                    msgTitle = 'Approved by Submiter';
-                    $http.get(api + 'GetApprovalBySubmiter?NomorPengalihan=' + me.data.Kode + '&Reasons=' + me.hr.reasons)
-                    .success(function (result) {
-                        if (result.Success) {
-                            NotifBoxSuccess(msgTitle, result.Message);
-                            me.ShowList();
-                        }
-                        else {
-                            NotifBoxWarning(msgTitle, result.Message);
-                        }
-                    })
-                    .error(function (error, status) {
-                        NotifBoxError(msgTitle, status + " - " + error.Message);
-                    });
-
-                    return;
-                }
-                else {
-                    return;
-                }
-            });
+    $rootScope.getWord = function(key){
+        if(angular.isDefined($rootScope.lang[key])){
+            return $rootScope.lang[key];
+        } 
+        else {
+            return key;
         }
-    };
+    }
 
-    me.Reject = function () {
-        if (this.frmSubmiter.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-                function (action, value) {
-                    if (action === "OK") {
-                        if (isNullorEmpty(value) || value == 'undefined') {
-                            alert("Please enter reason.");
-
-                            return;
-                        }
-                        else {
-                            msgTitle = 'Rejected by Submiter';
-                            $http.get(api + 'GetRejectedBySubmiter?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value)
-                            .success(function (result) {
-                                if (result.Success) {
-                                    NotifBoxSuccess(msgTitle, result.Message);
-                                    me.ShowList();
-                                }
-                                else {
-                                    NotifBoxWarning(msgTitle, result.Message);
-                                }
-                            })
-                            .error(function (error, status) {
-                                NotifBoxError(msgTitle, status + " - " + error.Message);
-                            });
-
-                            return;
-                        }
-                    }
-                    else {
-                        return;
-                    }
-                });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
-    
-    me.init(this);
 });
-'use strict';
+"use strict";
 
-angular.module('app.prosespengalihan').controller('VerificatorController', function ($scope, $http, $state, authSvc, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language, Select2Helper) {
-    var me = $scope;
-    var module = 'ProsesPengalihan/';
-    var api = BASE_API + module;
-    var msgTitle = 'Verificator Approval';
+angular.module('app').factory('Language', function ($rootScope, $http, APP_CONFIG) {
 
-    me.init = function (obj) {
-        me.data = {};
-        me.Kurs = 1;
-        me.hdr = {};
-        me.hdr.totalSender = 0;
-        me.hdr.totalReceiver = 0;
-        me.isShowList = true;
-        me.isNew = false;
-        me.listHistory = {};
-        me.hr = {};
-        me.hr.reasons = '';
-        me.hr.pr = '';
-        me.Undo();
+	function getLanguage(key, callback) {
 
-        var headers = authSvc.headers();
-        headers.Accept = "application/json";
+		$http.get(APP_CONFIG.apiRootUrl + '/langs/' + key + '.json').success(function(data){
 
-        obj.tableOptions = DTOptionsBuilder
-            .newOptions()
-            .withOption('order', [1, 'asc'])
-            .withOption('ajax', {
-                // Either you specify the AjaxDataProp here
-                // dataSrc: 'data',
-                url: api + 'DataTablesVerificator',
-                type: 'POST',
-                accepts: "application/json",
-                headers: headers,
-                error: function (xhr, ajaxOptions, thrownError) {
-                    NotifBoxErrorTable("Verificator Approval", xhr.responseText.Message, xhr.status, $state, authSvc);
-                }
-            })
-            .withDataProp('data')
-            .withOption('processing', false)
-            .withOption('serverSide', true)
-            .withOption('fnPreDrawCallback', ShowLoader)
-            .withOption('fnDrawCallback', HideLoader)
-            .withOption('order', ['0', 'desc'])
-            //.withPaginationType('full_numbers')
-            //Add Bootstrap compatibility
-            .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-            .withOption('rowCallback', me.rowCallback)
+			callback(data);
+			
+		}).error(function(){
 
-            .withOption('responsive', true)
-            .withOption('scrollX', true)
-            .withOption('scrollY', true)
-            .withOption('scrollCollapse', true)
-            .withOption('autoWidth', true)
-            .withOption('colReorder', true)
-            .withFixedColumns({
-                rightColumns: 1
-            })
+			$log.log('Error');
+			callback([]);
 
-            .withBootstrap()
-            .withLanguageSource(Language.getLanguagePath());
+		});
 
-        obj.tableColumns = [
-            DTColumnBuilder.newColumn('Kode').withTitle('NO').withClass('text-primary'),
-            DTColumnBuilder.newColumn('CreatedDate').withTitle('Request Date'),
-            DTColumnBuilder.newColumn('Plant').withTitle('Plant'),
-            DTColumnBuilder.newColumn('NamaCcPengusul').withTitle('Requester'),
-            DTColumnBuilder.newColumn('Curr').withTitle('Curr'),
-            DTColumnBuilder.newColumn('Amount').withTitle('Amount').withClass('text-right').renderWith(function (value) {
-                return me.NumberFormatIDR(value);
-            }),
-            DTColumnBuilder.newColumn('NamaStatus').withTitle('Status'),
-            DTColumnBuilder.newColumn('TypePengalihan').withTitle('Transfer Type'),
-        ];
-    };
+	}
 
-    me.NumberFormatIDR = function (val) {
-        var value = angular.copy(val);
-        return IDNumberFormat(value, 2);
-    };
+	function getLanguages(callback) {
 
-    me.rowCallback = function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        $('td', nRow).unbind('click');
-        $('td', nRow).bind('click', function () {
-            me.$apply(function () {
-                me.EditData(aData);
-            });
-        });
-        return nRow;
-    };
+		$http.get(APP_CONFIG.apiRootUrl + '/languages.json').success(function(data){
 
-    me.ShowList = function () {
-        me.isShowList = true;
-        me.isNew = false;
-        
-    };
+			callback(data);
+			
+		}).error(function(){
 
-    me.EditData = function (data) {
-        me.isShowList = false;
-        me.isNew = false;
-        me.data = data;
-        getApproval(data.Kode);
+			$log.log('Error');
+			callback([]);
 
-    };
+		});
 
-    me.Undo = function () {
-        me.data = {};
-        me.isNew = true;
-    };    
-    
-    function getApproval(cc) {
-        $http.post(api + 'ApprovalData?NomorPengalihan=' + cc)
-            .success(function (result) {
-                if (result.Success) {
-                    me.Kurs = result.Data.Header.Kurs;
-                    me.listApprove = result.Data.Detail;
-                    me.listHistory = result.Data.History;
+	}
 
-                    var Receiver = [];
-                    var Sender = [];
-                    angular.forEach(me.listApprove, function (value, key) {
-                        if (value.TipeCc === 'RECEIVER') {
-                            Receiver.push(value);
-                        } else {
-                            Sender.push(value);
-                        }
-                    });
-                    me.hdr.totalReceiver = sumFromArray(Receiver, 'Amount');
-                    me.hdr.totalSender = sumFromArray(Sender, 'Amount');
-                }
-                else {
-                    NotifBoxWarning('Warning', result.Message);
-                }
-            })
-            .error(function (error, status) {
-                NotifBoxError('Warning', status + " - " + error.Message);
-            });
-    }
+	function getLanguagePath() {
+	    var key = $rootScope.currentLanguage == undefined ? 'id' : $rootScope.currentLanguage.key;
+	    var path = APP_CONFIG.apiRootUrl + '/langs/' + key + '.json';
 
-    me.Approve = function () {
-        if (this.frmVerificator.$valid) {
-            if (me.hr.pr.length != 9) {
-                errorMessage = "PR number must be 9 digits.";
-                NotifBoxWarning('Warning', errorMessage);
-                return;
-            }
-            else {
-                $.SmartMessageBox({
-                    title: "Approve",
-                    content: "Apakah anda yakin akan menyetujui dokumen ini ?",
-                    buttons: '[Cancel],[OK]',
-                    theme: 'bg-warning'
-                },
-                function (action) {
-                    if (action === "OK") {
-                        me.hr.reason = "";
-                        msgTitle = 'Approved by Verificator';
-                        $http.get(api + 'GetApprovalByVerificator?NomorPengalihan=' + me.data.Kode + '&Reasons=' + me.hr.reasons + '&NomorPR=' + me.hr.pr)
-                            .success(function (result) {
-                                if (result.Success) {
-                                    NotifBoxSuccess(msgTitle, result.Message);
-                                    me.ShowList();
-                                }
-                                else {
-                                    NotifBoxWarning(msgTitle, result.Message);
-                                }
-                            })
-                            .error(function (error, status) {
-                                NotifBoxError(msgTitle, status + " - " + error.Message);
-                            });
-                        return;
-                    }
-                    else {
-                        return;
-                    }
-                });
-            }
-        }
-    };
+	    return path;
+	}
 
-    me.Reject = function () {
-        if (this.frmVerificator.$valid) {
-            $.SmartMessageBox({
-                title: "Reject",
-                content: "Apakah anda yakin akan menolak dokumen ini ?",
-                buttons: '[Cancel],[OK]',
-                input: "text",
-                placeholder: "Enter reason",
-                theme: 'bg-danger'
-            },
-            function (action, value) {
-                if (action === "OK") {
-                    if (isNullorEmpty(value) || value == 'undefined') {
-                        alert("Please enter reason.");
+	return {
+		getLang: function(type, callback) {
+			getLanguage(type, callback);
+		},
+		getLanguages:function(callback){
+			getLanguages(callback);
+		},
+		getLanguagePath: function (key) {
+		    return getLanguagePath(key);
+		}
+	}
 
-                        return;
-                    }
-                    else {
-                        msgTitle = 'Rejected by Verificator';
-                        $http.get(api + 'GetRejectedByVerificator?NomorPengalihan=' + me.data.Kode + '&Reasons=' + value + '&NomorPR=' + me.hr.pr)
-                            .success(function (result) {
-                                if (result.Success) {
-                                    NotifBoxSuccess(msgTitle, result.Message);
-                                    me.ShowList();
-                                }
-                                else {
-                                    NotifBoxWarning(msgTitle, result.Message);
-                                }
-                            })
-                            .error(function (error, status) {
-                                NotifBoxError(msgTitle, status + " - " + error.Message);
-                            });
-
-                        return;
-                    }
-                }
-                else {
-                    return;
-                }
-            });
-
-            $("#txt1").val("");
-            $("#bot2-Msg1").prop("disabled", true);
-            $("#txt1").on("keyup", function (e) {
-                if ($(this).val() == '') {
-                    $("#bot2-Msg1").prop("disabled", true);
-                }
-                else {
-                    $("#bot2-Msg1").prop("disabled", false);
-                }
-                e.preventDefault;
-            });
-        }
-    };
-
-    me.onBlurPR = function () {
-        if (me.hr.pr.length != 9) {
-            errorMessage = "PR number must be 9 digits.";
-            NotifBoxWarning('Warning', errorMessage);
-
-            $("#pr").focus();
-        }
-    };
-    
-    me.init(this);
 });
+"use strict";
+
+angular.module('app').directive('languageSelector', function(Language){
+    return {
+        restrict: "EA",
+        replace: true,
+        templateUrl: "app/layout/language/language-selector.tpl.html",
+        scope: true
+    }
+});
+"use strict";
+
+angular.module('app').directive('toggleShortcut', function($log,$timeout) {
+
+	var initDomEvents = function($element){
+
+		var shortcut_dropdown = $('#shortcut');
+
+		$element.on('click',function(){
+		
+			if (shortcut_dropdown.is(":visible")) {
+				shortcut_buttons_hide();
+			} else {
+				shortcut_buttons_show();
+			}
+
+		})
+
+		shortcut_dropdown.find('a').click(function(e) {
+			e.preventDefault();
+			window.location = $(this).attr('href');
+			setTimeout(shortcut_buttons_hide, 300);
+		});
+
+		
+
+		// SHORTCUT buttons goes away if mouse is clicked outside of the area
+		$(document).mouseup(function(e) {
+			if (shortcut_dropdown && !shortcut_dropdown.is(e.target) && shortcut_dropdown.has(e.target).length === 0) {
+				shortcut_buttons_hide();
+			}
+		});
+
+		// SHORTCUT ANIMATE HIDE
+		function shortcut_buttons_hide() {
+			shortcut_dropdown.animate({
+				height : "hide"
+			}, 300, "easeOutCirc");
+			$('body').removeClass('shortcut-on');
+
+		}
+
+		// SHORTCUT ANIMATE SHOW
+		function shortcut_buttons_show() {
+			shortcut_dropdown.animate({
+				height : "show"
+			}, 200, "easeOutCirc");
+			$('body').addClass('shortcut-on');
+		}
+	}
+
+	var link = function($scope,$element){
+		$timeout(function(){
+			initDomEvents($element);
+		});
+	}
+
+	return{
+		restrict:'EA',
+		link:link
+	}
+})
 'use strict';
 
 angular.module('app.proses').controller('PerbandinganKriteriaController', function ($scope, $http, $state, $filter, authSvc, Select2Helper, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language) {
@@ -9029,22 +7174,15 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
         me.posisi = '';
         me.jumlah = '';
         me.FindPosisi(null);
-        me.loadRankingScore(me.periode);
-        me.loadRankingPosisi(me.periode, me.posisi,me.jumlah);
+       
     };
+    
 
     me.FindPosisi = function (item) {
         Select2Helper.GetDataForCombo(api + 'DropdownPosisi?term=' + item).then(function (result) {
             me.listPosisi = result.Dropdown;
         });
     };
-
-    me.FindJumlah = function (item) {
-        Select2Helper.GetDataForCombo(api + 'DropdownJumlah?term=' + item).then(function (result) {
-            me.listJumlah = result.Dropdown;
-        });
-    };
-
 
     me.Undo = function () {
         Select2Helper.GetDataForCombo(api + 'DropdownPeriode').then(function (result) {
@@ -9053,11 +7191,12 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
     };
 
      
-    me.loadRankingScore = function (periode) {
-        $http.get(api + 'SpRankingScore?periode=' + periode).success(function (response) {
+    me.loadRankingScore = function (periode, posisi) {
+        $http.get(api + 'SpRankingScore?periode=' + periode + '&posisi=' + posisi).success(function (response) {
                 if (response !== null) {
                     me.rankingScore = response;
-                   
+                    me.jumlah = response[0].Jumlah;
+                    me.loadRankingPosisi(me.periode, me.posisi, me.jumlah);
                 }
                 }).error(function (err, status) {
                     NotifBoxError('Warning', err.Message);
@@ -9074,6 +7213,22 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
             NotifBoxError('Warning', err.Message);
         });
     };
+
+    me.print = function (periode,posisi,jumlah) {
+        $http.get(api + 'Print?periode=' + periode + '&posisi=' + posisi + '&jumlah=' + jumlah, { responseType: 'arraybuffer' }).success(function (response) {
+            if (response !== null) {
+                var file = new Blob([response], { type: 'application/pdf' });
+                var fileURL = URL.createObjectURL(file);
+                //$window.open(fileURL, '_blank');
+                var blob = new Blob([response], { type: 'application/pdf' });
+                saveAs(blob, 'laporan-hasil-akhir.pdf');
+            }
+        })
+            .error(function (error, status) {
+                NotifBoxError(msgTitle, "Print document failed.");
+            });
+
+    };
     
     me.NumberFormat = function (val) {
         var value = angular.copy(val);
@@ -9081,6 +7236,293 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
     };
 
     me.init(this);
+});
+/**
+ * Created by griga on 2/9/16.
+ */
+
+
+angular.module('app.tables').controller('DatatablesCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
+
+    
+
+
+    this.standardOptions = DTOptionsBuilder
+        .fromSource('api/tables/datatables.standard.json')
+         //Add Bootstrap compatibility
+        .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+            "t" +
+            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
+        .withBootstrap();
+
+    
+
+    this.standardColumns = [
+        DTColumnBuilder.newColumn('id').withClass('text-primary'),
+        DTColumnBuilder.newColumn('name'),
+        DTColumnBuilder.newColumn('phone'),
+        DTColumnBuilder.newColumn('company'),
+        DTColumnBuilder.newColumn('zip'),
+        DTColumnBuilder.newColumn('city'),
+        DTColumnBuilder.newColumn('date')
+    ];
+
+    console.log("s");
+});
+/**
+ * Created by griga on 2/9/16.
+ */
+
+// http://l-lin.github.io/angular-datatables/archives/#!/gettingStarted
+angular.module('app.tables').controller('GenericDatatablesCtrl', function (DTOptionsBuilder, DTColumnBuilder, BASE_API) {
+    this.standardOptions = DTOptionsBuilder
+        .newOptions()
+        .withOption('ajax', {
+            // Either you specify the AjaxDataProp here
+            // dataSrc: 'data',
+            url: BASE_API + 'masterstatuslahan/datatables',
+            type: 'POST'
+        })
+        .withDataProp('data')
+        .withOption('processing', false)
+        .withOption('serverSide', true)
+        //.withPaginationType('full_numbers')
+         //Add Bootstrap compatibility
+        .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
+            "t" +
+            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
+        .withBootstrap();
+    
+    this.standardColumns = [
+        DTColumnBuilder.newColumn('Kode').withTitle('Kode').withClass('text-primary'),
+        DTColumnBuilder.newColumn('Nama').withTitle('Nama')
+    ];
+});
+'use strict';
+
+angular.module('app.tables').controller('JqGridCtrl', function ($scope) {
+    $scope.gridData = {
+        data: [
+            {
+                id: "1",
+                date: "2007-10-01",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "2",
+                date: "2007-10-02",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "3",
+                date: "2007-09-01",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            },
+            {
+                id: "4",
+                date: "2007-10-04",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "5",
+                date: "2007-10-05",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "6",
+                date: "2007-09-06",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            },
+            {
+                id: "7",
+                date: "2007-10-04",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "8",
+                date: "2007-10-03",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "9",
+                date: "2007-09-01",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            },
+            {
+                id: "10",
+                date: "2007-10-01",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "11",
+                date: "2007-10-02",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "12",
+                date: "2007-09-01",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            },
+            {
+                id: "13",
+                date: "2007-10-04",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "14",
+                date: "2007-10-05",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "15",
+                date: "2007-09-06",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            },
+            {
+                id: "16",
+                date: "2007-10-04",
+                name: "test",
+                note: "note",
+                amount: "200.00",
+                tax: "10.00",
+                total: "210.00"
+            },
+            {
+                id: "17",
+                date: "2007-10-03",
+                name: "test2",
+                note: "note2",
+                amount: "300.00",
+                tax: "20.00",
+                total: "320.00"
+            },
+            {
+                id: "18",
+                date: "2007-09-01",
+                name: "test3",
+                note: "note3",
+                amount: "400.00",
+                tax: "30.00",
+                total: "430.00"
+            }
+        ],
+        colNames: ['Actions', 'Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],
+        colModel: [
+            {
+                name: 'act',
+                index: 'act',
+                sortable: false
+            },
+            {
+                name: 'id',
+                index: 'id'
+            },
+            {
+                name: 'date',
+                index: 'date',
+                editable: true
+            },
+            {
+                name: 'name',
+                index: 'name',
+                editable: true
+            },
+            {
+                name: 'amount',
+                index: 'amount',
+                align: "right",
+                editable: true
+            },
+            {
+                name: 'tax',
+                index: 'tax',
+                align: "right",
+                editable: true
+            },
+            {
+                name: 'total',
+                index: 'total',
+                align: "right",
+                editable: true
+            },
+            {
+                name: 'note',
+                index: 'note',
+                sortable: false,
+                editable: true
+            }
+        ]
+    }
+
+
+    $scope.getSelection = function(){
+        alert(jQuery('table').jqGrid('getGridParam', 'selarrrow'));
+    };
+
+    $scope.selectRow = function(row){
+       jQuery('table').jqGrid('setSelection', row);
+
+    }
 });
 "use strict";
 
@@ -9891,293 +8333,6 @@ angular.module('app.ui').directive('smartTreeview', function ($compile, $sce) {
             };
         }
     };
-});
-/**
- * Created by griga on 2/9/16.
- */
-
-
-angular.module('app.tables').controller('DatatablesCtrl', function (DTOptionsBuilder, DTColumnBuilder) {
-
-    
-
-
-    this.standardOptions = DTOptionsBuilder
-        .fromSource('api/tables/datatables.standard.json')
-         //Add Bootstrap compatibility
-        .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-        .withBootstrap();
-
-    
-
-    this.standardColumns = [
-        DTColumnBuilder.newColumn('id').withClass('text-primary'),
-        DTColumnBuilder.newColumn('name'),
-        DTColumnBuilder.newColumn('phone'),
-        DTColumnBuilder.newColumn('company'),
-        DTColumnBuilder.newColumn('zip'),
-        DTColumnBuilder.newColumn('city'),
-        DTColumnBuilder.newColumn('date')
-    ];
-
-    console.log("s");
-});
-/**
- * Created by griga on 2/9/16.
- */
-
-// http://l-lin.github.io/angular-datatables/archives/#!/gettingStarted
-angular.module('app.tables').controller('GenericDatatablesCtrl', function (DTOptionsBuilder, DTColumnBuilder, BASE_API) {
-    this.standardOptions = DTOptionsBuilder
-        .newOptions()
-        .withOption('ajax', {
-            // Either you specify the AjaxDataProp here
-            // dataSrc: 'data',
-            url: BASE_API + 'masterstatuslahan/datatables',
-            type: 'POST'
-        })
-        .withDataProp('data')
-        .withOption('processing', false)
-        .withOption('serverSide', true)
-        //.withPaginationType('full_numbers')
-         //Add Bootstrap compatibility
-        .withDOM("<'dt-toolbar'<'col-xs-12 col-sm-6'f><'col-sm-6 col-xs-12 hidden-xs'l>r>" +
-            "t" +
-            "<'dt-toolbar-footer'<'col-sm-6 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-6'p>>")
-        .withBootstrap();
-    
-    this.standardColumns = [
-        DTColumnBuilder.newColumn('Kode').withTitle('Kode').withClass('text-primary'),
-        DTColumnBuilder.newColumn('Nama').withTitle('Nama')
-    ];
-});
-'use strict';
-
-angular.module('app.tables').controller('JqGridCtrl', function ($scope) {
-    $scope.gridData = {
-        data: [
-            {
-                id: "1",
-                date: "2007-10-01",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "2",
-                date: "2007-10-02",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "3",
-                date: "2007-09-01",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            },
-            {
-                id: "4",
-                date: "2007-10-04",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "5",
-                date: "2007-10-05",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "6",
-                date: "2007-09-06",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            },
-            {
-                id: "7",
-                date: "2007-10-04",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "8",
-                date: "2007-10-03",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "9",
-                date: "2007-09-01",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            },
-            {
-                id: "10",
-                date: "2007-10-01",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "11",
-                date: "2007-10-02",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "12",
-                date: "2007-09-01",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            },
-            {
-                id: "13",
-                date: "2007-10-04",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "14",
-                date: "2007-10-05",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "15",
-                date: "2007-09-06",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            },
-            {
-                id: "16",
-                date: "2007-10-04",
-                name: "test",
-                note: "note",
-                amount: "200.00",
-                tax: "10.00",
-                total: "210.00"
-            },
-            {
-                id: "17",
-                date: "2007-10-03",
-                name: "test2",
-                note: "note2",
-                amount: "300.00",
-                tax: "20.00",
-                total: "320.00"
-            },
-            {
-                id: "18",
-                date: "2007-09-01",
-                name: "test3",
-                note: "note3",
-                amount: "400.00",
-                tax: "30.00",
-                total: "430.00"
-            }
-        ],
-        colNames: ['Actions', 'Inv No', 'Date', 'Client', 'Amount', 'Tax', 'Total', 'Notes'],
-        colModel: [
-            {
-                name: 'act',
-                index: 'act',
-                sortable: false
-            },
-            {
-                name: 'id',
-                index: 'id'
-            },
-            {
-                name: 'date',
-                index: 'date',
-                editable: true
-            },
-            {
-                name: 'name',
-                index: 'name',
-                editable: true
-            },
-            {
-                name: 'amount',
-                index: 'amount',
-                align: "right",
-                editable: true
-            },
-            {
-                name: 'tax',
-                index: 'tax',
-                align: "right",
-                editable: true
-            },
-            {
-                name: 'total',
-                index: 'total',
-                align: "right",
-                editable: true
-            },
-            {
-                name: 'note',
-                index: 'note',
-                sortable: false,
-                editable: true
-            }
-        ]
-    }
-
-
-    $scope.getSelection = function(){
-        alert(jQuery('table').jqGrid('getGridParam', 'selarrrow'));
-    };
-
-    $scope.selectRow = function(row){
-       jQuery('table').jqGrid('setSelection', row);
-
-    }
 });
 "use strict";
 
@@ -11732,53 +9887,6 @@ angular.module('app.graphs').directive('sparklineContainer', function () {
         }
     }
 });
-'use strict';
-
-angular.module('app.graphs').directive('vectorMap', function () {
-    return {
-        restrict: 'EA',
-        scope: {
-            mapData: '='
-        },
-        link: function (scope, element, attributes) {
-            var data = scope.mapData;
-
-            element.vectorMap({
-                map: 'world_mill_en',
-                backgroundColor: '#fff',
-                regionStyle: {
-                    initial: {
-                        fill: '#c4c4c4'
-                    },
-                    hover: {
-                        "fill-opacity": 1
-                    }
-                },
-                series: {
-                    regions: [
-                        {
-                            values: data,
-                            scale: ['#85a8b6', '#4d7686'],
-                            normalizeFunction: 'polynomial'
-                        }
-                    ]
-                },
-                onRegionLabelShow: function (e, el, code) {
-                    if (typeof data[code] == 'undefined') {
-                        e.preventDefault();
-                    } else {
-                        var countrylbl = data[code];
-                        el.html(el.html() + ': ' + countrylbl + ' visits');
-                    }
-                }
-            });
-
-            element.on('$destroy', function(){
-                element.children('.jvectormap-container').data('mapObject').remove();
-            })
-        }
-    }
-});
 
 "use strict";
 
@@ -12473,6 +10581,174 @@ angular.module('app.graphs').directive('morrisYearGraph', function(){
 });
 'use strict';
 
+angular.module('app.graphs').directive('vectorMap', function () {
+    return {
+        restrict: 'EA',
+        scope: {
+            mapData: '='
+        },
+        link: function (scope, element, attributes) {
+            var data = scope.mapData;
+
+            element.vectorMap({
+                map: 'world_mill_en',
+                backgroundColor: '#fff',
+                regionStyle: {
+                    initial: {
+                        fill: '#c4c4c4'
+                    },
+                    hover: {
+                        "fill-opacity": 1
+                    }
+                },
+                series: {
+                    regions: [
+                        {
+                            values: data,
+                            scale: ['#85a8b6', '#4d7686'],
+                            normalizeFunction: 'polynomial'
+                        }
+                    ]
+                },
+                onRegionLabelShow: function (e, el, code) {
+                    if (typeof data[code] == 'undefined') {
+                        e.preventDefault();
+                    } else {
+                        var countrylbl = data[code];
+                        el.html(el.html() + ': ' + countrylbl + ' visits');
+                    }
+                }
+            });
+
+            element.on('$destroy', function(){
+                element.children('.jvectormap-container').data('mapObject').remove();
+            })
+        }
+    }
+});
+'use strict';
+
+angular.module('app.tables').directive('jqGrid', function ($compile) {
+    var jqGridCounter = 0;
+
+    return {
+        replace: true,
+        restrict: 'E',
+        scope: {
+            gridData: '='
+        },
+        template: '<div>' +
+            '<table></table>' +
+            '<div class="jqgrid-pagination"></div>' +
+            '</div>',
+        controller: function($scope, $element){
+            $scope.editRow  = function(row){
+                $element.find('table').editRow(row);
+            };
+            $scope.saveRow  = function(row){
+                $element.find('table').saveRow(row);
+            };
+            $scope.restoreRow  = function(row){
+                $element.find('table').restoreRow(row);
+            };
+        },
+        link: function (scope, element) {
+            var gridNumber = jqGridCounter++;
+            var wrapperId = 'jqgrid-' + gridNumber;
+            element.attr('id', wrapperId);
+
+            var tableId = 'jqgrid-table-' + gridNumber;
+            var table = element.find('table');
+            table.attr('id', tableId);
+
+            var pagerId = 'jqgrid-pager-' + gridNumber;
+            element.find('.jqgrid-pagination').attr('id', pagerId);
+
+
+            table.jqGrid({
+                data : scope.gridData.data,
+                datatype : "local",
+                height : 'auto',
+                colNames : scope.gridData.colNames || [],
+                colModel : scope.gridData.colModel || [],
+                rowNum : 10,
+                rowList : [10, 20, 30],
+                pager : '#' + pagerId,
+                sortname : 'id',
+                toolbarfilter : true,
+                viewrecords : true,
+                sortorder : "asc",
+                gridComplete : function() {
+                    var ids = table.jqGrid('getDataIDs');
+                    for (var i = 0; i < ids.length; i++) {
+                        var cl = ids[i];
+                        var be = "<button class='btn btn-xs btn-default' uib-tooltip='Edit Row' tooltip-append-to-body='true' ng-click='editRow("+ cl +")'><i class='fa fa-pencil'></i></button>";
+
+                        var se = "<button class='btn btn-xs btn-default' uib-tooltip='Save Row' tooltip-append-to-body='true' ng-click='saveRow("+ cl +")'><i class='fa fa-save'></i></button>";
+
+                        var ca = "<button class='btn btn-xs btn-default' uib-tooltip='Cancel' tooltip-append-to-body='true' ng-click='restoreRow("+ cl +")'><i class='fa fa-times'></i></button>";
+
+                        table.jqGrid('setRowData', ids[i], {
+                            act : be + se + ca
+                        });
+                    }
+                },
+                editurl : "dummy.html",
+                caption : "SmartAdmin jQgrid Skin",
+                multiselect : true,
+                autowidth : true
+
+            });
+            table.jqGrid('navGrid', '#' + pagerId, {
+                edit : false,
+                add : false,
+                del : true
+            });
+            table.jqGrid('inlineNav', '#' + pagerId);
+
+
+            element.find(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
+            element.find(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
+            element.find(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
+            element.find(".ui-jqgrid-pager").removeClass("ui-state-default");
+            element.find(".ui-jqgrid").removeClass("ui-widget-content");
+
+            // add classes
+            element.find(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
+            element.find(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
+
+            element.find(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
+            element.find(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
+            element.find(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
+            element.find(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
+            element.find(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
+            element.find(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
+            element.find(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
+            element.find(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
+
+            element.find(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
+
+            element.find(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
+
+            element.find(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
+
+            element.find(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
+            element.find(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
+
+            $(window).on('resize.jqGrid', function() {
+               table.jqGrid('setGridWidth', $("#content").width());
+            });
+
+
+            $compile(element.contents())(scope);
+        }
+    }
+});
+'use strict';
+
 angular.module('app.tables').directive('datatableBasic', function ($compile) {
     return {
         restrict: 'A',
@@ -12771,127 +11047,6 @@ angular.module('app.tables').directive('datatableTableTools', function () {
         }
     }
 });
-'use strict';
-
-angular.module('app.tables').directive('jqGrid', function ($compile) {
-    var jqGridCounter = 0;
-
-    return {
-        replace: true,
-        restrict: 'E',
-        scope: {
-            gridData: '='
-        },
-        template: '<div>' +
-            '<table></table>' +
-            '<div class="jqgrid-pagination"></div>' +
-            '</div>',
-        controller: function($scope, $element){
-            $scope.editRow  = function(row){
-                $element.find('table').editRow(row);
-            };
-            $scope.saveRow  = function(row){
-                $element.find('table').saveRow(row);
-            };
-            $scope.restoreRow  = function(row){
-                $element.find('table').restoreRow(row);
-            };
-        },
-        link: function (scope, element) {
-            var gridNumber = jqGridCounter++;
-            var wrapperId = 'jqgrid-' + gridNumber;
-            element.attr('id', wrapperId);
-
-            var tableId = 'jqgrid-table-' + gridNumber;
-            var table = element.find('table');
-            table.attr('id', tableId);
-
-            var pagerId = 'jqgrid-pager-' + gridNumber;
-            element.find('.jqgrid-pagination').attr('id', pagerId);
-
-
-            table.jqGrid({
-                data : scope.gridData.data,
-                datatype : "local",
-                height : 'auto',
-                colNames : scope.gridData.colNames || [],
-                colModel : scope.gridData.colModel || [],
-                rowNum : 10,
-                rowList : [10, 20, 30],
-                pager : '#' + pagerId,
-                sortname : 'id',
-                toolbarfilter : true,
-                viewrecords : true,
-                sortorder : "asc",
-                gridComplete : function() {
-                    var ids = table.jqGrid('getDataIDs');
-                    for (var i = 0; i < ids.length; i++) {
-                        var cl = ids[i];
-                        var be = "<button class='btn btn-xs btn-default' uib-tooltip='Edit Row' tooltip-append-to-body='true' ng-click='editRow("+ cl +")'><i class='fa fa-pencil'></i></button>";
-
-                        var se = "<button class='btn btn-xs btn-default' uib-tooltip='Save Row' tooltip-append-to-body='true' ng-click='saveRow("+ cl +")'><i class='fa fa-save'></i></button>";
-
-                        var ca = "<button class='btn btn-xs btn-default' uib-tooltip='Cancel' tooltip-append-to-body='true' ng-click='restoreRow("+ cl +")'><i class='fa fa-times'></i></button>";
-
-                        table.jqGrid('setRowData', ids[i], {
-                            act : be + se + ca
-                        });
-                    }
-                },
-                editurl : "dummy.html",
-                caption : "SmartAdmin jQgrid Skin",
-                multiselect : true,
-                autowidth : true
-
-            });
-            table.jqGrid('navGrid', '#' + pagerId, {
-                edit : false,
-                add : false,
-                del : true
-            });
-            table.jqGrid('inlineNav', '#' + pagerId);
-
-
-            element.find(".ui-jqgrid").removeClass("ui-widget ui-widget-content");
-            element.find(".ui-jqgrid-view").children().removeClass("ui-widget-header ui-state-default");
-            element.find(".ui-jqgrid-labels, .ui-search-toolbar").children().removeClass("ui-state-default ui-th-column ui-th-ltr");
-            element.find(".ui-jqgrid-pager").removeClass("ui-state-default");
-            element.find(".ui-jqgrid").removeClass("ui-widget-content");
-
-            // add classes
-            element.find(".ui-jqgrid-htable").addClass("table table-bordered table-hover");
-            element.find(".ui-jqgrid-btable").addClass("table table-bordered table-striped");
-
-            element.find(".ui-pg-div").removeClass().addClass("btn btn-sm btn-primary");
-            element.find(".ui-icon.ui-icon-plus").removeClass().addClass("fa fa-plus");
-            element.find(".ui-icon.ui-icon-pencil").removeClass().addClass("fa fa-pencil");
-            element.find(".ui-icon.ui-icon-trash").removeClass().addClass("fa fa-trash-o");
-            element.find(".ui-icon.ui-icon-search").removeClass().addClass("fa fa-search");
-            element.find(".ui-icon.ui-icon-refresh").removeClass().addClass("fa fa-refresh");
-            element.find(".ui-icon.ui-icon-disk").removeClass().addClass("fa fa-save").parent(".btn-primary").removeClass("btn-primary").addClass("btn-success");
-            element.find(".ui-icon.ui-icon-cancel").removeClass().addClass("fa fa-times").parent(".btn-primary").removeClass("btn-primary").addClass("btn-danger");
-
-            element.find(".ui-icon.ui-icon-seek-prev").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-prev").removeClass().addClass("fa fa-backward");
-
-            element.find(".ui-icon.ui-icon-seek-first").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-first").removeClass().addClass("fa fa-fast-backward");
-
-            element.find(".ui-icon.ui-icon-seek-next").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-next").removeClass().addClass("fa fa-forward");
-
-            element.find(".ui-icon.ui-icon-seek-end").wrap("<div class='btn btn-sm btn-default'></div>");
-            element.find(".ui-icon.ui-icon-seek-end").removeClass().addClass("fa fa-fast-forward");
-
-            $(window).on('resize.jqGrid', function() {
-               table.jqGrid('setGridWidth', $("#content").width());
-            });
-
-
-            $compile(element.contents())(scope);
-        }
-    }
-});
 "use strict";
 
 angular.module('SmartAdmin.Layout').directive('fullScreen', function(){
@@ -13039,188 +11194,6 @@ angular.module('SmartAdmin.Layout').directive('toggleMenu', function(){
         }
     }
 });
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
-    return {
-        restrict: "A",
-        link: function(scope, element, attributes){
-            var options = {};
-            options.content = attributes.smartPopoverHtml;
-            options.placement = attributes.popoverPlacement || 'top';
-            options.html = true;
-            options.trigger =  attributes.popoverTrigger || 'click';
-            options.title =  attributes.popoverTitle || attributes.title;
-            element.popover(options)
-
-        }
-
-    };
-});
-
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attributes){
-                element.tooltip({
-                    placement: attributes.tooltipPlacement || 'top',
-                    html: true,
-                    title: attributes.smartTooltipHtml
-                })
-            }
-        };
-    }
-);
-
-'use strict';
-
-angular.module('SmartAdmin.Layout').factory('lazyScript', function($q, $http){
-
-    var cache = {};
-
-    function isPending(scriptName){
-        return (cache.hasOwnProperty(scriptName) && cache[scriptName].promise && cache[scriptName].promise.$$state.pending)
-    }
-
-    function isRegistered(scriptName){
-        return cache.hasOwnProperty(scriptName)
-    }
-    function loadScript(scriptName){
-        if(!cache[scriptName]){
-            cache[scriptName] = $q.defer();
-            var el = document.createElement( 'script' );
-            el.onload = function(script){
-                console.log('script is lazy loaded:', scriptName)
-                cache[scriptName].resolve(scriptName);
-            };
-            el.src = scriptName;
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(el, x);
-            
-        }
-        return cache[scriptName].promise;
-
-    }
-
-    function register(scriptName){
-        if(isPending(scriptName)){
-            return cache[scriptName].promise
-        }
-        if(isRegistered(scriptName)){
-            return $q.resolve(scriptName);
-        } else {
-            var dfd = $q.defer();
-
-            loadScript(scriptName).then(function(){
-                dfd.resolve(scriptName);
-            });
-
-            return dfd.promise; 
-
-        }
-    }
-    return {
-        register: function (scripts) {
-            
-            var dfd = $q.defer();
-            var promises = [];
-            if (angular.isString(scripts))
-                scripts = [scripts];
-
-            angular.forEach(scripts, function(script){
-                promises.push(register(script));
-            })
-
-            $q.all(promises).then(function(resolves){
-                dfd.resolve(resolves);
-            })
-            return dfd.promise;
-
-        }
-    };
-});
-'use strict';
-
-angular.module('SmartAdmin.Layout').factory('SmartCss', function ($rootScope, $timeout) {
-
-    var sheet = (function () {
-        // Create the <style> tag
-        var style = document.createElement("style");
-
-        // Add a media (and/or media query) here if you'd like!
-        // style.setAttribute("media", "screen")
-        // style.setAttribute("media", "@media only screen and (max-width : 1024px)")
-
-        // WebKit hack :(
-        style.appendChild(document.createTextNode(""));
-
-        // Add the <style> element to the page
-        document.head.appendChild(style);
-
-        return style.sheet;
-    })();
-
-    var _styles = {};
-
-
-    var SmartCss = {
-        writeRule: function(selector){
-            SmartCss.deleteRuleFor(selector);
-            if(_.has(_styles, selector)){
-                var css = selector + '{ ' + _.map(_styles[selector], function(v, k){
-                    return  k + ':' +  v + ';'
-                }).join(' ') +'}';
-                sheet.insertRule(css, _.size(_styles) - 1);
-            }
-        },
-        add: function (selector, property, value, delay) {
-            if(!_.has(_styles, selector))
-                _styles[selector] = {};
-
-            if(value == undefined || value == null || value == '')
-                delete _styles[selector][property];
-            else
-                _styles[selector][property] = value;
-
-
-            if(_.keys(_styles[selector]).length == 0)
-                delete _styles[selector];
-
-            if(!delay)
-                delay = 0;
-            $timeout(function(){
-                SmartCss.writeRule(selector);
-            }, delay);
-
-        },
-        remove: function(selector, property, delay){
-            SmartCss.add(selector, property, null, delay);
-        },
-        deleteRuleFor: function (selector) {
-            _(sheet.rules).forEach(function (rule, idx) {
-                if (rule.selectorText == selector) {
-                    sheet.deleteRule(idx);
-                }
-            });
-        },
-        appViewSize: null
-    };
-
-    $rootScope.$on('$smartContentResize', function (event, data) {
-        SmartCss.appViewSize = data;
-    });
-
-    return SmartCss;
-
-});
-
-
-
-
 'use strict';
 
 angular.module('SmartAdmin.Layout').controller('MenuItemsController', function ($scope, $http, $state, authSvc, Select2Helper, DTOptionsBuilder, DTColumnBuilder, BASE_API, Language) {
@@ -14355,6 +12328,188 @@ angular.module('SmartAdmin.Layout').directive('stateBreadcrumbs', function ($roo
         }
     }
 });
+'use strict';
+
+angular.module('SmartAdmin.Layout').factory('lazyScript', function($q, $http){
+
+    var cache = {};
+
+    function isPending(scriptName){
+        return (cache.hasOwnProperty(scriptName) && cache[scriptName].promise && cache[scriptName].promise.$$state.pending)
+    }
+
+    function isRegistered(scriptName){
+        return cache.hasOwnProperty(scriptName)
+    }
+    function loadScript(scriptName){
+        if(!cache[scriptName]){
+            cache[scriptName] = $q.defer();
+            var el = document.createElement( 'script' );
+            el.onload = function(script){
+                console.log('script is lazy loaded:', scriptName)
+                cache[scriptName].resolve(scriptName);
+            };
+            el.src = scriptName;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(el, x);
+            
+        }
+        return cache[scriptName].promise;
+
+    }
+
+    function register(scriptName){
+        if(isPending(scriptName)){
+            return cache[scriptName].promise
+        }
+        if(isRegistered(scriptName)){
+            return $q.resolve(scriptName);
+        } else {
+            var dfd = $q.defer();
+
+            loadScript(scriptName).then(function(){
+                dfd.resolve(scriptName);
+            });
+
+            return dfd.promise; 
+
+        }
+    }
+    return {
+        register: function (scripts) {
+            
+            var dfd = $q.defer();
+            var promises = [];
+            if (angular.isString(scripts))
+                scripts = [scripts];
+
+            angular.forEach(scripts, function(script){
+                promises.push(register(script));
+            })
+
+            $q.all(promises).then(function(resolves){
+                dfd.resolve(resolves);
+            })
+            return dfd.promise;
+
+        }
+    };
+});
+'use strict';
+
+angular.module('SmartAdmin.Layout').factory('SmartCss', function ($rootScope, $timeout) {
+
+    var sheet = (function () {
+        // Create the <style> tag
+        var style = document.createElement("style");
+
+        // Add a media (and/or media query) here if you'd like!
+        // style.setAttribute("media", "screen")
+        // style.setAttribute("media", "@media only screen and (max-width : 1024px)")
+
+        // WebKit hack :(
+        style.appendChild(document.createTextNode(""));
+
+        // Add the <style> element to the page
+        document.head.appendChild(style);
+
+        return style.sheet;
+    })();
+
+    var _styles = {};
+
+
+    var SmartCss = {
+        writeRule: function(selector){
+            SmartCss.deleteRuleFor(selector);
+            if(_.has(_styles, selector)){
+                var css = selector + '{ ' + _.map(_styles[selector], function(v, k){
+                    return  k + ':' +  v + ';'
+                }).join(' ') +'}';
+                sheet.insertRule(css, _.size(_styles) - 1);
+            }
+        },
+        add: function (selector, property, value, delay) {
+            if(!_.has(_styles, selector))
+                _styles[selector] = {};
+
+            if(value == undefined || value == null || value == '')
+                delete _styles[selector][property];
+            else
+                _styles[selector][property] = value;
+
+
+            if(_.keys(_styles[selector]).length == 0)
+                delete _styles[selector];
+
+            if(!delay)
+                delay = 0;
+            $timeout(function(){
+                SmartCss.writeRule(selector);
+            }, delay);
+
+        },
+        remove: function(selector, property, delay){
+            SmartCss.add(selector, property, null, delay);
+        },
+        deleteRuleFor: function (selector) {
+            _(sheet.rules).forEach(function (rule, idx) {
+                if (rule.selectorText == selector) {
+                    sheet.deleteRule(idx);
+                }
+            });
+        },
+        appViewSize: null
+    };
+
+    $rootScope.$on('$smartContentResize', function (event, data) {
+        SmartCss.appViewSize = data;
+    });
+
+    return SmartCss;
+
+});
+
+
+
+
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
+    return {
+        restrict: "A",
+        link: function(scope, element, attributes){
+            var options = {};
+            options.content = attributes.smartPopoverHtml;
+            options.placement = attributes.popoverPlacement || 'top';
+            options.html = true;
+            options.trigger =  attributes.popoverTrigger || 'click';
+            options.title =  attributes.popoverTitle || attributes.title;
+            element.popover(options)
+
+        }
+
+    };
+});
+
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attributes){
+                element.tooltip({
+                    placement: attributes.tooltipPlacement || 'top',
+                    html: true,
+                    title: attributes.smartTooltipHtml
+                })
+            }
+        };
+    }
+);
+
 "use strict";
 
 
@@ -14825,97 +12980,6 @@ angular.module('SmartAdmin.Forms').directive('bootstrapValidationForm', function
 });
 'use strict';
 
-angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function ( tElement) {
-            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
-            //CKEDITOR.basePath = 'bower_components/ckeditor/';
-
-            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
-        }
-    }
-});
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
-            tElement.on('click', function() {
-                angular.element(tAttributes.smartDestroySummernote).destroy();
-            })
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
-            tElement.on('click', function(){
-                angular.element(tAttributes.smartEditSummernote).summernote({
-                    focus : true
-                });  
-            });
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
-    return {
-        restrict: 'A',
-        compile: function (element, attributes) {
-            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
-
-            var options = {
-                autofocus:false,
-                savable:true,
-                fullscreen: {
-                    enable: false
-                }
-            };
-
-            if(attributes.height){
-                options.height = parseInt(attributes.height);
-            }
-
-            element.markdown(options);
-        }
-    }
-});
-
-'use strict';
-
-angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
-    return {
-        restrict: 'A',
-        compile: function (tElement, tAttributes) {
-            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
-
-            var options = {
-                focus : true,
-                tabsize : 2
-            };
-
-            if(tAttributes.height){
-                options.height = tAttributes.height;
-            }
-
-            lazyScript.register('build/vendor.ui.js').then(function(){
-                tElement.summernote(options);                
-            });
-        }
-    }
-});
-'use strict';
-
 angular.module('SmartAdmin.Forms').directive('smartCheckoutForm', function (formsCommon, lazyScript) {
     return {
         restrict: 'A',
@@ -15321,6 +13385,97 @@ angular.module('SmartAdmin.Forms').directive('smartReviewForm', function (formsC
                     }
 
                 }, formsCommon.validateOptions));
+            });
+        }
+    }
+});
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartCkEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function ( tElement) {
+            tElement.removeAttr('smart-ck-editor data-smart-ck-editor');
+            //CKEDITOR.basePath = 'bower_components/ckeditor/';
+
+            CKEDITOR.replace( tElement.attr('name'), { height: '380px', startupFocus : true} );
+        }
+    }
+});
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartDestroySummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-destroy-summernote data-smart-destroy-summernote')
+            tElement.on('click', function() {
+                angular.element(tAttributes.smartDestroySummernote).destroy();
+            })
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartEditSummernote', function () {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-edit-summernote data-smart-edit-summernote');
+            tElement.on('click', function(){
+                angular.element(tAttributes.smartEditSummernote).summernote({
+                    focus : true
+                });  
+            });
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartMarkdownEditor', function () {
+    return {
+        restrict: 'A',
+        compile: function (element, attributes) {
+            element.removeAttr('smart-markdown-editor data-smart-markdown-editor')
+
+            var options = {
+                autofocus:false,
+                savable:true,
+                fullscreen: {
+                    enable: false
+                }
+            };
+
+            if(attributes.height){
+                options.height = parseInt(attributes.height);
+            }
+
+            element.markdown(options);
+        }
+    }
+});
+
+'use strict';
+
+angular.module('SmartAdmin.Forms').directive('smartSummernoteEditor', function (lazyScript) {
+    return {
+        restrict: 'A',
+        compile: function (tElement, tAttributes) {
+            tElement.removeAttr('smart-summernote-editor data-smart-summernote-editor');
+
+            var options = {
+                focus : true,
+                tabsize : 2
+            };
+
+            if(tAttributes.height){
+                options.height = tAttributes.height;
+            }
+
+            lazyScript.register('build/vendor.ui.js').then(function(){
+                tElement.summernote(options);                
             });
         }
     }

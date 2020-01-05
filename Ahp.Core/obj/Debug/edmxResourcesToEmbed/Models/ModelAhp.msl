@@ -277,6 +277,8 @@
       <EntityTypeMapping TypeName="AHPModel.VwRankingScore">
         <MappingFragment StoreEntitySet="VwRankingScore">
           <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+          <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+          <ScalarProperty Name="Posisi" ColumnName="Posisi" />
           <ScalarProperty Name="Nama" ColumnName="Nama" />
           <ScalarProperty Name="Kode" ColumnName="Kode" />
           <ScalarProperty Name="Periode" ColumnName="Periode" />

@@ -42,7 +42,7 @@ namespace Ahp.Core.Repositories.Concretes.Master
                 rec.NoSurat = model.NoSurat;
                 rec.CreatedBy = model.CreatedBy;
                 rec.CreatedDate = model.CreatedDate;
-                rec.Periode = model.Nama;
+                rec.Periode = model.Periode;
                 rec.TglAkhir = model.TglAkhir;
                 rec.TglMulai = model.TglMulai;
                 rec.UpdatedBy = this.UserProfile.UserID;

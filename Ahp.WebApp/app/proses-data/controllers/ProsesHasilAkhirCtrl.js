@@ -16,22 +16,15 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
         me.posisi = '';
         me.jumlah = '';
         me.FindPosisi(null);
-        me.loadRankingScore(me.periode);
-        me.loadRankingPosisi(me.periode, me.posisi,me.jumlah);
+       
     };
+    
 
     me.FindPosisi = function (item) {
         Select2Helper.GetDataForCombo(api + 'DropdownPosisi?term=' + item).then(function (result) {
             me.listPosisi = result.Dropdown;
         });
     };
-
-    me.FindJumlah = function (item) {
-        Select2Helper.GetDataForCombo(api + 'DropdownJumlah?term=' + item).then(function (result) {
-            me.listJumlah = result.Dropdown;
-        });
-    };
-
 
     me.Undo = function () {
         Select2Helper.GetDataForCombo(api + 'DropdownPeriode').then(function (result) {
@@ -40,11 +33,12 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
     };
 
      
-    me.loadRankingScore = function (periode) {
-        $http.get(api + 'SpRankingScore?periode=' + periode).success(function (response) {
+    me.loadRankingScore = function (periode, posisi) {
+        $http.get(api + 'SpRankingScore?periode=' + periode + '&posisi=' + posisi).success(function (response) {
                 if (response !== null) {
                     me.rankingScore = response;
-                   
+                    me.jumlah = response[0].Jumlah;
+                    me.loadRankingPosisi(me.periode, me.posisi, me.jumlah);
                 }
                 }).error(function (err, status) {
                     NotifBoxError('Warning', err.Message);
@@ -60,6 +54,22 @@ angular.module('app.proses').controller('ProsesHasilAkhirController', function (
         }).error(function (err, status) {
             NotifBoxError('Warning', err.Message);
         });
+    };
+
+    me.print = function (periode,posisi,jumlah) {
+        $http.get(api + 'Print?periode=' + periode + '&posisi=' + posisi + '&jumlah=' + jumlah, { responseType: 'arraybuffer' }).success(function (response) {
+            if (response !== null) {
+                var file = new Blob([response], { type: 'application/pdf' });
+                var fileURL = URL.createObjectURL(file);
+                //$window.open(fileURL, '_blank');
+                var blob = new Blob([response], { type: 'application/pdf' });
+                saveAs(blob, 'laporan-hasil-akhir.pdf');
+            }
+        })
+            .error(function (error, status) {
+                NotifBoxError(msgTitle, "Print document failed.");
+            });
+
     };
     
     me.NumberFormat = function (val) {

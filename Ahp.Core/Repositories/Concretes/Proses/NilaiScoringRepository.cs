@@ -176,14 +176,14 @@ namespace Ahp.Core.Repositories.Concretes.Proses
             return vwRankingPosisi;
         }
 
-        public List<VwRankingScore> FindRankingScoring(string periode)
+        public List<VwRankingScore> FindRankingScoring(string periode,string posisi)
         {
             if (periode==null)
             {
                 var lp = DropdownPeriode("");
                 periode = lp[lp.Count() - 1].id;
             }
-            List<VwRankingScore> vwRankingScore = ctx.Set<VwRankingScore>().Where(x => x.Periode.Equals(periode)).OrderByDescending(x=>x.NilaiTotal).ToList();
+            List<VwRankingScore> vwRankingScore = ctx.Set<VwRankingScore>().Where(x => x.Periode.Equals(periode) && x.Posisi.Equals(posisi)).OrderByDescending(x=>x.NilaiTotal).ToList();
        
             return vwRankingScore;
         }

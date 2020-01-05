@@ -227,12 +227,13 @@
 warning 6002: The table/view 'AHP.dbo.VwRankingPosisi' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VwRankingPosisi">
           <Key>
+            
             <PropertyRef Name="Kode" />
           </Key>
           <Property Name="Periode" Type="varchar" MaxLength="50" />
           <Property Name="Jumlah" Type="int" />
           <Property Name="Pendidikan" Type="varchar" MaxLength="10" />
-          <Property Name="Posisi" Type="varchar" MaxLength="20" />
+          <Property Name="Posisi" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Nama" Type="varchar" MaxLength="50" />
           <Property Name="NilaiTotal" Type="float" />
@@ -246,6 +247,8 @@ warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary ke
           <Property Name="Periode" Type="varchar" MaxLength="50" />
           <Property Name="Kode" Type="varchar" MaxLength="32" Nullable="false" />
           <Property Name="Nama" Type="varchar" MaxLength="50" />
+          <Property Name="Posisi" Type="varchar" MaxLength="20" />
+          <Property Name="Jumlah" Type="int" />
           <Property Name="NilaiTotal" Type="float" />
         </EntityType>
         <Function Name="SpPerbandinganKriteria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
@@ -285,6 +288,8 @@ warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary ke
     [VwRankingScore].[Periode] AS [Periode], 
     [VwRankingScore].[Kode] AS [Kode], 
     [VwRankingScore].[Nama] AS [Nama], 
+    [VwRankingScore].[Posisi] AS [Posisi], 
+    [VwRankingScore].[Jumlah] AS [Jumlah], 
     [VwRankingScore].[NilaiTotal] AS [NilaiTotal]
     FROM [dbo].[VwRankingScore] AS [VwRankingScore]</DefiningQuery>
           </EntitySet>
@@ -566,7 +571,7 @@ warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary ke
           <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Jumlah" Type="Int32" />
           <Property Name="Pendidikan" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Posisi" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NilaiTotal" Type="Double" />
@@ -578,6 +583,8 @@ warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary ke
           <Property Name="Periode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Kode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
           <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Posisi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Jumlah" Type="Int32" />
           <Property Name="NilaiTotal" Type="Double" />
         </EntityType>
       </Schema>
@@ -862,6 +869,8 @@ warning 6002: The table/view 'AHP.dbo.VwRankingScore' does not have a primary ke
             <EntityTypeMapping TypeName="AHPModel.VwRankingScore">
               <MappingFragment StoreEntitySet="VwRankingScore">
                 <ScalarProperty Name="NilaiTotal" ColumnName="NilaiTotal" />
+                <ScalarProperty Name="Jumlah" ColumnName="Jumlah" />
+                <ScalarProperty Name="Posisi" ColumnName="Posisi" />
                 <ScalarProperty Name="Nama" ColumnName="Nama" />
                 <ScalarProperty Name="Kode" ColumnName="Kode" />
                 <ScalarProperty Name="Periode" ColumnName="Periode" />

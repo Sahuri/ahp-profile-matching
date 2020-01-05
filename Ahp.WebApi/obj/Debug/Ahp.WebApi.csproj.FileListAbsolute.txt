@@ -432,3 +432,5 @@ C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.We
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.WebApi\obj\Debug\Ahp.WebApi.csproj.CopyComplete
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.WebApi\obj\Debug\Ahp.WebApi.dll
 C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.WebApi\obj\Debug\Ahp.WebApi.pdb
+C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.WebApi\obj\Debug\RdlCompile.cache
+C:\Users\17054094\Documents\github-project\pge\idrus\ahp-profile-matching\Ahp.WebApi\obj\Debug\RdlCompile.compiled

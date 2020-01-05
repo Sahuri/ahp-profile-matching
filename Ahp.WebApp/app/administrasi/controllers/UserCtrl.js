@@ -39,8 +39,7 @@ angular.module('app.administrasi').controller('UserController', function ($scope
 
         obj.tableColumns = [
             DTColumnBuilder.newColumn('Kode').withTitle('Kode').withClass('text-primary'),
-            DTColumnBuilder.newColumn('Nama').withTitle('Nama'),
-            DTColumnBuilder.newColumn('KodeArea').withTitle('Area')
+            DTColumnBuilder.newColumn('Nama').withTitle('Nama')
         ];
     };
 
@@ -74,9 +73,7 @@ angular.module('app.administrasi').controller('UserController', function ($scope
     me.Undo = function () {
         me.data = {};
         me.isNew = true;
-        Select2Helper.GetDataForCombo(BASE_API + 'MasterArea/Dropdown').then(function (result) {
-            me.listArea = result.Dropdown;
-        });
+       
     };
 
    

@@ -140,7 +140,7 @@ angular.module('app.laporan').controller('ByFunctionController', function ($scop
 
     me.$watch("listArea", function (n, o) {
         var count = n.length;
-        if (count == 1) {
+        if (count === 1) {
             me.area = n[0].id;
             me.areaDesc = n[0].text;
 
